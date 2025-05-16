@@ -5,6 +5,16 @@ export interface Skill {
   category: string;
   level?: 'beginner' | 'intermediate' | 'advanced';
   description: string;
+  resources?: Resource[];  // Added resources for learning this skill
+}
+
+export interface Resource {
+  id: string;
+  title: string;
+  url: string;
+  type: 'article' | 'video' | 'course' | 'book';
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  description?: string;
 }
 
 export interface Job {
@@ -16,7 +26,8 @@ export interface Job {
   salaryRange?: string;
   experience?: string;
   category: string;
-  matchPercentage?: number; // Added this field to fix TypeScript errors
+  matchPercentage?: number;
+  roadmap?: RoadmapStep[];  // Added roadmap for job preparation
 }
 
 export interface Quiz {
@@ -26,6 +37,11 @@ export interface Quiz {
   skillCategory: string;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   questions: QuizQuestion[];
+  recommendations?: {
+    lowScore: Resource[];
+    mediumScore: Resource[];
+    highScore: Resource[];
+  };
 }
 
 export interface QuizQuestion {
