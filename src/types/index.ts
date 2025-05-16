@@ -16,6 +16,7 @@ export interface Job {
   salaryRange?: string;
   experience?: string;
   category: string;
+  matchPercentage?: number; // Added this field to fix TypeScript errors
 }
 
 export interface Quiz {

@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,35 +12,44 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search } from "lucide-react";
+import { Briefcase, Search } from "lucide-react";
 import { useAppContext } from "@/context/AppContext";
+import { cn } from "@/lib/utils";
 
 const JobsPage = () => {
   const { jobs } = useAppContext();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [visibleJobs, setVisibleJobs] = useState<typeof jobs>([]);
 
   // Get unique job categories
   const categories = Array.from(new Set(jobs.map((job) => job.category)));
 
-  const filteredJobs = jobs.filter((job) => {
-    const matchesSearch = 
-      job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (job.company && job.company.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      job.description.toLowerCase().includes(searchTerm.toLowerCase());
+  useEffect(() => {
+    const filteredJobs = jobs.filter((job) => {
+      const matchesSearch = 
+        job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (job.company && job.company.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        job.description.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesCategory = selectedCategory ? job.category === selectedCategory : true;
+      
+      return matchesSearch && matchesCategory;
+    });
     
-    const matchesCategory = selectedCategory ? job.category === selectedCategory : true;
-    
-    return matchesSearch && matchesCategory;
-  });
+    setVisibleJobs(filteredJobs);
+  }, [searchTerm, selectedCategory, jobs]);
 
   return (
     <div className="container px-4 md:px-6 py-8 max-w-7xl">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">IT Jobs</h1>
+          <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+            <Briefcase className="h-8 w-8 text-primary" />
+            IT Jobs
+          </h1>
           <p className="text-muted-foreground mt-1">
-            Explore available jobs in the IT industry
+            Explore available jobs in the IT industry and find your perfect role
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -82,9 +91,16 @@ const JobsPage = () => {
 
       {/* Jobs List */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <Card key={job.id} className="overflow-hidden transition-all hover:shadow-md">
+        {visibleJobs.length > 0 ? (
+          visibleJobs.map((job, index) => (
+            <Card 
+              key={job.id} 
+              className={cn(
+                "overflow-hidden transition-all hover:shadow-md fade-in",
+                { "animate-[fade-in_0.3s_ease-out]": true }
+              )}
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
               <CardHeader className="pb-3">
                 <CardTitle className="text-xl">{job.title}</CardTitle>
                 <CardDescription className="flex items-center gap-2">
