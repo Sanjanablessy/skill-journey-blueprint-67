@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -17,6 +16,7 @@ import { Check, Briefcase, Flag, BookText } from "lucide-react";
 import { useAppContext } from "@/context/AppContext";
 import { toast } from "sonner";
 import { RoadmapStep } from "@/types";
+import { cn } from "@/lib/utils";
 
 const JobDetailPage = () => {
   const { id } = useParams<{ id: string }>();
