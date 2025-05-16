@@ -43,7 +43,7 @@ const Header = () => {
       <div className="container flex h-16 items-center px-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2">
           <span className="text-2xl font-bold text-primary">
-            TechPathfinder
+            WeGuideYou
           </span>
         </Link>
         <nav className="ml-auto flex gap-1 sm:gap-2 md:gap-4 items-center">
