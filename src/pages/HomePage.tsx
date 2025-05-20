@@ -53,7 +53,7 @@ const HomePage = () => {
               <p className="text-lg text-white/90 md:text-xl">
                 Find the right path for your IT career. Explore jobs, explore skills, and create personalized roadmaps.
               </p>
-              <p className="text-lg font-medium italic text-purple-300">
+              <p className="text-lg font-medium italic text-brand-200">
                 where ambition meets opportunity
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
@@ -65,7 +65,7 @@ const HomePage = () => {
                 <Link to="/skills">
                   <Button 
                     size="lg" 
-                    className="w-full sm:w-auto bg-purple-500 text-white hover:bg-purple-600 shadow-lg flex items-center gap-2 px-6 py-6 text-lg font-medium"
+                    className="w-full sm:w-auto bg-brand-500 text-white hover:bg-brand-600 shadow-lg flex items-center gap-2 px-6 py-6 text-lg font-medium"
                   >
                     <CheckSquare className="h-6 w-6" /> Assess Skills
                   </Button>
@@ -118,18 +118,18 @@ const HomePage = () => {
       </section>
 
       {/* Skills Banner Section */}
-      <section className="bg-purple-50 py-8 border-b border-purple-100">
+      <section className="bg-brand-50 py-8 border-b border-brand-100">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <CheckSquare className="h-8 w-8 text-purple-600" />
+              <CheckSquare className="h-8 w-8 text-brand-600" />
               <div>
-                <h3 className="text-xl font-bold text-purple-800">Want to know where you stand?</h3>
-                <p className="text-purple-600">Assess your technical skills and find areas to improve</p>
+                <h3 className="text-xl font-bold text-brand-800">Want to know where you stand?</h3>
+                <p className="text-brand-600">Assess your technical skills and find areas to improve</p>
               </div>
             </div>
             <Link to="/skills">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white shadow-md">
+              <Button size="lg" className="bg-brand-600 hover:bg-brand-700 text-white shadow-md">
                 Assess Your Skills
               </Button>
             </Link>
