@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Search } from "lucide-react";
+import { Search, Briefcase } from "lucide-react";
 
 const HomePage = () => {
   const features = [
@@ -58,8 +58,8 @@ const HomePage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/jobs">
-                  <Button size="lg" className="bg-white text-brand-800 hover:bg-white/90">
-                    Explore Jobs
+                  <Button size="lg" className="w-full sm:w-auto bg-white text-brand-800 hover:bg-white/90 shadow-lg flex items-center gap-2 px-6 py-6 text-lg font-medium animate-pulse hover:animate-none">
+                    <Briefcase className="h-6 w-6" /> Explore Jobs
                   </Button>
                 </Link>
                 <Link to="/skills">
@@ -90,6 +90,26 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Jobs Banner Section */}
+      <section className="bg-brand-50 py-8 border-y border-brand-100">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Briefcase className="h-8 w-8 text-brand-600" />
+              <div>
+                <h3 className="text-xl font-bold text-brand-800">Ready to find your next tech role?</h3>
+                <p className="text-brand-600">Browse hundreds of IT job opportunities</p>
+              </div>
+            </div>
+            <Link to="/jobs">
+              <Button size="lg" className="bg-brand-600 hover:bg-brand-700 text-white shadow-md">
+                Explore Jobs Now
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
