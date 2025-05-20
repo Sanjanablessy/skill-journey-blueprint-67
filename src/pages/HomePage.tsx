@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Search, Briefcase } from "lucide-react";
+import { Search, Briefcase, CheckSquare } from "lucide-react";
 
 const HomePage = () => {
   const features = [
@@ -63,8 +63,8 @@ const HomePage = () => {
                   </Button>
                 </Link>
                 <Link to="/skills">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                    Assess Skills
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10 flex items-center gap-2 px-6 py-6 text-lg font-medium">
+                    <CheckSquare className="h-6 w-6" /> Assess Skills
                   </Button>
                 </Link>
               </div>
@@ -108,6 +108,26 @@ const HomePage = () => {
             <Link to="/jobs">
               <Button size="lg" className="bg-brand-600 hover:bg-brand-700 text-white shadow-md">
                 Explore Jobs Now
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Banner Section */}
+      <section className="bg-purple-50 py-8 border-b border-purple-100">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <CheckSquare className="h-8 w-8 text-purple-600" />
+              <div>
+                <h3 className="text-xl font-bold text-purple-800">Want to know where you stand?</h3>
+                <p className="text-purple-600">Assess your technical skills and find areas to improve</p>
+              </div>
+            </div>
+            <Link to="/skills">
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white shadow-md">
+                Assess Your Skills
               </Button>
             </Link>
           </div>
