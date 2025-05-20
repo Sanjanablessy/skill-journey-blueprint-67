@@ -13,6 +13,17 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { useAppContext } from "@/context/AppContext";
+import { CheckCircle } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 const GoalsPage = () => {
   const { goals, jobs, skills, updateRoadmapStep } = useAppContext();
@@ -26,6 +37,12 @@ const GoalsPage = () => {
       return skill ? skill.name : "Unknown Skill";
     }
     return goal.title;
+  };
+  
+  const handleCompleteGoal = (goalId: string) => {
+    // In a real application, we would update the state here
+    // For now, we'll just show a toast notification
+    toast.success("Congratulations! You've completed this goal!");
   };
   
   return (
@@ -140,6 +157,41 @@ const GoalsPage = () => {
                   ))}
                 </div>
               </CardContent>
+              <CardFooter className="flex justify-end pt-4 border-t">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button 
+                      className="flex items-center gap-2" 
+                      disabled={goal.progress < 100}
+                    >
+                      <CheckCircle className="h-4 w-4" />
+                      Finish Goal
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Complete Your Goal</DialogTitle>
+                      <DialogDescription>
+                        Are you ready to mark this goal as complete? Congratulations on your achievement!
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="py-4">
+                      <p>Goal: <span className="font-medium">{goal.title}</span></p>
+                      <p className="mt-2">Progress: <span className="font-medium">{goal.progress}%</span></p>
+                      {goal.progress < 100 && (
+                        <p className="text-yellow-600 mt-2">
+                          You still have incomplete steps in your roadmap. Are you sure you want to mark this goal as complete?
+                        </p>
+                      )}
+                    </div>
+                    <DialogFooter>
+                      <Button variant="outline" onClick={() => handleCompleteGoal(goal.id)}>
+                        Complete Goal
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </CardFooter>
             </Card>
           ))}
         </div>
