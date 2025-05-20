@@ -239,10 +239,10 @@ export const jobsData: Job[] = [
     company: "TechCorp Inc.",
     description: "Responsible for creating and maintaining user interfaces for web applications.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s1")!,
-      skillsData.find(s => s.id === "s2")!,
-      skillsData.find(s => s.id === "s9")!,
-      skillsData.find(s => s.id === "s13")!
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s2")!, // React
+      skillsData.find(s => s.id === "s9")!, // TypeScript
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$80,000 - $120,000",
     experience: "2-4 years",
@@ -278,10 +278,10 @@ export const jobsData: Job[] = [
     company: "WebSolutions Ltd.",
     description: "Build and maintain server-side applications that power web services.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s3")!,
-      skillsData.find(s => s.id === "s5")!,
-      skillsData.find(s => s.id === "s12")!,
-      skillsData.find(s => s.id === "s13")!
+      skillsData.find(s => s.id === "s3")!, // Node.js
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s12")!, // MongoDB
+      skillsData.find(s => s.id === "s13")!  // Git
     ],
     salaryRange: "$90,000 - $130,000",
     experience: "3-5 years",
@@ -321,11 +321,11 @@ export const jobsData: Job[] = [
     company: "InnovateX",
     description: "Develop both client and server software for complete web applications.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s1")!,
-      skillsData.find(s => s.id === "s2")!,
-      skillsData.find(s => s.id === "s3")!,
-      skillsData.find(s => s.id === "s5")!,
-      skillsData.find(s => s.id === "s13")!
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s2")!, // React
+      skillsData.find(s => s.id === "s3")!, // Node.js
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$100,000 - $150,000",
     experience: "4-6 years",
@@ -361,10 +361,10 @@ export const jobsData: Job[] = [
     company: "CloudNative Systems",
     description: "Implement and manage CI/CD pipelines and cloud infrastructure.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s7")!,
-      skillsData.find(s => s.id === "s8")!,
-      skillsData.find(s => s.id === "s15")!,
-      skillsData.find(s => s.id === "s13")!
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s15")!,// Kubernetes
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$110,000 - $160,000",
     experience: "3-6 years",
@@ -398,8 +398,8 @@ export const jobsData: Job[] = [
     company: "AnalyticsPro",
     description: "Analyze data to extract valuable insights and build predictive models.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s4")!,
-      skillsData.find(s => s.id === "s5")!
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!  // SQL
     ],
     salaryRange: "$95,000 - $145,000",
     experience: "2-5 years",
@@ -433,7 +433,7 @@ export const jobsData: Job[] = [
     company: "DesignHub",
     description: "Design intuitive and visually appealing user interfaces for web and mobile applications.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s1")!
+      skillsData.find(s => s.id === "s1")! // JavaScript (often helpful for designers to understand basics)
     ],
     salaryRange: "$75,000 - $110,000",
     experience: "2-4 years",
@@ -460,6 +460,139 @@ export const jobsData: Job[] = [
         completed: false
       }
     ]
+  },
+  // New Development Jobs
+  {
+    id: "j7",
+    title: "Software Engineer",
+    company: "Innovate Solutions",
+    description: "Design, develop, and maintain software applications across various platforms.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s6")!, // Java
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")! // Git
+    ],
+    salaryRange: "$85,000 - $125,000",
+    experience: "2-5 years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j8",
+    title: "Mobile Developer",
+    company: "AppMakers Co.",
+    description: "Create and optimize applications for mobile devices (iOS and Android).",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s6")!, // Java (for Android)
+      skillsData.find(s => s.id === "s1")!, // JavaScript (for React Native/Ionic)
+      skillsData.find(s => s.id === "s13")! // Git
+    ],
+    salaryRange: "$90,000 - $130,000",
+    experience: "2-4 years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j9",
+    title: "AI Developer",
+    company: "FutureAI Labs",
+    description: "Develop artificial intelligence models and applications.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+    ],
+    salaryRange: "$100,000 - $150,000",
+    experience: "3+ years",
+    category: "Development",
+    roadmap: []
+  },
+  // New Infrastructure Jobs
+  {
+    id: "j10",
+    title: "Network Engineer",
+    company: "ConnectNet",
+    description: "Design, implement, and manage network infrastructure.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python (for scripting)
+      skillsData.find(s => s.id === "s7")!  // AWS (networking in cloud)
+    ],
+    salaryRange: "$80,000 - $120,000",
+    experience: "3-5 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j11",
+    title: "Cloud Engineer",
+    company: "SkyCloud Services",
+    description: "Develop and manage cloud-based infrastructure and services.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s15")! // Kubernetes
+    ],
+    salaryRange: "$95,000 - $140,000",
+    experience: "2-5 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j12",
+    title: "System Administrator",
+    company: "Server 관리자 Inc.",
+    description: "Maintain and administer computer systems and servers.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s8")!  // Docker
+    ],
+    salaryRange: "$70,000 - $110,000",
+    experience: "2-4 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  // New Data Jobs
+  {
+    id: "j13",
+    title: "Data Engineer",
+    company: "DataFlow Corp",
+    description: "Build and maintain data pipelines and infrastructure.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s3")!  // Node.js
+    ],
+    salaryRange: "$90,000 - $135,000",
+    experience: "3-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j14",
+    title: "Data Analyst",
+    company: "Insightful Data",
+    description: "Analyze data to provide insights and support decision-making.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s4")!  // Python
+    ],
+    salaryRange: "$70,000 - $100,000",
+    experience: "1-3 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j15",
+    title: "Business Intelligence Developer",
+    company: "Strategic BI",
+    description: "Develop BI solutions, dashboards, and reports.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s4")!  // Python
+    ],
+    salaryRange: "$85,000 - $125,000",
+    experience: "2-5 years",
+    category: "Data",
+    roadmap: []
   }
 ];
 
