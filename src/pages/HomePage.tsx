@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -50,12 +49,6 @@ const HomePage = () => {
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">
                 Navigate Your Tech Career With Confidence
               </h1>
-              <p className="text-lg text-white/90 md:text-xl">
-                WE GUIDE YOU
-              </p>
-              <p className="text-lg font-medium italic text-brand-200">
-                where ambition meets opportunity
-              </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/jobs">
                   <Button size="lg" className="w-full sm:w-auto bg-white text-brand-800 hover:bg-white/90 shadow-lg flex items-center gap-2 px-6 py-6 text-lg font-medium animate-pulse hover:animate-none">

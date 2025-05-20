@@ -43,9 +43,10 @@ const Header = () => {
       <div className="container flex h-16 items-center px-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2">
           <Compass className="h-6 w-6 text-primary" />
-          <span className="text-2xl font-bold text-primary">
-            WeGuideYou
-          </span>
+          <div className="flex flex-col items-start">
+            <span className="text-2xl font-bold text-primary">WeGuideYou</span>
+            <span className="text-xs italic text-muted-foreground">where ambition meets opportunity</span>
+          </div>
         </Link>
         <nav className="ml-auto flex gap-1 sm:gap-2 md:gap-4 items-center">
           <div className="relative hidden md:block">
