@@ -53,6 +53,9 @@ const HomePage = () => {
               <p className="text-lg text-white/90 md:text-xl">
                 Find the right path for your IT career. Explore jobs, build skills, and create personalized roadmaps.
               </p>
+              <p className="text-lg font-medium italic text-purple-300">
+                where ambition meets opportunity
+              </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/jobs">
                   <Button size="lg" className="bg-white text-brand-800 hover:bg-white/90">
