@@ -106,8 +106,6 @@ const JobDetailPage = () => {
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
                 <Badge variant="outline" className="bg-primary/5">{job.category}</Badge>
-                {job.experience && <Badge variant="outline">{job.experience}</Badge>}
-                {job.salaryRange && <Badge variant="outline">{job.salaryRange}</Badge>}
               </div>
             </CardHeader>
             <CardContent className="pt-6">
