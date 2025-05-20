@@ -550,7 +550,179 @@ export const jobsData: Job[] = [
     category: "Infrastructure",
     roadmap: []
   },
-  // New Data Jobs
+  // New Infrastructure Jobs (j16 onwards)
+  {
+    id: "j16",
+    title: "Cloud Architect",
+    company: "CloudArch Design",
+    description: "Design and plan cloud computing strategies and architectures.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s15")!, // Kubernetes
+    ],
+    salaryRange: "$120,000 - $180,000",
+    experience: "5+ years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j17",
+    title: "Virtualisation Engineer",
+    company: "VirtuTech Solutions",
+    description: "Implement and manage virtualization technologies (VMware, Hyper-V).",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s8")!, // Docker (related containerization)
+    ],
+    salaryRange: "$90,000 - $130,000",
+    experience: "3-5 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j18",
+    title: "Infrastructure Architect",
+    company: "InfraStructureFoundry",
+    description: "Design and oversee the implementation of IT infrastructure.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s15")!, // Kubernetes
+    ],
+    salaryRange: "$130,000 - $190,000",
+    experience: "7+ years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j19",
+    title: "Storage Engineer",
+    company: "DataStore Inc.",
+    description: "Design, implement, and manage data storage solutions.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL (often related)
+    ],
+    salaryRange: "$85,000 - $125,000",
+    experience: "3-5 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j20",
+    title: "Security Engineer (Infrastructure)",
+    company: "SecureNet Infra",
+    description: "Protect IT infrastructure from security threats.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s7")!, // AWS (security aspects)
+      skillsData.find(s => s.id === "s4")!, // Python (for scripting security tools)
+    ],
+    salaryRange: "$100,000 - $150,000",
+    experience: "4-6 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j21",
+    title: "Network Architect",
+    company: "Global Networks Ltd.",
+    description: "Design complex network architectures and ensure network performance.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s7")!, // AWS (networking)
+    ],
+    salaryRange: "$110,000 - $170,000",
+    experience: "6+ years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j22",
+    title: "Data Center Engineer",
+    company: "Core Data Centers",
+    description: "Manage and maintain data center facilities and infrastructure.",
+    requiredSkills: [],
+    salaryRange: "$80,000 - $120,000",
+    experience: "3-5 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j23",
+    title: "IT Infrastructure Manager",
+    company: "InfraLead Solutions",
+    description: "Oversee and manage the entire IT infrastructure of an organization.",
+    requiredSkills: [],
+    salaryRange: "$100,000 - $160,000",
+    experience: "5-8 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j24",
+    title: "Network Administrator",
+    company: "NetAdmin Pro",
+    description: "Administer and maintain computer networks for an organization.",
+    requiredSkills: [],
+    salaryRange: "$70,000 - $100,000",
+    experience: "2-4 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j25",
+    title: "Infrastructure Analyst",
+    company: "AnalyzeInfra Co.",
+    description: "Analyze infrastructure needs and recommend solutions.",
+    requiredSkills: [
+       skillsData.find(s => s.id === "s4")!, // Python
+    ],
+    salaryRange: "$75,000 - $115,000",
+    experience: "2-5 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j26",
+    title: "IT Vendor Manager",
+    company: "VendorConnect",
+    description: "Manage relationships and contracts with IT vendors.",
+    requiredSkills: [],
+    salaryRange: "$80,000 - $120,000",
+    experience: "3-6 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j27",
+    title: "Backup and Recovery Manager",
+    company: "DataSafe Systems",
+    description: "Oversee data backup and disaster recovery strategies.",
+    requiredSkills: [],
+    salaryRange: "$90,000 - $130,000",
+    experience: "4-7 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j28",
+    title: "IT Operation Manager",
+    company: "OpsManage Corp",
+    description: "Manage day-to-day IT operations and support.",
+    requiredSkills: [],
+    salaryRange: "$95,000 - $145,000",
+    experience: "5+ years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j29",
+    title: "Telecommunication Manager",
+    company: "TeleComms Inc.",
+    description: "Manage telecommunication systems and services.",
+    requiredSkills: [],
+    salaryRange: "$85,000 - $125,000",
+    experience: "4-6 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  // Existing Data Jobs (j13, j14, j15)
   {
     id: "j13",
     title: "Data Engineer",
