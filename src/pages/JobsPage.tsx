@@ -72,7 +72,7 @@ const JobsPage = () => {
           variant={selectedCategory === null ? "default" : "outline"}
           size="sm"
           onClick={() => setSelectedCategory(null)}
-          className="rounded-full"
+          className="rounded-full bg-primary/80 hover:bg-primary"
         >
           All
         </Button>
@@ -82,7 +82,12 @@ const JobsPage = () => {
             variant={selectedCategory === category ? "default" : "outline"}
             size="sm"
             onClick={() => setSelectedCategory(category)}
-            className="rounded-full"
+            className={cn(
+              "rounded-full",
+              selectedCategory === category 
+                ? "bg-primary text-primary-foreground" 
+                : "bg-accent/60 text-accent-foreground hover:bg-accent"
+            )}
           >
             {category}
           </Button>
@@ -115,16 +120,15 @@ const JobsPage = () => {
                 </div>
                 <div className="flex flex-wrap gap-1 mb-3">
                   <Badge variant="outline" className="bg-primary/5">{job.category}</Badge>
-                  {job.experience && <Badge variant="outline">{job.experience}</Badge>}
                 </div>
                 <div className="flex flex-wrap gap-1">
                   {job.requiredSkills.slice(0, 3).map((skill) => (
-                    <Badge key={skill.id} variant="secondary" className="bg-secondary/10">
+                    <Badge key={skill.id} variant="secondary" className="bg-secondary/30 text-foreground">
                       {skill.name}
                     </Badge>
                   ))}
                   {job.requiredSkills.length > 3 && (
-                    <Badge variant="secondary" className="bg-secondary/10">
+                    <Badge variant="secondary" className="bg-secondary/30 text-foreground">
                       +{job.requiredSkills.length - 3} more
                     </Badge>
                   )}
