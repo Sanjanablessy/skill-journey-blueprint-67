@@ -765,6 +765,281 @@ export const jobsData: Job[] = [
     experience: "2-5 years",
     category: "Data",
     roadmap: []
+  },
+  // New Data Jobs
+  {
+    id: "j30",
+    title: "Data Architect",
+    company: "DataStructure Solutions",
+    description: "Design and implement an organization's data architecture.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s12")!, // MongoDB
+      skillsData.find(s => s.id === "s4")!, // Python
+    ],
+    salaryRange: "$110,000 - $170,000",
+    experience: "5+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j31",
+    title: "Machine Learning Engineer",
+    company: "ML Innovations",
+    description: "Design, build, and deploy machine learning models.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s1")!, // JavaScript (e.g. TensorFlow.js)
+    ],
+    salaryRange: "$100,000 - $160,000",
+    experience: "3+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j32",
+    title: "Data Operations (DataOps) Engineer",
+    company: "OpsData Inc.",
+    description: "Automate and streamline data pipelines and processes.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s13")!, // Git
+    ],
+    salaryRange: "$95,000 - $140,000",
+    experience: "3-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j33",
+    title: "Data Quality Analyst",
+    company: "QualityData Check",
+    description: "Ensure the accuracy, completeness, and consistency of data.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s4")!, // Python
+    ],
+    salaryRange: "$70,000 - $100,000",
+    experience: "2-4 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j34",
+    title: "Database Administrator (DBA)",
+    company: "DBManage Corp",
+    description: "Manage and maintain database systems for performance and reliability.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s12")!, // MongoDB
+    ],
+    salaryRange: "$80,000 - $120,000",
+    experience: "3-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j35",
+    title: "Big Data Engineer",
+    company: "BigData Solutions",
+    description: "Design, build, and manage large-scale data processing systems.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s6")!, // Java (e.g. Hadoop/Spark)
+      skillsData.find(s => s.id === "s5")!, // SQL
+    ],
+    salaryRange: "$100,000 - $150,000",
+    experience: "3-6 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j36",
+    title: "Data Governance Manager",
+    company: "GovernData Ltd.",
+    description: "Establish and enforce policies for data management and compliance.",
+    requiredSkills: [
+       skillsData.find(s => s.id === "s5")!, // SQL (understanding data structures)
+    ],
+    salaryRange: "$90,000 - $140,000",
+    experience: "5+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j37",
+    title: "Data Privacy Officer",
+    company: "PrivacyFirst Inc.",
+    description: "Ensure compliance with data privacy laws and regulations.",
+    requiredSkills: [], // Often legal/compliance focused
+    salaryRange: "$95,000 - $150,000",
+    experience: "4+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j38",
+    title: "Data Visualization Specialist",
+    company: "VizData Pro",
+    description: "Create compelling visualizations to communicate data insights.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python (e.g. Matplotlib, Seaborn)
+      skillsData.find(s => s.id === "s1")!, // JavaScript (e.g. D3.js)
+    ],
+    salaryRange: "$80,000 - $120,000",
+    experience: "2-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j39",
+    title: "Artificial Intelligence (AI) Specialist",
+    company: "AISpec Corp",
+    description: "Focus on specific AI domains like NLP, computer vision, or expert systems.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+    ],
+    salaryRange: "$100,000 - $160,000",
+    experience: "3+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j40",
+    title: "Data Consultant",
+    company: "DataAdvise Group",
+    description: "Provide expert advice on data strategy, management, and analytics.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+    ],
+    salaryRange: "$100,000 - $180,000",
+    experience: "5+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j41",
+    title: "Quantitative Analyst (Quant)",
+    company: "FinQuant Solutions",
+    description: "Apply mathematical and statistical methods to financial and risk management problems.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+    ],
+    salaryRange: "$110,000 - $170,000",
+    experience: "3-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j42",
+    title: "Data Integration Specialist",
+    company: "IntegrateData Now",
+    description: "Combine data from various sources into a unified view.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s4")!, // Python
+    ],
+    salaryRange: "$85,000 - $130,000",
+    experience: "3-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j43",
+    title: "Data Trainer",
+    company: "LearnData Academy",
+    description: "Educate individuals and teams on data-related tools and concepts.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+    ],
+    salaryRange: "$70,000 - $110,000",
+    experience: "3+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j44",
+    title: "Data Engineer (Cloud)",
+    company: "CloudDataWorks",
+    description: "Specialize in building and managing data pipelines on cloud platforms.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s7")!, // AWS
+    ],
+    salaryRange: "$95,000 - $145,000",
+    experience: "3-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j45",
+    title: "Natural Language Processing (NLP) Engineer",
+    company: "NLP Tech",
+    description: "Develop systems that can understand and process human language.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+    ],
+    salaryRange: "$100,000 - $160,000",
+    experience: "3+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j46",
+    title: "Data Strategy Manager",
+    company: "StrategyData Corp",
+    description: "Define and implement an organization's overall data strategy.",
+    requiredSkills: [], // Strategic, less technical focus
+    salaryRange: "$110,000 - $170,000",
+    experience: "5+ years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j47",
+    title: "Data Security Engineer",
+    company: "SecureData Systems",
+    description: "Protect data assets from security threats and ensure compliance.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s7")!, // AWS (security aspects)
+    ],
+    salaryRange: "$100,000 - $150,000",
+    experience: "4-6 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j48",
+    title: "AI/ML Data Engineer",
+    company: "AIML DataFlow",
+    description: "Focus on data engineering tasks specifically for AI and ML projects.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+    ],
+    salaryRange: "$100,000 - $155,000",
+    experience: "3-5 years",
+    category: "Data",
+    roadmap: []
+  },
+  {
+    id: "j49",
+    title: "Data Science Manager",
+    company: "LeadDataScience",
+    description: "Lead and manage a team of data scientists.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+    ],
+    salaryRange: "$120,000 - $180,000",
+    experience: "5+ years",
+    category: "Data",
+    roadmap: []
   }
 ];
 
