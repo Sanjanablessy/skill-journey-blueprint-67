@@ -51,7 +51,7 @@ const HomePage = () => {
                 Navigate Your Tech Career With Confidence
               </h1>
               <p className="text-lg text-white/90 md:text-xl">
-                Find the right path for your IT career. Explore jobs, build skills, and create personalized roadmaps.
+                Find the right path for your IT career. Explore jobs, explore skills, and create personalized roadmaps.
               </p>
               <p className="text-lg font-medium italic text-purple-300">
                 where ambition meets opportunity
