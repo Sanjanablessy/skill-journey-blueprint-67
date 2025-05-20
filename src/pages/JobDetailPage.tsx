@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
-import { Check, Briefcase, Flag, BookText } from "lucide-react";
+import { Check, Briefcase, Flag, BookText, Eye } from "lucide-react";
 import { useAppContext } from "@/context/AppContext";
 import { toast } from "sonner";
 import { RoadmapStep } from "@/types";
@@ -116,21 +117,26 @@ const JobDetailPage = () => {
                   <p className="text-muted-foreground">{job.description}</p>
                 </div>
                 
-                <div>
-                  <h3 className="text-lg font-medium mb-2">Required Skills</h3>
+                <div className="bg-brand-50 p-4 rounded-md border border-brand-200">
+                  <h3 className="text-lg font-medium mb-3 flex items-center gap-2 text-brand-800">
+                    <Eye className="h-5 w-5 text-brand-600" />
+                    Required Skills
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {job.requiredSkills.map((skill) => (
                       <Badge 
                         key={skill.id} 
                         variant={userSkillIds.includes(skill.id) ? "default" : "secondary"}
                         className={cn(
-                          userSkillIds.includes(skill.id) ? "" : "bg-secondary/10",
-                          "px-2 py-1 text-sm"
+                          userSkillIds.includes(skill.id) 
+                            ? "bg-brand-600 hover:bg-brand-700" 
+                            : "bg-white border-brand-300 text-brand-800",
+                          "px-3 py-1.5 text-sm shadow-sm"
                         )}
                       >
                         {userSkillIds.includes(skill.id) ? (
-                          <span className="flex items-center gap-1">
-                            <Check className="h-3 w-3" />
+                          <span className="flex items-center gap-1.5">
+                            <Check className="h-3.5 w-3.5" />
                             {skill.name}
                           </span>
                         ) : (
