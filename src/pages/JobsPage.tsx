@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -30,7 +29,11 @@ const JobsPage = () => {
       const matchesSearch = 
         job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (job.company && job.company.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        job.description.toLowerCase().includes(searchTerm.toLowerCase());
+        job.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.requiredSkills.some(skill => 
+          skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          skill.category.toLowerCase().includes(searchTerm.toLowerCase())
+        );
       
       const matchesCategory = selectedCategory ? job.category === selectedCategory : true;
       
