@@ -364,7 +364,8 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s7")!, // AWS
       skillsData.find(s => s.id === "s8")!, // Docker
       skillsData.find(s => s.id === "s15")!,// Kubernetes
-      skillsData.find(s => s.id === "s13")! // Git
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s4")! // Python
     ],
     salaryRange: "$110,000 - $160,000",
     experience: "3-6 years",
@@ -399,7 +400,9 @@ export const jobsData: Job[] = [
     description: "Analyze data to extract valuable insights and build predictive models.",
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!  // SQL
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$95,000 - $145,000",
     experience: "2-5 years",
@@ -433,7 +436,9 @@ export const jobsData: Job[] = [
     company: "DesignHub",
     description: "Design intuitive and visually appealing user interfaces for web and mobile applications.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s1")! // JavaScript (often helpful for designers to understand basics)
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s2")!, // React
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$75,000 - $110,000",
     experience: "2-4 years",
@@ -470,7 +475,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s6")!, // Java
       skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")! // Git
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$85,000 - $125,000",
     experience: "2-5 years",
@@ -485,7 +492,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s6")!, // Java (for Android)
       skillsData.find(s => s.id === "s1")!, // JavaScript (for React Native/Ionic)
-      skillsData.find(s => s.id === "s13")! // Git
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s2")!, // React
+      skillsData.find(s => s.id === "s9")! // TypeScript
     ],
     salaryRange: "$90,000 - $130,000",
     experience: "2-4 years",
@@ -500,6 +509,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s6")! // Java
     ],
     salaryRange: "$100,000 - $150,000",
     experience: "3+ years",
@@ -514,7 +526,9 @@ export const jobsData: Job[] = [
     description: "Design, implement, and manage network infrastructure.",
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python (for scripting)
-      skillsData.find(s => s.id === "s7")!  // AWS (networking in cloud)
+      skillsData.find(s => s.id === "s7")!, // AWS (networking in cloud)
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s8")! // Docker
     ],
     salaryRange: "$80,000 - $120,000",
     experience: "3-5 years",
@@ -529,7 +543,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s7")!, // AWS
       skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s15")! // Kubernetes
+      skillsData.find(s => s.id === "s15")!, // Kubernetes
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$95,000 - $140,000",
     experience: "2-5 years",
@@ -543,7 +559,9 @@ export const jobsData: Job[] = [
     description: "Maintain and administer computer systems and servers.",
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s8")!  // Docker
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")! // SQL
     ],
     salaryRange: "$70,000 - $110,000",
     experience: "2-4 years",
@@ -559,6 +577,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s7")!, // AWS
       skillsData.find(s => s.id === "s15")!, // Kubernetes
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$120,000 - $180,000",
     experience: "5+ years",
@@ -572,6 +593,9 @@ export const jobsData: Job[] = [
     description: "Implement and manage virtualization technologies (VMware, Hyper-V).",
     requiredSkills: [
       skillsData.find(s => s.id === "s8")!, // Docker (related containerization)
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$90,000 - $130,000",
     experience: "3-5 years",
@@ -586,6 +610,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s7")!, // AWS
       skillsData.find(s => s.id === "s15")!, // Kubernetes
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$130,000 - $190,000",
     experience: "7+ years",
@@ -599,6 +626,9 @@ export const jobsData: Job[] = [
     description: "Design, implement, and manage data storage solutions.",
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL (often related)
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$85,000 - $125,000",
     experience: "3-5 years",
@@ -613,6 +643,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s7")!, // AWS (security aspects)
       skillsData.find(s => s.id === "s4")!, // Python (for scripting security tools)
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s15")! // Kubernetes
     ],
     salaryRange: "$100,000 - $150,000",
     experience: "4-6 years",
@@ -626,6 +659,9 @@ export const jobsData: Job[] = [
     description: "Design complex network architectures and ensure network performance.",
     requiredSkills: [
       skillsData.find(s => s.id === "s7")!, // AWS (networking)
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s8")! // Docker
     ],
     salaryRange: "$110,000 - $170,000",
     experience: "6+ years",
@@ -637,7 +673,12 @@ export const jobsData: Job[] = [
     title: "Data Center Engineer",
     company: "Core Data Centers",
     description: "Manage and maintain data center facilities and infrastructure.",
-    requiredSkills: [],
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s7")! // AWS
+    ],
     salaryRange: "$80,000 - $120,000",
     experience: "3-5 years",
     category: "Infrastructure",
@@ -648,7 +689,12 @@ export const jobsData: Job[] = [
     title: "IT Infrastructure Manager",
     company: "InfraLead Solutions",
     description: "Oversee and manage the entire IT infrastructure of an organization.",
-    requiredSkills: [],
+    requiredSkills: [
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s8")! // Docker
+    ],
     salaryRange: "$100,000 - $160,000",
     experience: "5-8 years",
     category: "Infrastructure",
@@ -659,7 +705,12 @@ export const jobsData: Job[] = [
     title: "Network Administrator",
     company: "NetAdmin Pro",
     description: "Administer and maintain computer networks for an organization.",
-    requiredSkills: [],
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s5")! // SQL
+    ],
     salaryRange: "$70,000 - $100,000",
     experience: "2-4 years",
     category: "Infrastructure",
@@ -671,7 +722,10 @@ export const jobsData: Job[] = [
     company: "AnalyzeInfra Co.",
     description: "Analyze infrastructure needs and recommend solutions.",
     requiredSkills: [
-       skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$75,000 - $115,000",
     experience: "2-5 years",
@@ -683,7 +737,12 @@ export const jobsData: Job[] = [
     title: "IT Vendor Manager",
     company: "VendorConnect",
     description: "Manage relationships and contracts with IT vendors.",
-    requiredSkills: [],
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
+    ],
     salaryRange: "$80,000 - $120,000",
     experience: "3-6 years",
     category: "Infrastructure",
@@ -694,7 +753,12 @@ export const jobsData: Job[] = [
     title: "Backup and Recovery Manager",
     company: "DataSafe Systems",
     description: "Oversee data backup and disaster recovery strategies.",
-    requiredSkills: [],
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
+    ],
     salaryRange: "$90,000 - $130,000",
     experience: "4-7 years",
     category: "Infrastructure",
@@ -705,7 +769,12 @@ export const jobsData: Job[] = [
     title: "IT Operation Manager",
     company: "OpsManage Corp",
     description: "Manage day-to-day IT operations and support.",
-    requiredSkills: [],
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
+    ],
     salaryRange: "$95,000 - $145,000",
     experience: "5+ years",
     category: "Infrastructure",
@@ -716,7 +785,12 @@ export const jobsData: Job[] = [
     title: "Telecommunication Manager",
     company: "TeleComms Inc.",
     description: "Manage telecommunication systems and services.",
-    requiredSkills: [],
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s5")! // SQL
+    ],
     salaryRange: "$85,000 - $125,000",
     experience: "4-6 years",
     category: "Infrastructure",
@@ -731,7 +805,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s3")!  // Node.js
+      skillsData.find(s => s.id === "s3")!, // Node.js
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$90,000 - $135,000",
     experience: "3-5 years",
@@ -745,7 +821,9 @@ export const jobsData: Job[] = [
     description: "Analyze data to provide insights and support decision-making.",
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s4")!  // Python
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$70,000 - $100,000",
     experience: "1-3 years",
@@ -759,7 +837,9 @@ export const jobsData: Job[] = [
     description: "Develop BI solutions, dashboards, and reports.",
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s4")!  // Python
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$85,000 - $125,000",
     experience: "2-5 years",
@@ -776,6 +856,8 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s5")!, // SQL
       skillsData.find(s => s.id === "s12")!, // MongoDB
       skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$110,000 - $170,000",
     experience: "5+ years",
@@ -790,6 +872,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s1")!, // JavaScript (e.g. TensorFlow.js)
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$100,000 - $160,000",
     experience: "3+ years",
@@ -805,6 +890,8 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s8")!, // Docker
       skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$95,000 - $140,000",
     experience: "3-5 years",
@@ -819,6 +906,8 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL
       skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$70,000 - $100,000",
     experience: "2-4 years",
@@ -833,6 +922,8 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL
       skillsData.find(s => s.id === "s12")!, // MongoDB
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")! // Git
     ],
     salaryRange: "$80,000 - $120,000",
     experience: "3-5 years",
@@ -848,6 +939,8 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s6")!, // Java (e.g. Hadoop/Spark)
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$100,000 - $150,000",
     experience: "3-6 years",
@@ -860,7 +953,10 @@ export const jobsData: Job[] = [
     company: "GovernData Ltd.",
     description: "Establish and enforce policies for data management and compliance.",
     requiredSkills: [
-       skillsData.find(s => s.id === "s5")!, // SQL (understanding data structures)
+      skillsData.find(s => s.id === "s5")!, // SQL (understanding data structures)
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$90,000 - $140,000",
     experience: "5+ years",
@@ -872,7 +968,12 @@ export const jobsData: Job[] = [
     title: "Data Privacy Officer",
     company: "PrivacyFirst Inc.",
     description: "Ensure compliance with data privacy laws and regulations.",
-    requiredSkills: [], // Often legal/compliance focused
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
+    ],
     salaryRange: "$95,000 - $150,000",
     experience: "4+ years",
     category: "Data",
@@ -886,6 +987,8 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python (e.g. Matplotlib, Seaborn)
       skillsData.find(s => s.id === "s1")!, // JavaScript (e.g. D3.js)
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")! // SQL
     ],
     salaryRange: "$80,000 - $120,000",
     experience: "2-5 years",
@@ -899,6 +1002,10 @@ export const jobsData: Job[] = [
     description: "Focus on specific AI domains like NLP, computer vision, or expert systems.",
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s6")! // Java
     ],
     salaryRange: "$100,000 - $160,000",
     experience: "3+ years",
@@ -913,6 +1020,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$100,000 - $180,000",
     experience: "5+ years",
@@ -927,6 +1037,8 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$110,000 - $170,000",
     experience: "3-5 years",
@@ -941,6 +1053,8 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL
       skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$85,000 - $130,000",
     experience: "3-5 years",
@@ -955,6 +1069,8 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$70,000 - $110,000",
     experience: "3+ years",
@@ -970,6 +1086,8 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
       skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s8")! // Docker
     ],
     salaryRange: "$95,000 - $145,000",
     experience: "3-5 years",
@@ -983,6 +1101,10 @@ export const jobsData: Job[] = [
     description: "Develop systems that can understand and process human language.",
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s6")! // Java
     ],
     salaryRange: "$100,000 - $160,000",
     experience: "3+ years",
@@ -994,7 +1116,12 @@ export const jobsData: Job[] = [
     title: "Data Strategy Manager",
     company: "StrategyData Corp",
     description: "Define and implement an organization's overall data strategy.",
-    requiredSkills: [], // Strategic, less technical focus
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
+    ],
     salaryRange: "$110,000 - $170,000",
     experience: "5+ years",
     category: "Data",
@@ -1008,6 +1135,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s7")!, // AWS (security aspects)
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s8")! // Docker
     ],
     salaryRange: "$100,000 - $150,000",
     experience: "4-6 years",
@@ -1022,6 +1152,9 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s7")! // AWS
     ],
     salaryRange: "$100,000 - $155,000",
     experience: "3-5 years",
@@ -1035,6 +1168,9 @@ export const jobsData: Job[] = [
     description: "Lead and manage a team of data scientists.",
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")! // JavaScript
     ],
     salaryRange: "$120,000 - $180,000",
     experience: "5+ years",
