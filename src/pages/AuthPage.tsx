@@ -67,25 +67,15 @@ const AuthPage = () => {
       if (error) {
         toast({
           variant: "destructive",
-          title: "Sign up failed",
+          title: "Account creation failed",
           description: error.message,
         });
       } else {
-        // Automatically sign in the user after successful registration
-        const { error: signInError } = await signIn(signupData.email, signupData.password);
-        
-        if (signInError) {
-          toast({
-            title: "Account created successfully!",
-            description: "Please sign in with your new credentials.",
-          });
-        } else {
-          toast({
-            title: "Welcome!",
-            description: "Your account has been created and you're now signed in.",
-          });
-          navigate('/');
-        }
+        toast({
+          title: "Welcome!",
+          description: "Your account has been created and you're now signed in.",
+        });
+        navigate('/');
       }
     } catch (error) {
       toast({

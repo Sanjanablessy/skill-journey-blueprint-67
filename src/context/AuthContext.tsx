@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -48,6 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const signUp = async (email: string, password: string, fullName?: string) => {
+    // First, try to sign up the user
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -58,7 +60,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
     });
     
-    return { error };
+    if (error) {
+      return { error };
+    }
+
+    // If signup was successful, immediately try to sign in
+    // This will work whether email confirmation is enabled or not
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    // Return the sign-in error if any, otherwise success
+    return { error: signInError };
   };
 
   const signIn = async (email: string, password: string) => {
