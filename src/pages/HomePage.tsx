@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Briefcase, Target, Brain, Trophy } from "lucide-react";
-import OpenAIChat from "@/components/OpenAIChat";
 
 const HomePage = () => {
   const features = [
@@ -56,12 +55,6 @@ const HomePage = () => {
             </Button>
           </Link>
         </div>
-      </div>
-
-      {/* AI Chat Section */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-center mb-6">Get Instant Career Advice</h2>
-        <OpenAIChat />
       </div>
 
       {/* Features Grid */}
