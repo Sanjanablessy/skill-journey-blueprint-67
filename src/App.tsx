@@ -16,7 +16,6 @@ import QuizzesPage from "@/pages/QuizzesPage";
 import QuizDetailPage from "@/pages/QuizDetailPage";
 import GoalsPage from "@/pages/GoalsPage";
 import AuthPage from "@/pages/AuthPage";
-import CareerAdvisorPage from "@/pages/CareerAdvisorPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
