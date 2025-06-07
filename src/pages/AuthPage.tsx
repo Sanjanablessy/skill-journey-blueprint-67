@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -72,10 +71,21 @@ const AuthPage = () => {
           description: error.message,
         });
       } else {
-        toast({
-          title: "Account created!",
-          description: "Please check your email to verify your account.",
-        });
+        // Automatically sign in the user after successful registration
+        const { error: signInError } = await signIn(signupData.email, signupData.password);
+        
+        if (signInError) {
+          toast({
+            title: "Account created successfully!",
+            description: "Please sign in with your new credentials.",
+          });
+        } else {
+          toast({
+            title: "Welcome!",
+            description: "Your account has been created and you're now signed in.",
+          });
+          navigate('/');
+        }
       }
     } catch (error) {
       toast({
