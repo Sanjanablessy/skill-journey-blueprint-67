@@ -26,7 +26,7 @@ const Header = () => {
             <Link to="/" className="mr-6 flex items-center space-x-2">
               <Briefcase className="h-6 w-6" />
               <span className="hidden font-bold sm:inline-block">
-                IT Career Guide
+                We Guide You
               </span>
             </Link>
           </div>
@@ -42,7 +42,7 @@ const Header = () => {
           <Link to="/" className="mr-6 flex items-center space-x-2">
             <Briefcase className="h-6 w-6" />
             <span className="hidden font-bold sm:inline-block">
-              IT Career Guide
+              We Guide You
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
