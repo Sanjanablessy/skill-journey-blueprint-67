@@ -228,10 +228,115 @@ export const skillsData: Skill[] = [
     category: "DevOps",
     description: "Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.",
     resources: []
+  },
+  {
+    id: "s16",
+    name: "HTML5",
+    category: "Frontend Development",
+    description: "HTML5 is the latest version of HTML for structuring web content.",
+    resources: []
+  },
+  {
+    id: "s17",
+    name: "CSS3",
+    category: "Frontend Development",
+    description: "CSS3 is used for styling and layout of web pages.",
+    resources: []
+  },
+  {
+    id: "s18",
+    name: "SASS/SCSS",
+    category: "Frontend Development",
+    description: "SASS is a CSS preprocessor that adds features like variables and nesting.",
+    resources: []
+  },
+  {
+    id: "s19",
+    name: "Webpack",
+    category: "Build Tools",
+    description: "Webpack is a module bundler for JavaScript applications.",
+    resources: []
+  },
+  {
+    id: "s20",
+    name: "Jest",
+    category: "Testing",
+    description: "Jest is a JavaScript testing framework.",
+    resources: []
+  },
+  {
+    id: "s21",
+    name: "PostgreSQL",
+    category: "Database",
+    description: "PostgreSQL is an advanced open-source relational database.",
+    resources: []
+  },
+  {
+    id: "s22",
+    name: "Redis",
+    category: "Database",
+    description: "Redis is an in-memory data structure store used as a cache.",
+    resources: []
+  },
+  {
+    id: "s23",
+    name: "Express.js",
+    category: "Backend Development",
+    description: "Express.js is a web framework for Node.js.",
+    resources: []
+  },
+  {
+    id: "s24",
+    name: "REST API",
+    category: "API",
+    description: "REST is an architectural style for designing web services.",
+    resources: []
+  },
+  {
+    id: "s25",
+    name: "Agile/Scrum",
+    category: "Project Management",
+    description: "Agile is a methodology for software development and project management.",
+    resources: []
+  },
+  {
+    id: "s26",
+    name: "CI/CD",
+    category: "DevOps",
+    description: "Continuous Integration and Continuous Deployment practices.",
+    resources: []
+  },
+  {
+    id: "s27",
+    name: "Linux",
+    category: "Operating Systems",
+    description: "Linux is an open-source operating system kernel.",
+    resources: []
+  },
+  {
+    id: "s28",
+    name: "Terraform",
+    category: "Infrastructure as Code",
+    description: "Terraform is a tool for building and managing infrastructure.",
+    resources: []
+  },
+  {
+    id: "s29",
+    name: "Firebase",
+    category: "Backend as a Service",
+    description: "Firebase is Google's platform for mobile and web application development.",
+    resources: []
+  },
+  {
+    id: "s30",
+    name: "Figma",
+    category: "Design Tools",
+    description: "Figma is a collaborative interface design tool.",
+    resources: []
   }
 ];
 
-// Define jobs with roadmaps
+// Define jobs with expanded required skills
 export const jobsData: Job[] = [
   {
     id: "j1",
@@ -242,7 +347,13 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s1")!, // JavaScript
       skillsData.find(s => s.id === "s2")!, // React
       skillsData.find(s => s.id === "s9")!, // TypeScript
-      skillsData.find(s => s.id === "s13")! // Git
+      skillsData.find(s => s.id === "s16")!, // HTML5
+      skillsData.find(s => s.id === "s17")!, // CSS3
+      skillsData.find(s => s.id === "s18")!, // SASS/SCSS
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s19")!, // Webpack
+      skillsData.find(s => s.id === "s20")!, // Jest
+      skillsData.find(s => s.id === "s24")! // REST API
     ],
     salaryRange: "$80,000 - $120,000",
     experience: "2-4 years",
@@ -279,9 +390,16 @@ export const jobsData: Job[] = [
     description: "Build and maintain server-side applications that power web services.",
     requiredSkills: [
       skillsData.find(s => s.id === "s3")!, // Node.js
+      skillsData.find(s => s.id === "s23")!, // Express.js
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
       skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s13")!  // Git
+      skillsData.find(s => s.id === "s22")!, // Redis
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s14")!, // GraphQL
+      skillsData.find(s => s.id === "s20")!, // Jest
+      skillsData.find(s => s.id === "s8")! // Docker
     ],
     salaryRange: "$90,000 - $130,000",
     experience: "3-5 years",
@@ -323,9 +441,16 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s1")!, // JavaScript
       skillsData.find(s => s.id === "s2")!, // React
+      skillsData.find(s => s.id === "s9")!, // TypeScript
       skillsData.find(s => s.id === "s3")!, // Node.js
+      skillsData.find(s => s.id === "s23")!, // Express.js
       skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")! // Git
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
+      skillsData.find(s => s.id === "s26")! // CI/CD
     ],
     salaryRange: "$100,000 - $150,000",
     experience: "4-6 years",
@@ -363,9 +488,14 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s7")!, // AWS
       skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s15")!,// Kubernetes
+      skillsData.find(s => s.id === "s15")!, // Kubernetes
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s4")! // Python
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s28")!, // Terraform
+      skillsData.find(s => s.id === "s26")!, // CI/CD
+      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
+      skillsData.find(s => s.id === "s3")! // Node.js
     ],
     salaryRange: "$110,000 - $160,000",
     experience: "3-6 years",
@@ -401,8 +531,13 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s12")!, // MongoDB
+      skillsData.find(s => s.id === "s22")!, // Redis
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$95,000 - $145,000",
     experience: "2-5 years",
@@ -436,9 +571,14 @@ export const jobsData: Job[] = [
     company: "DesignHub",
     description: "Design intuitive and visually appealing user interfaces for web and mobile applications.",
     requiredSkills: [
+      skillsData.find(s => s.id === "s30")!, // Figma
+      skillsData.find(s => s.id === "s16")!, // HTML5
+      skillsData.find(s => s.id === "s17")!, // CSS3
       skillsData.find(s => s.id === "s1")!, // JavaScript
       skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s13")! // Git
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s18")!, // SASS/SCSS
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$75,000 - $110,000",
     experience: "2-4 years",
@@ -466,7 +606,6 @@ export const jobsData: Job[] = [
       }
     ]
   },
-  // New Development Jobs
   {
     id: "j7",
     title: "Software Engineer",
@@ -477,7 +616,11 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s13")!, // Git
       skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s1")! // JavaScript
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s20")!, // Jest
+      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
+      skillsData.find(s => s.id === "s24")! // REST API
     ],
     salaryRange: "$85,000 - $125,000",
     experience: "2-5 years",
@@ -494,7 +637,11 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s1")!, // JavaScript (for React Native/Ionic)
       skillsData.find(s => s.id === "s13")!, // Git
       skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s9")! // TypeScript
+      skillsData.find(s => s.id === "s9")!, // TypeScript
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s29")!, // Firebase
+      skillsData.find(s => s.id === "s20")!, // Jest
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$90,000 - $130,000",
     experience: "2-4 years",
@@ -510,15 +657,19 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s1")!, // JavaScript
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s6")! // Java
+      skillsData.find(s => s.id === "s6")!, // Java
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$100,000 - $150,000",
     experience: "3+ years",
     category: "Development",
     roadmap: []
   },
-  // New Infrastructure Jobs
   {
     id: "j10",
     title: "Network Engineer",
@@ -528,7 +679,10 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s4")!, // Python (for scripting)
       skillsData.find(s => s.id === "s7")!, // AWS (networking in cloud)
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s8")! // Docker
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s26")!, // CI/CD
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$80,000 - $120,000",
     experience: "3-5 years",
@@ -545,7 +699,11 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s8")!, // Docker
       skillsData.find(s => s.id === "s15")!, // Kubernetes
       skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")! // Git
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s28")!, // Terraform
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s26")!, // CI/CD
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$95,000 - $140,000",
     experience: "2-5 years",
@@ -561,242 +719,16 @@ export const jobsData: Job[] = [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s8")!, // Docker
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")! // SQL
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$70,000 - $110,000",
     experience: "2-4 years",
     category: "Infrastructure",
     roadmap: []
   },
-  // New Infrastructure Jobs (j16 onwards)
-  {
-    id: "j16",
-    title: "Cloud Architect",
-    company: "CloudArch Design",
-    description: "Design and plan cloud computing strategies and architectures.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s15")!, // Kubernetes
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")! // Git
-    ],
-    salaryRange: "$120,000 - $180,000",
-    experience: "5+ years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j17",
-    title: "Virtualisation Engineer",
-    company: "VirtuTech Solutions",
-    description: "Implement and manage virtualization technologies (VMware, Hyper-V).",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s8")!, // Docker (related containerization)
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$90,000 - $130,000",
-    experience: "3-5 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j18",
-    title: "Infrastructure Architect",
-    company: "InfraStructureFoundry",
-    description: "Design and oversee the implementation of IT infrastructure.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s15")!, // Kubernetes
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")! // Git
-    ],
-    salaryRange: "$130,000 - $190,000",
-    experience: "7+ years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j19",
-    title: "Storage Engineer",
-    company: "DataStore Inc.",
-    description: "Design, implement, and manage data storage solutions.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL (often related)
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$85,000 - $125,000",
-    experience: "3-5 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j20",
-    title: "Security Engineer (Infrastructure)",
-    company: "SecureNet Infra",
-    description: "Protect IT infrastructure from security threats.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS (security aspects)
-      skillsData.find(s => s.id === "s4")!, // Python (for scripting security tools)
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s15")! // Kubernetes
-    ],
-    salaryRange: "$100,000 - $150,000",
-    experience: "4-6 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j21",
-    title: "Network Architect",
-    company: "Global Networks Ltd.",
-    description: "Design complex network architectures and ensure network performance.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS (networking)
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s8")! // Docker
-    ],
-    salaryRange: "$110,000 - $170,000",
-    experience: "6+ years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j22",
-    title: "Data Center Engineer",
-    company: "Core Data Centers",
-    description: "Manage and maintain data center facilities and infrastructure.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$80,000 - $120,000",
-    experience: "3-5 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j23",
-    title: "IT Infrastructure Manager",
-    company: "InfraLead Solutions",
-    description: "Oversee and manage the entire IT infrastructure of an organization.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s8")! // Docker
-    ],
-    salaryRange: "$100,000 - $160,000",
-    experience: "5-8 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j24",
-    title: "Network Administrator",
-    company: "NetAdmin Pro",
-    description: "Administer and maintain computer networks for an organization.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s5")! // SQL
-    ],
-    salaryRange: "$70,000 - $100,000",
-    experience: "2-4 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j25",
-    title: "Infrastructure Analyst",
-    company: "AnalyzeInfra Co.",
-    description: "Analyze infrastructure needs and recommend solutions.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$75,000 - $115,000",
-    experience: "2-5 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j26",
-    title: "IT Vendor Manager",
-    company: "VendorConnect",
-    description: "Manage relationships and contracts with IT vendors.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$80,000 - $120,000",
-    experience: "3-6 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j27",
-    title: "Backup and Recovery Manager",
-    company: "DataSafe Systems",
-    description: "Oversee data backup and disaster recovery strategies.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$90,000 - $130,000",
-    experience: "4-7 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j28",
-    title: "IT Operation Manager",
-    company: "OpsManage Corp",
-    description: "Manage day-to-day IT operations and support.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$95,000 - $145,000",
-    experience: "5+ years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j29",
-    title: "Telecommunication Manager",
-    company: "TeleComms Inc.",
-    description: "Manage telecommunication systems and services.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s5")! // SQL
-    ],
-    salaryRange: "$85,000 - $125,000",
-    experience: "4-6 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  // Existing Data Jobs (j13, j14, j15)
   {
     id: "j13",
     title: "Data Engineer",
@@ -805,9 +737,14 @@ export const jobsData: Job[] = [
     requiredSkills: [
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
       skillsData.find(s => s.id === "s3")!, // Node.js
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s12")!, // MongoDB
+      skillsData.find(s => s.id === "s22")!, // Redis
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$90,000 - $135,000",
     experience: "3-5 years",
@@ -821,9 +758,12 @@ export const jobsData: Job[] = [
     description: "Analyze data to provide insights and support decision-making.",
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s12")!, // MongoDB
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$70,000 - $100,000",
     experience: "1-3 years",
@@ -837,344 +777,39 @@ export const jobsData: Job[] = [
     description: "Develop BI solutions, dashboards, and reports.",
     requiredSkills: [
       skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
       skillsData.find(s => s.id === "s4")!, // Python
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s2")!, // React
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
     ],
     salaryRange: "$85,000 - $125,000",
     experience: "2-5 years",
     category: "Data",
     roadmap: []
   },
-  // New Data Jobs
   {
-    id: "j30",
-    title: "Data Architect",
-    company: "DataStructure Solutions",
-    description: "Design and implement an organization's data architecture.",
+    id: "j16",
+    title: "Cloud Architect",
+    company: "CloudArch Design",
+    description: "Design and plan cloud computing strategies and architectures.",
     requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$110,000 - $170,000",
-    experience: "5+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j31",
-    title: "Machine Learning Engineer",
-    company: "ML Innovations",
-    description: "Design, build, and deploy machine learning models.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s1")!, // JavaScript (e.g. TensorFlow.js)
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$100,000 - $160,000",
-    experience: "3+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j32",
-    title: "Data Operations (DataOps) Engineer",
-    company: "OpsData Inc.",
-    description: "Automate and streamline data pipelines and processes.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$95,000 - $140,000",
-    experience: "3-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j33",
-    title: "Data Quality Analyst",
-    company: "QualityData Check",
-    description: "Ensure the accuracy, completeness, and consistency of data.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$70,000 - $100,000",
-    experience: "2-4 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j34",
-    title: "Database Administrator (DBA)",
-    company: "DBManage Corp",
-    description: "Manage and maintain database systems for performance and reliability.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")! // Git
-    ],
-    salaryRange: "$80,000 - $120,000",
-    experience: "3-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j35",
-    title: "Big Data Engineer",
-    company: "BigData Solutions",
-    description: "Design, build, and manage large-scale data processing systems.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s6")!, // Java (e.g. Hadoop/Spark)
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$100,000 - $150,000",
-    experience: "3-6 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j36",
-    title: "Data Governance Manager",
-    company: "GovernData Ltd.",
-    description: "Establish and enforce policies for data management and compliance.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL (understanding data structures)
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$90,000 - $140,000",
-    experience: "5+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j37",
-    title: "Data Privacy Officer",
-    company: "PrivacyFirst Inc.",
-    description: "Ensure compliance with data privacy laws and regulations.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$95,000 - $150,000",
-    experience: "4+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j38",
-    title: "Data Visualization Specialist",
-    company: "VizData Pro",
-    description: "Create compelling visualizations to communicate data insights.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python (e.g. Matplotlib, Seaborn)
-      skillsData.find(s => s.id === "s1")!, // JavaScript (e.g. D3.js)
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")! // SQL
-    ],
-    salaryRange: "$80,000 - $120,000",
-    experience: "2-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j39",
-    title: "Artificial Intelligence (AI) Specialist",
-    company: "AISpec Corp",
-    description: "Focus on specific AI domains like NLP, computer vision, or expert systems.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s6")! // Java
-    ],
-    salaryRange: "$100,000 - $160,000",
-    experience: "3+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j40",
-    title: "Data Consultant",
-    company: "DataAdvise Group",
-    description: "Provide expert advice on data strategy, management, and analytics.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$100,000 - $180,000",
-    experience: "5+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j41",
-    title: "Quantitative Analyst (Quant)",
-    company: "FinQuant Solutions",
-    description: "Apply mathematical and statistical methods to financial and risk management problems.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$110,000 - $170,000",
-    experience: "3-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j42",
-    title: "Data Integration Specialist",
-    company: "IntegrateData Now",
-    description: "Combine data from various sources into a unified view.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$85,000 - $130,000",
-    experience: "3-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j43",
-    title: "Data Trainer",
-    company: "LearnData Academy",
-    description: "Educate individuals and teams on data-related tools and concepts.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$70,000 - $110,000",
-    experience: "3+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j44",
-    title: "Data Engineer (Cloud)",
-    company: "CloudDataWorks",
-    description: "Specialize in building and managing data pipelines on cloud platforms.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
       skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s8")! // Docker
-    ],
-    salaryRange: "$95,000 - $145,000",
-    experience: "3-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j45",
-    title: "Natural Language Processing (NLP) Engineer",
-    company: "NLP Tech",
-    description: "Develop systems that can understand and process human language.",
-    requiredSkills: [
+      skillsData.find(s => s.id === "s15")!, // Kubernetes
+      skillsData.find(s => s.id === "s8")!, // Docker
       skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s1")!, // JavaScript
       skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s6")! // Java
-    ],
-    salaryRange: "$100,000 - $160,000",
-    experience: "3+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j46",
-    title: "Data Strategy Manager",
-    company: "StrategyData Corp",
-    description: "Define and implement an organization's overall data strategy.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
-    ],
-    salaryRange: "$110,000 - $170,000",
-    experience: "5+ years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j47",
-    title: "Data Security Engineer",
-    company: "SecureData Systems",
-    description: "Protect data assets from security threats and ensure compliance.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s7")!, // AWS (security aspects)
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s8")! // Docker
-    ],
-    salaryRange: "$100,000 - $150,000",
-    experience: "4-6 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j48",
-    title: "AI/ML Data Engineer",
-    company: "AIML DataFlow",
-    description: "Focus on data engineering tasks specifically for AI and ML projects.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s7")! // AWS
-    ],
-    salaryRange: "$100,000 - $155,000",
-    experience: "3-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j49",
-    title: "Data Science Manager",
-    company: "LeadDataScience",
-    description: "Lead and manage a team of data scientists.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")! // JavaScript
+      skillsData.find(s => s.id === "s28")!, // Terraform
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s26")!, // CI/CD
+      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
+      skillsData.find(s => s.id === "s24")! // REST API
     ],
     salaryRange: "$120,000 - $180,000",
     experience: "5+ years",
-    category: "Data",
+    category: "Infrastructure",
     roadmap: []
   }
 ];
