@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,7 @@ const AuthPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [signupData, setSignupData] = useState({ email: '', password: '', fullName: '' });
+  const [emailErrors, setEmailErrors] = useState({ login: '', signup: '' });
   
   const { signIn, signUp, user } = useAuth();
   const { toast } = useToast();
@@ -26,8 +28,37 @@ const AuthPage = () => {
     }
   }, [user, navigate]);
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (email: string, type: 'login' | 'signup') => {
+    if (type === 'login') {
+      setLoginData(prev => ({ ...prev, email }));
+      if (email && !validateEmail(email)) {
+        setEmailErrors(prev => ({ ...prev, login: 'Please enter a valid email address' }));
+      } else {
+        setEmailErrors(prev => ({ ...prev, login: '' }));
+      }
+    } else {
+      setSignupData(prev => ({ ...prev, email }));
+      if (email && !validateEmail(email)) {
+        setEmailErrors(prev => ({ ...prev, signup: 'Please enter a valid email address' }));
+      } else {
+        setEmailErrors(prev => ({ ...prev, signup: '' }));
+      }
+    }
+  };
+
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateEmail(loginData.email)) {
+      setEmailErrors(prev => ({ ...prev, login: 'Please enter a valid email address' }));
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -59,6 +90,12 @@ const AuthPage = () => {
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateEmail(signupData.email)) {
+      setEmailErrors(prev => ({ ...prev, signup: 'Please enter a valid email address' }));
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -119,9 +156,13 @@ const AuthPage = () => {
                       type="email"
                       placeholder="your@email.com"
                       value={loginData.email}
-                      onChange={(e) => setLoginData(prev => ({ ...prev, email: e.target.value }))}
+                      onChange={(e) => handleEmailChange(e.target.value, 'login')}
+                      className={emailErrors.login ? "border-red-500" : ""}
                       required
                     />
+                    {emailErrors.login && (
+                      <p className="text-sm text-red-500">{emailErrors.login}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="signin-password">Password</Label>
@@ -147,7 +188,11 @@ const AuthPage = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button 
+                    type="submit" 
+                    className="w-full" 
+                    disabled={isLoading || !!emailErrors.login}
+                  >
                     {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Sign In
                   </Button>
@@ -181,9 +226,13 @@ const AuthPage = () => {
                       type="email"
                       placeholder="your@email.com"
                       value={signupData.email}
-                      onChange={(e) => setSignupData(prev => ({ ...prev, email: e.target.value }))}
+                      onChange={(e) => handleEmailChange(e.target.value, 'signup')}
+                      className={emailErrors.signup ? "border-red-500" : ""}
                       required
                     />
+                    {emailErrors.signup && (
+                      <p className="text-sm text-red-500">{emailErrors.signup}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="signup-password">Password</Label>
@@ -209,7 +258,11 @@ const AuthPage = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button 
+                    type="submit" 
+                    className="w-full" 
+                    disabled={isLoading || !!emailErrors.signup}
+                  >
                     {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Create Account
                   </Button>
