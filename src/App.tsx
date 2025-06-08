@@ -16,6 +16,7 @@ import QuizzesPage from "@/pages/QuizzesPage";
 import QuizDetailPage from "@/pages/QuizDetailPage";
 import GoalsPage from "@/pages/GoalsPage";
 import AuthPage from "@/pages/AuthPage";
+import ProfilePage from "@/pages/ProfilePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/auth" element={<AuthPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/jobs" element={<JobsPage />} />
                   <Route path="/jobs/:id" element={<JobDetailPage />} />
                   <Route path="/skills" element={<SkillsPage />} />
