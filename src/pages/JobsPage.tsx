@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -19,13 +20,14 @@ const JobsPage = () => {
   const { jobs } = useAppContext();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [visibleJobs, setVisibleJobs] = useState<typeof jobs>([]);
+  const [filteredJobs, setFilteredJobs] = useState<typeof jobs>([]);
+  const [visibleJobsCount, setVisibleJobsCount] = useState(12);
 
   // Get unique job categories
   const categories = Array.from(new Set(jobs.map((job) => job.category)));
 
   useEffect(() => {
-    const filteredJobs = jobs.filter((job) => {
+    const filtered = jobs.filter((job) => {
       const matchesSearch = 
         job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (job.company && job.company.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -40,8 +42,16 @@ const JobsPage = () => {
       return matchesSearch && matchesCategory;
     });
     
-    setVisibleJobs(filteredJobs);
+    setFilteredJobs(filtered);
+    setVisibleJobsCount(12); // Reset visible count when filters change
   }, [searchTerm, selectedCategory, jobs]);
+
+  const visibleJobs = filteredJobs.slice(0, visibleJobsCount);
+  const hasMoreJobs = visibleJobsCount < filteredJobs.length;
+
+  const loadMoreJobs = () => {
+    setVisibleJobsCount(prev => Math.min(prev + 12, filteredJobs.length));
+  };
 
   return (
     <div className="container px-4 md:px-6 py-8 max-w-7xl">
@@ -95,6 +105,13 @@ const JobsPage = () => {
             {category}
           </Button>
         ))}
+      </div>
+
+      {/* Results count */}
+      <div className="mb-4">
+        <p className="text-sm text-muted-foreground">
+          Showing {visibleJobs.length} of {filteredJobs.length} jobs
+        </p>
       </div>
 
       {/* Jobs List */}
@@ -153,6 +170,19 @@ const JobsPage = () => {
           </div>
         )}
       </div>
+
+      {/* Load More Button */}
+      {hasMoreJobs && (
+        <div className="flex justify-center mt-8">
+          <Button 
+            onClick={loadMoreJobs}
+            variant="outline"
+            className="px-8"
+          >
+            Load More Jobs ({filteredJobs.length - visibleJobsCount} remaining)
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
