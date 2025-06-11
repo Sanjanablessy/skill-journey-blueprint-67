@@ -811,6 +811,274 @@ export const jobsData: Job[] = [
     experience: "5+ years",
     category: "Infrastructure",
     roadmap: []
+  },
+  {
+    id: "j17",
+    title: "Cybersecurity Analyst",
+    company: "SecureNet Solutions",
+    description: "Monitor, detect, and respond to security threats and vulnerabilities in IT systems.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$85,000 - $130,000",
+    experience: "2-5 years",
+    category: "Security",
+    roadmap: []
+  },
+  {
+    id: "j18",
+    title: "Game Developer",
+    company: "GameStudio Pro",
+    description: "Design and develop video games for various platforms including mobile, PC, and console.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s6")!, // Java
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s20")!, // Jest
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$75,000 - $120,000",
+    experience: "2-4 years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j19",
+    title: "QA Engineer",
+    company: "TestPro Inc.",
+    description: "Ensure software quality through manual and automated testing processes.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s20")!, // Jest
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
+      skillsData.find(s => s.id === "s24")! // REST API
+    ],
+    salaryRange: "$70,000 - $110,000",
+    experience: "1-4 years",
+    category: "Testing",
+    roadmap: []
+  },
+  {
+    id: "j20",
+    title: "Product Manager (Technical)",
+    company: "InnovateTech",
+    description: "Lead product development and strategy for technical products and platforms.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s30")! // Figma
+    ],
+    salaryRange: "$100,000 - $160,000",
+    experience: "4-7 years",
+    category: "Management",
+    roadmap: []
+  },
+  {
+    id: "j21",
+    title: "Machine Learning Engineer",
+    company: "AI Innovations Lab",
+    description: "Build and deploy machine learning models and AI systems at scale.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s15")!, // Kubernetes
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$120,000 - $180,000",
+    experience: "3-6 years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j22",
+    title: "Blockchain Developer",
+    company: "CryptoTech Solutions",
+    description: "Develop decentralized applications and smart contracts on blockchain platforms.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s9")!, // TypeScript
+      skillsData.find(s => s.id === "s3")!, // Node.js
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$100,000 - $160,000",
+    experience: "2-5 years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j23",
+    title: "Technical Writer",
+    company: "DocuTech Corp",
+    description: "Create technical documentation, API guides, and user manuals for software products.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s16")!, // HTML5
+      skillsData.find(s => s.id === "s17")!, // CSS3
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$65,000 - $95,000",
+    experience: "2-4 years",
+    category: "Documentation",
+    roadmap: []
+  },
+  {
+    id: "j24",
+    title: "Site Reliability Engineer (SRE)",
+    company: "ScaleOps",
+    description: "Ensure system reliability, performance, and scalability of large-scale applications.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s15")!, // Kubernetes
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s28")!, // Terraform
+      skillsData.find(s => s.id === "s26")!, // CI/CD
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$110,000 - $170,000",
+    experience: "3-6 years",
+    category: "Infrastructure",
+    roadmap: []
+  },
+  {
+    id: "j25",
+    title: "Database Administrator",
+    company: "DataVault Systems",
+    description: "Manage, maintain, and optimize database systems for enterprise applications.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
+      skillsData.find(s => s.id === "s12")!, // MongoDB
+      skillsData.find(s => s.id === "s22")!, // Redis
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s27")!, // Linux
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$80,000 - $125,000",
+    experience: "3-6 years",
+    category: "Database",
+    roadmap: []
+  },
+  {
+    id: "j26",
+    title: "Frontend Architect",
+    company: "DesignTech Studios",
+    description: "Lead frontend architecture decisions and mentor development teams.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s9")!, // TypeScript
+      skillsData.find(s => s.id === "s2")!, // React
+      skillsData.find(s => s.id === "s10")!, // Angular
+      skillsData.find(s => s.id === "s11")!, // Vue.js
+      skillsData.find(s => s.id === "s19")!, // Webpack
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$130,000 - $180,000",
+    experience: "6+ years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j27",
+    title: "API Developer",
+    company: "ConnectAPI Ltd",
+    description: "Design, develop, and maintain RESTful and GraphQL APIs for various applications.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s3")!, // Node.js
+      skillsData.find(s => s.id === "s23")!, // Express.js
+      skillsData.find(s => s.id === "s24")!, // REST API
+      skillsData.find(s => s.id === "s14")!, // GraphQL
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s21")!, // PostgreSQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s20")!, // Jest
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$85,000 - $125,000",
+    experience: "2-5 years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j28",
+    title: "WordPress Developer",
+    company: "WebCraft Agency",
+    description: "Develop and customize WordPress websites and plugins for clients.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s16")!, // HTML5
+      skillsData.find(s => s.id === "s17")!, // CSS3
+      skillsData.find(s => s.id === "s18")!, // SASS/SCSS
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$60,000 - $90,000",
+    experience: "1-4 years",
+    category: "Development",
+    roadmap: []
+  },
+  {
+    id: "j29",
+    title: "IT Project Manager",
+    company: "TechLead Solutions",
+    description: "Lead and coordinate IT projects from planning to delivery.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s26")! // CI/CD
+    ],
+    salaryRange: "$95,000 - $140,000",
+    experience: "4-8 years",
+    category: "Management",
+    roadmap: []
+  },
+  {
+    id: "j30",
+    title: "Software Architect",
+    company: "ArchTech Systems",
+    description: "Design high-level software architecture and guide technical decisions.",
+    requiredSkills: [
+      skillsData.find(s => s.id === "s1")!, // JavaScript
+      skillsData.find(s => s.id === "s9")!, // TypeScript
+      skillsData.find(s => s.id === "s6")!, // Java
+      skillsData.find(s => s.id === "s4")!, // Python
+      skillsData.find(s => s.id === "s5")!, // SQL
+      skillsData.find(s => s.id === "s7")!, // AWS
+      skillsData.find(s => s.id === "s8")!, // Docker
+      skillsData.find(s => s.id === "s13")!, // Git
+      skillsData.find(s => s.id === "s25")! // Agile/Scrum
+    ],
+    salaryRange: "$140,000 - $200,000",
+    experience: "7+ years",
+    category: "Architecture",
+    roadmap: []
   }
 ];
 
