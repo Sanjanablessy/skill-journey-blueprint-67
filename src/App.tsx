@@ -14,6 +14,7 @@ import JobDetailPage from "@/pages/JobDetailPage";
 import SkillsPage from "@/pages/SkillsPage";
 import QuizzesPage from "@/pages/QuizzesPage";
 import QuizDetailPage from "@/pages/QuizDetailPage";
+import LanguageQuizzesPage from "@/pages/LanguageQuizzesPage";
 import GoalsPage from "@/pages/GoalsPage";
 import AuthPage from "@/pages/AuthPage";
 import ProfilePage from "@/pages/ProfilePage";
@@ -41,6 +42,7 @@ const App = () => (
                   <Route path="/skills" element={<SkillsPage />} />
                   <Route path="/quizzes" element={<QuizzesPage />} />
                   <Route path="/quizzes/:id" element={<QuizDetailPage />} />
+                  <Route path="/language-quizzes" element={<LanguageQuizzesPage />} />
                   <Route path="/goals" element={<GoalsPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

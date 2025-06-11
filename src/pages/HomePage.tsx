@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, Target, Brain, Trophy } from "lucide-react";
+import { Briefcase, Target, Brain, Trophy, Code } from "lucide-react";
 
 const HomePage = () => {
   const features = [
@@ -24,6 +24,12 @@ const HomePage = () => {
       title: "Take Quizzes",
       description: "Test your knowledge and identify areas for improvement with interactive quizzes.",
       link: "/quizzes"
+    },
+    {
+      icon: Code,
+      title: "Language Quizzes",
+      description: "Comprehensive programming language quizzes with basic, intermediate, and advanced levels.",
+      link: "/language-quizzes"
     },
     {
       icon: Target,
@@ -49,7 +55,7 @@ const HomePage = () => {
               Explore Jobs
             </Button>
           </Link>
-          <Link to="/skills">
+          <Link to="/language-quizzes">
             <Button variant="outline" size="lg" className="w-full sm:w-auto">
               Start Learning
             </Button>
@@ -58,7 +64,7 @@ const HomePage = () => {
       </div>
 
       {/* Features Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
