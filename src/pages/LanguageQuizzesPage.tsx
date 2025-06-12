@@ -5,7 +5,7 @@ import LanguageQuizSelector from '@/components/LanguageQuizSelector';
 import LanguageQuizTaker from '@/components/LanguageQuizTaker';
 import { useToast } from '@/hooks/use-toast';
 
-const LanguageQuizzesPage = () => {
+const TakeYourQuizzesPage = () => {
   const [selectedQuiz, setSelectedQuiz] = useState<Quiz | null>(null);
   const { toast } = useToast();
 
@@ -19,7 +19,6 @@ const LanguageQuizzesPage = () => {
       description: `You scored ${result.percentage.toFixed(0)}% on ${result.quiz.title}`,
     });
     
-    // Here you could save the result to localStorage or a backend
     console.log('Quiz result:', result);
   };
 
@@ -40,4 +39,4 @@ const LanguageQuizzesPage = () => {
   return <LanguageQuizSelector onSelectQuiz={handleQuizSelect} />;
 };
 
-export default LanguageQuizzesPage;
+export default TakeYourQuizzesPage;

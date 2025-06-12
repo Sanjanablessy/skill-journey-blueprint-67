@@ -23,9 +23,10 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
 }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
+  const [showExplanation, setShowExplanation] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [quizResult, setQuizResult] = useState<any>(null);
-  const [timeRemaining, setTimeRemaining] = useState(600); // 10 minutes
+  const [timeRemaining, setTimeRemaining] = useState(600);
   const [isTimerActive, setIsTimerActive] = useState(true);
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
@@ -54,9 +55,11 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
       ...selectedAnswers,
       [currentQuestionIndex]: answerIndex
     });
+    setShowExplanation(true);
   };
 
   const handleNext = () => {
+    setShowExplanation(false);
     if (currentQuestionIndex < quiz.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -65,6 +68,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
   };
 
   const handlePrevious = () => {
+    setShowExplanation(false);
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
@@ -246,16 +250,49 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
           <RadioGroup
             value={selectedAnswers[currentQuestionIndex]?.toString()}
             onValueChange={(value) => handleAnswerSelect(parseInt(value))}
+            disabled={showExplanation}
           >
             {currentQuestion.options.map((option, index) => (
-              <div key={index} className="flex items-center space-x-2 p-3 rounded-lg hover:bg-muted">
+              <div key={index} className={`flex items-center space-x-2 p-3 rounded-lg hover:bg-muted ${
+                showExplanation ? (
+                  index === currentQuestion.correctAnswer ? 'bg-green-100 border-green-300 border' : 
+                  index === selectedAnswers[currentQuestionIndex] && index !== currentQuestion.correctAnswer ? 'bg-red-100 border-red-300 border' : ''
+                ) : ''
+              }`}>
                 <RadioGroupItem value={index.toString()} id={`option-${index}`} />
-                <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
+                <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer flex items-center gap-2">
                   {option}
+                  {showExplanation && index === currentQuestion.correctAnswer && (
+                    <Check className="h-4 w-4 text-green-600" />
+                  )}
+                  {showExplanation && index === selectedAnswers[currentQuestionIndex] && index !== currentQuestion.correctAnswer && (
+                    <X className="h-4 w-4 text-red-600" />
+                  )}
                 </Label>
               </div>
             ))}
           </RadioGroup>
+
+          {/* Explanation */}
+          {showExplanation && currentQuestion.explanation && (
+            <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h4 className="font-semibold text-blue-900 mb-3">Explanation:</h4>
+              <div className="space-y-3">
+                <div className="p-3 bg-green-50 rounded border border-green-200">
+                  <span className="font-medium text-green-700">✓ Why this is correct: </span>
+                  <span className="text-green-800">{currentQuestion.explanation.correct}</span>
+                </div>
+                <div className="p-3 bg-red-50 rounded border border-red-200">
+                  <span className="font-medium text-red-700">✗ Why others are wrong:</span>
+                  <ul className="mt-2 space-y-1">
+                    {currentQuestion.explanation.why_others_wrong.map((reason, idx) => (
+                      <li key={idx} className="text-red-800 ml-4">• {reason}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
 
@@ -274,20 +311,16 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
             Exit Quiz
           </Button>
           
-          {currentQuestionIndex === quiz.questions.length - 1 ? (
-            <Button 
-              onClick={handleSubmit}
-              disabled={selectedAnswers[currentQuestionIndex] === undefined}
-            >
-              Submit Quiz
-            </Button>
-          ) : (
-            <Button 
-              onClick={handleNext}
-              disabled={selectedAnswers[currentQuestionIndex] === undefined}
-            >
-              Next
-            </Button>
+          {showExplanation && (
+            currentQuestionIndex === quiz.questions.length - 1 ? (
+              <Button onClick={handleSubmit}>
+                Submit Quiz
+              </Button>
+            ) : (
+              <Button onClick={handleNext}>
+                Next Question
+              </Button>
+            )
           )}
         </div>
       </div>

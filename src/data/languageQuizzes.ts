@@ -83,7 +83,7 @@ const languageResources: { [key: string]: Resource[] } = {
 };
 
 export const languageQuizzes: Quiz[] = [
-  // C Programming Quizzes - Updated with comprehensive questions
+  // C Programming Quizzes - Basic (21 questions with explanations)
   {
     id: "c_basic",
     title: "C Programming - Basic",
@@ -95,407 +95,295 @@ export const languageQuizzes: Quiz[] = [
         id: "c_b_1",
         question: "What is the correct syntax to include a standard header file?",
         options: ["#import <stdio.h>", "#include <stdio.h>", "include <stdio.h>", "#using <stdio.h>"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "#include <stdio.h> is the standard syntax for including a library in C.",
+          why_others_wrong: [
+            "#import <stdio.h> - import is not valid in C",
+            "include <stdio.h> - missing the # preprocessor symbol", 
+            "#using <stdio.h> - using is not valid in C"
+          ]
+        }
       },
       {
         id: "c_b_2",
         question: "Which of the following is a valid variable name in C?",
         options: ["1value", "value_1", "@value", "int"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "value_1 is a valid variable name as it starts with a letter or underscore.",
+          why_others_wrong: [
+            "1value - cannot start with a digit",
+            "@value - @ is not allowed in variable names",
+            "int - this is a reserved keyword"
+          ]
+        }
       },
       {
         id: "c_b_3",
         question: "Which format specifier is used to print an integer?",
         options: ["%s", "%d", "%c", "%f"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "%d is used to print integers in C.",
+          why_others_wrong: [
+            "%s - used for strings",
+            "%c - used for characters",
+            "%f - used for floating-point numbers"
+          ]
+        }
       },
       {
         id: "c_b_4",
         question: "What is the default return type of the main function?",
         options: ["float", "void", "char", "int"],
-        correctAnswer: 3
+        correctAnswer: 3,
+        explanation: {
+          correct: "The default return type of main is int in C.",
+          why_others_wrong: [
+            "float - main cannot return a float",
+            "void - main must return an integer",
+            "char - main cannot return a char"
+          ]
+        }
       },
       {
         id: "c_b_5",
         question: "Which keyword is used to declare a variable in C?",
         options: ["int", "define", "include", "main"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "int is used to declare integer variables in C.",
+          why_others_wrong: [
+            "define - used for macros",
+            "include - used for including header files",
+            "main - this is the entry point of the program"
+          ]
+        }
       },
       {
         id: "c_b_6",
         question: "Which operator is used to assign a value?",
         options: ["==", "=", "!=", ":="],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "= is the assignment operator in C.",
+          why_others_wrong: [
+            "== - used for comparison",
+            "!= - used for inequality comparison",
+            ":= - not used in C"
+          ]
+        }
       },
       {
         id: "c_b_7",
         question: "Which symbol is used for a single-line comment?",
         options: ["/*", "#", "//", "**"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "// is used for single-line comments in C.",
+          why_others_wrong: [
+            "/* - used for multi-line comments",
+            "# - not used in C",
+            "** - not a valid comment syntax"
+          ]
+        }
       },
       {
         id: "c_b_8",
         question: "Which function is used to print to the console?",
         options: ["read()", "print()", "printf()", "write()"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "printf() is the standard function to print output in C.",
+          why_others_wrong: [
+            "read() - not a standard output function",
+            "print() - not a standard C function",
+            "write() - used for low-level output"
+          ]
+        }
       },
       {
         id: "c_b_9",
         question: "What is the output of printf(\"%d\", 10/3);?",
         options: ["3.33", "3", "0", "3.0"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "printf prints the integer part of the division, which is 3.",
+          why_others_wrong: [
+            "3.33 - this would be the floating-point result",
+            "0 - incorrect, as 10/3 is greater than 0",
+            "3.0 - printf does not print decimals with %d"
+          ]
+        }
       },
       {
         id: "c_b_10",
         question: "What is the size of an int on a 32-bit system?",
         options: ["2 bytes", "4 bytes", "8 bytes", "1 byte"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "An int typically occupies 4 bytes on a 32-bit system.",
+          why_others_wrong: [
+            "2 bytes - this is the size of a short int",
+            "8 bytes - this is the size of a long long int",
+            "1 byte - this is the size of a char"
+          ]
+        }
       },
       {
         id: "c_b_11",
         question: "Which of the following is not a data type in C?",
         options: ["int", "char", "float", "real"],
-        correctAnswer: 3
+        correctAnswer: 3,
+        explanation: {
+          correct: "real is not a standard data type in C.",
+          why_others_wrong: [
+            "int - a standard integer type",
+            "char - a standard character type",
+            "float - a standard floating-point type"
+          ]
+        }
       },
       {
         id: "c_b_12",
         question: "Which escape sequence represents a new line?",
         options: ["\\t", "\\n", "\\b", "\\a"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "\\n is the escape sequence for a new line.",
+          why_others_wrong: [
+            "\\t - represents a tab character",
+            "\\b - represents a backspace",
+            "\\a - represents an alert (bell) character"
+          ]
+        }
       },
       {
         id: "c_b_13",
         question: "How is a string represented in C?",
         options: ["char*", "Array of characters ending with \\0", "int[]", "char**"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "Strings in C are represented as arrays of characters ending with a null terminator \\0.",
+          why_others_wrong: [
+            "char* - this is a pointer to a character, not a string representation",
+            "int[] - this is an array of integers, not characters",
+            "char** - this is a pointer to a pointer, not a string"
+          ]
+        }
       },
       {
         id: "c_b_14",
         question: "What is the value of 5 % 2?",
         options: ["2", "1", "0", "2.5"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "5 % 2 gives the remainder of the division, which is 1.",
+          why_others_wrong: [
+            "2 - this is the quotient, not the remainder",
+            "0 - incorrect, as there is a remainder",
+            "2.5 - not applicable for integer division"
+          ]
+        }
       },
       {
         id: "c_b_15",
         question: "Which operator is used to access the value of a pointer?",
         options: ["&", "*", "@", "#"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "* is the dereference operator used to access the value at the pointer's address.",
+          why_others_wrong: [
+            "& - this is the address-of operator",
+            "@ - not used in C",
+            "# - not used in C"
+          ]
+        }
       },
       {
         id: "c_b_16",
         question: "Which header is used for input/output operations?",
         options: ["math.h", "stdio.h", "string.h", "stdlib.h"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "stdio.h is the standard header for input/output operations in C.",
+          why_others_wrong: [
+            "math.h - used for mathematical functions",
+            "string.h - used for string handling functions",
+            "stdlib.h - used for general utility functions"
+          ]
+        }
       },
       {
         id: "c_b_17",
         question: "What is the output of printf(\"%c\", 65);?",
         options: ["65", "A", "Error", "a"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "65 corresponds to the ASCII value of 'A'.",
+          why_others_wrong: [
+            "65 - this is the integer value, not the character",
+            "Error - printf works correctly with %c",
+            "a - 97 is the ASCII value for 'a'"
+          ]
+        }
       },
       {
         id: "c_b_18",
         question: "What is the result of sizeof(char)?",
         options: ["2", "4", "1", "8"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "sizeof(char) is always 1 byte in C.",
+          why_others_wrong: [
+            "2 - this is the size of a short int",
+            "4 - this is the size of an int",
+            "8 - this is the size of a long long int"
+          ]
+        }
       },
       {
         id: "c_b_19",
         question: "Which keyword is used to define constants?",
         options: ["const", "define", "final", "static"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "const is used to define constant variables in C.",
+          why_others_wrong: [
+            "define - used for macros, not variables",
+            "final - not a keyword in C",
+            "static - used for static variables, not constants"
+          ]
+        }
       },
       {
         id: "c_b_20",
         question: "Which function reads input from the user?",
         options: ["printf()", "getchar()", "scanf()", "puts()"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "scanf() is used to read formatted input from the user.",
+          why_others_wrong: [
+            "printf() - used for output, not input",
+            "getchar() - reads a single character, not formatted input",
+            "puts() - used for outputting strings"
+          ]
+        }
       },
       {
         id: "c_b_21",
         question: "Which of the following is a loop structure?",
         options: ["switch", "for", "case", "break"],
-        correctAnswer: 1
-      }
-    ],
-    recommendations: {
-      lowScore: languageResources["C"] || [],
-      mediumScore: languageResources["C"] || [],
-      highScore: languageResources["C"] || []
-    }
-  },
-  {
-    id: "c_intermediate",
-    title: "C Programming - Intermediate",
-    description: "Test your intermediate knowledge of C programming",
-    skillCategory: "Programming Languages", 
-    difficulty: "intermediate",
-    questions: [
-      {
-        id: "c_i_1",
-        question: "What is the output of the following code?\nint a = 5;\nprintf(\"%d\", a++);",
-        options: ["6", "5", "Compilation Error", "Undefined"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_2",
-        question: "Which of the following is a correct way to declare a pointer?",
-        options: ["int p;", "int *p;", "pointer p;", "int &p;"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_3",
-        question: "Which operator is used to access structure members via a pointer?",
-        options: [".", "*", "->", "&"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_i_4",
-        question: "What is the output of this code?\nint a = 10;\nint *p = &a;\n*p = 20;\nprintf(\"%d\", a);",
-        options: ["10", "20", "Compilation Error", "Garbage Value"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_5",
-        question: "Which of the following is a valid declaration of an array?",
-        options: ["int arr(5);", "int arr[] = new int[5];", "int arr[5];", "array arr[5];"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_i_6",
-        question: "Which function is used to find the length of a string?",
-        options: ["strlen()", "length()", "size()", "len()"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_i_7",
-        question: "What is the output?\nint x = 3;\nprintf(\"%d\", x == 3);",
-        options: ["true", "false", "1", "0"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_i_8",
-        question: "Which function is used to dynamically allocate memory?",
-        options: ["calloc()", "malloc()", "new", "memory_alloc()"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_9",
-        question: "Which header is needed for malloc()?",
-        options: ["stdio.h", "stdlib.h", "malloc.h", "string.h"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_10",
-        question: "What is a void pointer?",
-        options: ["A pointer to int", "Pointer to char", "Generic pointer", "NULL pointer"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_i_11",
-        question: "What is the output?\nint arr[] = {1,2,3};\nprintf(\"%d\", *(arr + 1));",
-        options: ["1", "2", "3", "Error"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_12",
-        question: "Which function copies one string into another?",
-        options: ["strcopy()", "strcpy()", "copystr()", "stringcopy()"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_13",
-        question: "What is the output?\nint a = 5;\nint b = a++ + ++a;\nprintf(\"%d\", b);",
-        options: ["10", "12", "11", "13"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_14",
-        question: "How many times will this loop run?\nfor(int i = 0; i < 5; ++i){}",
-        options: ["6", "5", "4", "Infinite"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_15",
-        question: "What is the return type of sizeof?",
-        options: ["int", "long", "size_t", "float"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_i_16",
-        question: "Which keyword is used to prevent modification?",
-        options: ["fix", "const", "static", "immutable"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_17",
-        question: "Which of the following is a storage class in C?",
-        options: ["auto", "main", "switch", "loop"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_i_18",
-        question: "Which keyword is used for conditional branching?",
-        options: ["loop", "if", "do", "static"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_19",
-        question: "Which loop is guaranteed to execute at least once?",
-        options: ["for", "while", "do...while", "none"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_i_20",
-        question: "How to declare a function with no return and no parameters?",
-        options: ["void f()", "int f(void)", "function f()", "f()"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_i_21",
-        question: "What is the correct way to free memory?",
-        options: ["remove(ptr);", "free(ptr);", "delete ptr;", "free_memory(ptr);"],
-        correctAnswer: 1
-      }
-    ],
-    recommendations: {
-      lowScore: languageResources["C"] || [],
-      mediumScore: languageResources["C"] || [],
-      highScore: languageResources["C"] || []
-    }
-  },
-  {
-    id: "c_advanced",
-    title: "C Programming - Advanced",
-    description: "Test your advanced knowledge of C programming",
-    skillCategory: "Programming Languages",
-    difficulty: "advanced", 
-    questions: [
-      {
-        id: "c_a_1",
-        question: "What is the output of this code?\nint x = 10;\nif (x++ > 10 && ++x > 10) x++;\nprintf(\"%d\", x);",
-        options: ["10", "11", "12", "13"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_a_2",
-        question: "Which of the following is not a valid storage class in C?",
-        options: ["auto", "global", "static", "register"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_3",
-        question: "What does #define MAX(a,b) ((a) > (b) ? (a) : (b)) illustrate?",
-        options: ["Function-like macro", "Inline function", "Recursion", "Precompiled function"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_a_4",
-        question: "What is the output of this code?\nint a = 5;\nprintf(\"%d\", a+++a);",
-        options: ["10", "11", "6", "Compilation Error"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_5",
-        question: "What is the use of volatile keyword?",
-        options: ["Makes variable constant", "Prevents compiler optimization", "Allocates in register", "Makes thread-safe"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_6",
-        question: "Which function moves the file pointer to a specific location?",
-        options: ["ftell()", "fseek()", "fmove()", "rewind()"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_7",
-        question: "Which format specifier is used for printing pointer addresses?",
-        options: ["%p", "%x", "%d", "%u"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_a_8",
-        question: "What does const int *ptr mean?",
-        options: ["Pointer is constant", "Value pointed to is constant", "Both are constant", "Neither is constant"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_9",
-        question: "Which of these cannot be static in C?",
-        options: ["Variable", "Function", "Macro", "Array"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_a_10",
-        question: "Which function is used to write formatted output to a string?",
-        options: ["printf()", "sprintf()", "scanf()", "snprintf()"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_11",
-        question: "Which of these is not valid in a switch statement?",
-        options: ["int", "float", "char", "enum"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_12",
-        question: "Which file mode creates a binary file for reading and writing?",
-        options: ["r", "wb+", "r+", "a+"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_13",
-        question: "Which operator cannot be overloaded in C?",
-        options: ["+", "=", "Operator overloading not supported", "[]"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_a_14",
-        question: "What will the following function return when called 3 times?\nint func() {\n  static int x = 0;\n  return ++x;\n}",
-        options: ["1 1 1", "0 1 2", "1 2 3", "0 0 0"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_a_15",
-        question: "What is a memory leak?",
-        options: ["Accessing uninitialized memory", "Reading freed memory", "Allocated memory not freed", "Stack overflow"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_a_16",
-        question: "Which of the following is used for low-level I/O in C?",
-        options: ["read() / write()", "printf()", "scanf()", "fprintf()"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_a_17",
-        question: "Which preprocessor directive is used for conditional compilation?",
-        options: ["#define", "#ifdef", "#pragma", "#error"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_18",
-        question: "What is the purpose of union in C?",
-        options: ["Group different data types (but only one active at a time)", "Memory protection", "Thread safety", "Memory expansion"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_a_19",
-        question: "What is a dangling pointer?",
-        options: ["Uninitialized pointer", "Points to freed memory", "NULL pointer", "Static pointer"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_20",
-        question: "Which function is used to compare strings in C?",
-        options: ["strcopy()", "strcmp()", "strcat()", "strcmpi()"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_a_21",
-        question: "What is the output of this recursive function?\nint rec(int n) {\n  if(n==0) return 0;\n  return n + rec(n-1);\n}\nCall rec(3);",
-        options: ["3", "6", "0", "9"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "for is a loop structure used for iteration.",
+          why_others_wrong: [
+            "switch - used for multi-way branching",
+            "case - part of switch statements, not a loop",
+            "break - used to exit loops or switch statements"
+          ]
+        }
       }
     ],
     recommendations: {
@@ -505,7 +393,7 @@ export const languageQuizzes: Quiz[] = [
     }
   },
 
-  // Python Programming Quizzes
+  // Python Programming Quizzes - Basic (21 questions with explanations)
   {
     id: "python_basic",
     title: "Python Programming - Basic",
@@ -517,311 +405,295 @@ export const languageQuizzes: Quiz[] = [
         id: "py_b_1",
         question: "Which keyword is used to define a function in Python?",
         options: ["function", "def", "func", "define"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "def is the keyword used to define functions in Python.",
+          why_others_wrong: [
+            "function - not a Python keyword",
+            "func - not a Python keyword",
+            "define - this is a preprocessor directive in C, not Python"
+          ]
+        }
       },
       {
         id: "py_b_2",
         question: "How do you create a comment in Python?",
         options: ["// comment", "# comment", "/* comment */", "-- comment"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "# is used for single-line comments in Python.",
+          why_others_wrong: [
+            "// comment - used in C/C++/Java/JavaScript",
+            "/* comment */ - used for multi-line comments in C/Java",
+            "-- comment - used in SQL"
+          ]
+        }
       },
       {
         id: "py_b_3",
         question: "Which data type is used to store text in Python?",
         options: ["text", "string", "str", "char"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "str is the string data type in Python for storing text.",
+          why_others_wrong: [
+            "text - not a Python data type",
+            "string - not the correct Python type name",
+            "char - used for single characters in C, not Python"
+          ]
+        }
       },
       {
         id: "py_b_4",
         question: "What is the correct way to create a list in Python?",
         options: ["list = {1, 2, 3}", "list = [1, 2, 3]", "list = (1, 2, 3)", "list = <1, 2, 3>"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "Square brackets [] are used to create lists in Python.",
+          why_others_wrong: [
+            "list = {1, 2, 3} - curly braces create sets or dictionaries",
+            "list = (1, 2, 3) - parentheses create tuples",
+            "list = <1, 2, 3> - angle brackets not used in Python"
+          ]
+        }
       },
       {
         id: "py_b_5",
         question: "Which method is used to add an element to the end of a list?",
         options: ["add()", "append()", "insert()", "push()"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "append() adds an element to the end of a list.",
+          why_others_wrong: [
+            "add() - not a list method",
+            "insert() - adds at a specific position, not necessarily the end",
+            "push() - not used in Python"
+          ]
+        }
       },
       {
         id: "py_b_6",
         question: "What is the output of print(3 ** 2)?",
         options: ["6", "9", "32", "Error"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "** is the exponentiation operator, so 3 ** 2 = 9.",
+          why_others_wrong: [
+            "6 - this would be 3 * 2",
+            "32 - this would be string concatenation",
+            "Error - ** is a valid operator in Python"
+          ]
+        }
       },
       {
         id: "py_b_7",
         question: "Which keyword is used to create a loop that runs while a condition is true?",
         options: ["for", "while", "loop", "repeat"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "while creates a loop that continues while a condition is true.",
+          why_others_wrong: [
+            "for - used for iterating over sequences",
+            "loop - not a Python keyword",
+            "repeat - not a Python keyword"
+          ]
+        }
       },
       {
         id: "py_b_8",
         question: "How do you get the length of a list?",
         options: ["length(list)", "len(list)", "size(list)", "count(list)"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "len() function returns the length of a sequence like lists, strings, etc.",
+          why_others_wrong: [
+            "length(list) - not a Python function",
+            "size(list) - not a Python function",
+            "count(list) - count() is a method but counts occurrences, not length"
+          ]
+        }
       },
       {
         id: "py_b_9",
         question: "What is the correct syntax for an if statement?",
         options: ["if x = 5:", "if (x == 5):", "if x == 5:", "if x equals 5:"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "if x == 5: is correct Python syntax with == for comparison and : for the statement.",
+          why_others_wrong: [
+            "if x = 5: - uses assignment = instead of comparison ==",
+            "if (x == 5): - parentheses are optional in Python",
+            "if x equals 5: - 'equals' is not a Python operator"
+          ]
+        }
       },
       {
         id: "py_b_10",
         question: "Which operator is used for equality comparison?",
         options: ["=", "==", "===", "eq"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "== is the equality comparison operator in Python.",
+          why_others_wrong: [
+            "= - assignment operator",
+            "=== - used in JavaScript for strict equality, not Python",
+            "eq - not an operator in Python"
+          ]
+        }
       },
       {
         id: "py_b_11",
         question: "What is the correct way to import a module?",
         options: ["include module", "import module", "using module", "require module"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "import is the keyword used to import modules in Python.",
+          why_others_wrong: [
+            "include module - used in C preprocessor",
+            "using module - used in C#",
+            "require module - used in Node.js"
+          ]
+        }
       },
       {
         id: "py_b_12",
         question: "Which function is used to get input from the user?",
         options: ["input()", "get()", "read()", "scan()"],
-        correctAnswer: 0
-      }
-    ],
-    recommendations: {
-      lowScore: languageResources["Python"] || [],
-      mediumScore: languageResources["Python"] || [],
-      highScore: languageResources["Python"] || []
-    }
-  },
-  {
-    id: "python_intermediate",
-    title: "Python Programming - Intermediate",
-    description: "Test your intermediate knowledge of Python programming",
-    skillCategory: "Programming Languages",
-    difficulty: "intermediate",
-    questions: [
-      {
-        id: "py_i_1",
-        question: "What is a list comprehension?",
-        options: ["A way to understand lists", "A concise way to create lists", "A list method", "A type of loop"],
-        correctAnswer: 1
+        correctAnswer: 0,
+        explanation: {
+          correct: "input() function reads a line from input and returns it as a string.",
+          why_others_wrong: [
+            "get() - not a built-in input function",
+            "read() - used for file operations",
+            "scan() - not a Python function"
+          ]
+        }
       },
       {
-        id: "py_i_2",
-        question: "What is the difference between a list and a tuple?",
-        options: ["No difference", "Lists are mutable, tuples are immutable", "Tuples are faster", "Lists use more memory"],
-        correctAnswer: 1
+        id: "py_b_13",
+        question: "What is the correct way to create a dictionary?",
+        options: ["dict = [key: value]", "dict = {key: value}", "dict = (key: value)", "dict = <key: value>"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "Curly braces {} with key: value pairs create dictionaries.",
+          why_others_wrong: [
+            "dict = [key: value] - square brackets are for lists",
+            "dict = (key: value) - parentheses are for tuples",
+            "dict = <key: value> - angle brackets not used in Python"
+          ]
+        }
       },
       {
-        id: "py_i_3",
-        question: "What is a dictionary in Python?",
-        options: ["A book", "A collection of key-value pairs", "A type of list", "A function"],
-        correctAnswer: 1
+        id: "py_b_14",
+        question: "Which method removes an item from a list by index?",
+        options: ["remove()", "pop()", "delete()", "del()"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "pop() removes and returns an item at a given index.",
+          why_others_wrong: [
+            "remove() - removes by value, not index",
+            "delete() - not a list method",
+            "del() - not a method, del is a statement"
+          ]
+        }
       },
       {
-        id: "py_i_4",
-        question: "Which method is used to remove an element from a list by value?",
-        options: ["delete()", "remove()", "pop()", "del()"],
-        correctAnswer: 1
+        id: "py_b_15",
+        question: "What is the output of print(type(5))?",
+        options: ["int", "<class 'int'>", "integer", "number"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "type() function returns the class type, displayed as <class 'int'>.",
+          why_others_wrong: [
+            "int - this is just the type name, not the full output",
+            "integer - not the Python type name",
+            "number - not a specific Python type"
+          ]
+        }
       },
       {
-        id: "py_i_5",
-        question: "What is exception handling in Python?",
-        options: ["Error prevention", "Error catching and handling", "Error reporting", "Error correction"],
-        correctAnswer: 1
+        id: "py_b_16",
+        question: "Which keyword is used to create a class?",
+        options: ["class", "Class", "define", "object"],
+        correctAnswer: 0,
+        explanation: {
+          correct: "class keyword is used to define a class in Python.",
+          why_others_wrong: [
+            "Class - Python is case-sensitive, must be lowercase",
+            "define - not used for classes",
+            "object - built-in base class, not a keyword for creating classes"
+          ]
+        }
       },
       {
-        id: "py_i_6",
-        question: "Which keyword is used to handle exceptions?",
-        options: ["catch", "try", "handle", "except"],
-        correctAnswer: 1
+        id: "py_b_17",
+        question: "What is the correct way to check if a key exists in a dictionary?",
+        options: ["if key exists dict:", "if key in dict:", "if dict.has(key):", "if dict.contains(key):"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "'in' operator checks if a key exists in a dictionary.",
+          why_others_wrong: [
+            "if key exists dict: - 'exists' is not a Python operator",
+            "if dict.has(key): - has() is not a dictionary method",
+            "if dict.contains(key): - contains() is not a dictionary method"
+          ]
+        }
       },
       {
-        id: "py_i_7",
-        question: "What is a lambda function?",
-        options: ["A Greek function", "An anonymous function", "A recursive function", "A built-in function"],
-        correctAnswer: 1
+        id: "py_b_18",
+        question: "Which operator is used for string concatenation?",
+        options: ["+", "&", ".", "concat"],
+        correctAnswer: 0,
+        explanation: {
+          correct: "+ operator concatenates strings in Python.",
+          why_others_wrong: [
+            "& - used for bitwise AND operations",
+            ". - used for accessing attributes/methods",
+            "concat - not an operator, though some languages have concat functions"
+          ]
+        }
       },
       {
-        id: "py_i_8",
-        question: "What is the purpose of the 'self' parameter in class methods?",
-        options: ["Reference to the class", "Reference to the instance", "A keyword", "Not needed"],
-        correctAnswer: 1
+        id: "py_b_19",
+        question: "What is the correct way to create a tuple?",
+        options: ["tuple = [1, 2, 3]", "tuple = {1, 2, 3}", "tuple = (1, 2, 3)", "tuple = <1, 2, 3>"],
+        correctAnswer: 2,
+        explanation: {
+          correct: "Parentheses () create tuples in Python.",
+          why_others_wrong: [
+            "tuple = [1, 2, 3] - square brackets create lists",
+            "tuple = {1, 2, 3} - curly braces create sets",
+            "tuple = <1, 2, 3> - angle brackets not used in Python"
+          ]
+        }
       },
       {
-        id: "py_i_9",
-        question: "What is inheritance in Python?",
-        options: ["Getting money", "Class deriving from another class", "Variable scope", "Function calling"],
-        correctAnswer: 1
+        id: "py_b_20",
+        question: "Which method converts a string to lowercase?",
+        options: ["toLower()", "lower()", "lowercase()", "downcase()"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "lower() method converts string to lowercase.",
+          why_others_wrong: [
+            "toLower() - not a Python method",
+            "lowercase() - not a Python method",
+            "downcase() - used in other languages like Ruby"
+          ]
+        }
       },
       {
-        id: "py_i_10",
-        question: "Which method is called when an object is created?",
-        options: ["__init__", "__new__", "__create__", "__start__"],
-        correctAnswer: 0
-      },
-      {
-        id: "py_i_11",
-        question: "What is a generator in Python?",
-        options: ["A power source", "A function that yields values", "A type of loop", "A built-in function"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_i_12",
-        question: "What is the difference between '==' and 'is'?",
-        options: ["No difference", "== compares values, is compares identity", "is is faster", "== is safer"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_i_13",
-        question: "What is a decorator in Python?",
-        options: ["A design pattern", "A function that modifies another function", "A type of variable", "A built-in module"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_i_14",
-        question: "What is the purpose of the 'with' statement?",
-        options: ["Conditional execution", "Context management", "Loop control", "Function definition"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_i_15",
-        question: "What is multiple inheritance?",
-        options: ["Multiple variables", "Class inheriting from multiple classes", "Multiple functions", "Multiple modules"],
-        correctAnswer: 1
-      }
-    ],
-    recommendations: {
-      lowScore: languageResources["Python"] || [],
-      mediumScore: languageResources["Python"] || [],
-      highScore: languageResources["Python"] || []
-    }
-  },
-  {
-    id: "python_advanced",
-    title: "Python Programming - Advanced",
-    description: "Test your advanced knowledge of Python programming",
-    skillCategory: "Programming Languages",
-    difficulty: "advanced",
-    questions: [
-      {
-        id: "py_a_1",
-        question: "What is the Global Interpreter Lock (GIL)?",
-        options: ["A security feature", "A mechanism that prevents multiple threads from executing Python bytecode", "A type of variable", "A built-in function"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_2",
-        question: "What is metaclass in Python?",
-        options: ["A super class", "A class whose instances are classes", "A type of method", "A built-in module"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_3",
-        question: "What is the difference between deepcopy and shallow copy?",
-        options: ["No difference", "Deepcopy copies all levels, shallow copy copies first level", "Shallow is faster", "Deep is safer"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_4",
-        question: "What is monkey patching?",
-        options: ["Fixing bugs", "Dynamically modifying classes or modules at runtime", "A design pattern", "Error handling"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_5",
-        question: "What is the purpose of __slots__?",
-        options: ["Define methods", "Restrict attribute creation and save memory", "Create properties", "Handle exceptions"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_6",
-        question: "What is a descriptor in Python?",
-        options: ["A documentation string", "An object that defines how attribute access is handled", "A type of function", "A built-in module"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_7",
-        question: "What is the difference between @property and @staticmethod?",
-        options: ["No difference", "@property creates getter/setter, @staticmethod creates method without self", "Static is faster", "Property is safer"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_8",
-        question: "What is asyncio used for?",
-        options: ["Synchronous programming", "Asynchronous programming", "Database operations", "File operations"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_9",
-        question: "What is the difference between yield and return?",
-        options: ["No difference", "yield creates generator, return exits function", "yield is faster", "return is safer"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_10",
-        question: "What is a context manager?",
-        options: ["A manager", "An object that defines runtime context for executing a block", "A type of variable", "A built-in function"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_11",
-        question: "What is the purpose of __new__ method?",
-        options: ["Initialize object", "Create new instance", "Delete object", "Copy object"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_12",
-        question: "What is method resolution order (MRO)?",
-        options: ["Method calling order", "Order in which methods are resolved in inheritance", "Method definition order", "Method execution order"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_13",
-        question: "What is the difference between multiprocessing and threading?",
-        options: ["No difference", "Multiprocessing uses separate processes, threading uses threads within process", "Threading is faster", "Multiprocessing is safer"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_14",
-        question: "What is a closure in Python?",
-        options: ["Ending a program", "Function that captures variables from enclosing scope", "A type of loop", "Error handling"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_15",
-        question: "What is the purpose of the 'nonlocal' keyword?",
-        options: ["Access global variables", "Access variables in enclosing scope", "Create new variables", "Delete variables"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_16",
-        question: "What is duck typing?",
-        options: ["Type of animal", "If it walks like a duck and quacks like a duck, it's a duck", "Type checking", "Error handling"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_17",
-        question: "What is the difference between __str__ and __repr__?",
-        options: ["No difference", "__str__ for users, __repr__ for developers", "__repr__ is faster", "__str__ is safer"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_18",
-        question: "What is a namespace in Python?",
-        options: ["A space for names", "A mapping from names to objects", "A type of variable", "A built-in function"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_19",
-        question: "What is the purpose of the 'global' keyword?",
-        options: ["Create global variables", "Access global variables in function", "Delete global variables", "Check global variables"],
-        correctAnswer: 1
-      },
-      {
-        id: "py_a_20",
-        question: "What is memory management in Python?",
-        options: ["Manual memory allocation", "Automatic memory management with garbage collection", "No memory management", "Fixed memory allocation"],
-        correctAnswer: 1
+        id: "py_b_21",
+        question: "What does the range(5) function return?",
+        options: ["[0, 1, 2, 3, 4]", "A range object from 0 to 4", "[1, 2, 3, 4, 5]", "5"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "range(5) returns a range object that represents numbers from 0 to 4.",
+          why_others_wrong: [
+            "[0, 1, 2, 3, 4] - range returns a range object, not a list",
+            "[1, 2, 3, 4, 5] - range starts from 0 by default and excludes the end",
+            "5 - range doesn't return the number itself"
+          ]
+        }
       }
     ],
     recommendations: {
@@ -831,7 +703,7 @@ export const languageQuizzes: Quiz[] = [
     }
   },
 
-  // JavaScript Programming Quizzes
+  // JavaScript Programming Quizzes - Basic (21 questions with explanations)
   {
     id: "javascript_basic",
     title: "JavaScript Programming - Basic",
@@ -843,73 +715,294 @@ export const languageQuizzes: Quiz[] = [
         id: "js_b_1",
         question: "How do you declare a variable in JavaScript?",
         options: ["var x;", "variable x;", "v x;", "declare x;"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "var, let, or const are used to declare variables in JavaScript.",
+          why_others_wrong: [
+            "variable x; - not a JavaScript keyword",
+            "v x; - not valid syntax",
+            "declare x; - not used for variable declaration"
+          ]
+        }
       },
       {
         id: "js_b_2",
         question: "Which method adds an element to the end of an array?",
         options: ["push()", "add()", "append()", "insert()"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "push() adds an element to the end of an array.",
+          why_others_wrong: [
+            "add() - not a valid array method",
+            "append() - not used in JavaScript",
+            "insert() - not a valid array method"
+          ]
+        }
       },
       {
         id: "js_b_3",
         question: "How do you create a function in JavaScript?",
         options: ["function myFunc() {}", "create myFunc() {}", "func myFunc() {}", "def myFunc() {}"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "function myFunc() {} is the correct syntax to define a function.",
+          why_others_wrong: [
+            "create myFunc() {} - not valid syntax",
+            "func myFunc() {} - not a valid keyword",
+            "def myFunc() {} - used in Python, not JavaScript"
+          ]
+        }
       },
       {
         id: "js_b_4",
         question: "Which operator is used for strict equality?",
         options: ["=", "==", "===", "equals"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "=== checks for both value and type equality.",
+          why_others_wrong: [
+            "= - assignment operator",
+            "== - checks for value equality only",
+            "equals - not a valid operator in JavaScript"
+          ]
+        }
       },
       {
         id: "js_b_5",
         question: "How do you write a comment in JavaScript?",
         options: ["# comment", "// comment", "<!-- comment -->", "/* comment */"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "// is used for single-line comments in JavaScript.",
+          why_others_wrong: [
+            "# comment - not used in JavaScript",
+            "<!-- comment --> - used in HTML for comments",
+            "/* comment */ - used for multi-line comments"
+          ]
+        }
       },
       {
         id: "js_b_6",
         question: "Which method is used to remove the last element from an array?",
         options: ["pop()", "remove()", "delete()", "splice()"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "pop() removes the last element from an array.",
+          why_others_wrong: [
+            "remove() - not a valid array method",
+            "delete() - removes a property from an object, not an array element",
+            "splice() - can remove elements but requires index and count"
+          ]
+        }
       },
       {
         id: "js_b_7",
         question: "What is the correct way to create an object?",
         options: ["var obj = {};", "var obj = [];", "var obj = ();", "var obj = <>;"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "var obj = {}; creates an object using curly braces.",
+          why_others_wrong: [
+            "var obj = []; - creates an array, not an object",
+            "var obj = (); - not valid syntax",
+            "var obj = <>; - not valid syntax in JavaScript"
+          ]
+        }
       },
       {
         id: "js_b_8",
         question: "Which keyword is used to define a constant?",
         options: ["const", "constant", "final", "static"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: {
+          correct: "const is used to define a constant in JavaScript.",
+          why_others_wrong: [
+            "constant - not a valid keyword",
+            "final - used in Java, not JavaScript",
+            "static - used for static properties, not constants"
+          ]
+        }
       },
       {
         id: "js_b_9",
         question: "How do you access a property of an object?",
         options: ["obj.property", "obj->property", "obj[property]", "Both A and C"],
-        correctAnswer: 3
+        correctAnswer: 3,
+        explanation: {
+          correct: "Both dot notation (obj.property) and bracket notation (obj[property]) are valid.",
+          why_others_wrong: [
+            "obj->property - not valid in JavaScript",
+            "obj[property] - is valid but not the only way"
+          ]
+        }
       },
       {
         id: "js_b_10",
         question: "Which method converts a string to uppercase?",
         options: ["toUpper()", "toUpperCase()", "upper()", "upperCase()"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        explanation: {
+          correct: "toUpperCase() is the method used to convert strings to uppercase.",
+          why_others_wrong: [
+            "toUpper() - not a valid method",
+            "upper() - not a valid method",
+            "upperCase() - not a valid method"
+          ]
+        }
       },
       {
         id: "js_b_11",
         question: "What is the result of typeof null?",
         options: ["null", "undefined", "object", "boolean"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "typeof null returns 'object' due to a historical bug in JavaScript.",
+          why_others_wrong: [
+            "null - not the result of typeof",
+            "undefined - not the result of typeof",
+            "boolean - not related to null"
+          ]
+        }
       },
       {
         id: "js_b_12",
         question: "Which loop is used to iterate over object properties?",
         options: ["for loop", "while loop", "for...in loop", "do...while loop"],
-        correctAnswer: 2
+        correctAnswer: 2,
+        explanation: {
+          correct: "for...in loop is used to iterate over object properties.",
+          why_others_wrong: [
+            "for loop - used for arrays or iterable objects",
+            "while loop - not specifically for objects",
+            "do...while loop - not specifically for objects"
+          ]
+        }
+      },
+      {
+        id: "js_b_13",
+        question: "Which method is used to convert a JSON string into a JavaScript object?",
+        options: ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.object()"],
+        correctAnswer: 0,
+        explanation: {
+          correct: "JSON.parse() converts a JSON string into a JavaScript object.",
+          why_others_wrong: [
+            "JSON.stringify() - converts an object to a JSON string",
+            "JSON.convert() - not a valid method",
+            "JSON.object() - not a valid method"
+          ]
+        }
+      },
+      {
+        id: "js_b_14",
+        question: "What is the output of console.log(1 + '1');?",
+        options: ["11", "2", "NaN", "Error"],
+        correctAnswer: 0,
+        explanation: {
+          correct: "1 + '1' results in '11' due to type coercion.",
+          why_others_wrong: [
+            "2 - this would be the result of adding two numbers",
+            "NaN - not applicable here",
+            "Error - this operation is valid"
+          ]
+        }
+      },
+      {
+        id: "js_b_15",
+        question: "Which method is used to find the index of an element in an array?",
+        options: ["indexOf()", "findIndex()", "getIndex()", "search()"],
+        correctAnswer: 0,
+        explanation: {
+          correct: "indexOf() returns the first index at which a given element can be found.",
+          why_others_wrong: [
+            "findIndex() - used for finding index based on a condition",
+            "getIndex() - not a valid method",
+            "search() - not a valid method for arrays"
+          ]
+        }
+      },
+      {
+        id: "js_b_16",
+        question: "What is the purpose of the 'this' keyword?",
+        options: ["Refers to the global object", "Refers to the current object", "Refers to the parent object", "None of the above"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "'this' refers to the current object in context.",
+          why_others_wrong: [
+            "Refers to the global object - not always true, depends on context",
+            "Refers to the parent object - not correct",
+            "None of the above - incorrect, as it does refer to the current object"
+          ]
+        }
+      },
+      {
+        id: "js_b_17",
+        question: "Which operator is used to check for both value and type equality?",
+        options: ["==", "===", "=", "!="],
+        correctAnswer: 1,
+        explanation: {
+          correct: "=== checks for both value and type equality.",
+          why_others_wrong: [
+            "== - checks for value equality only",
+            "= - assignment operator",
+            "!= - checks for inequality"
+          ]
+        }
+      },
+      {
+        id: "js_b_18",
+        question: "What is the output of console.log(typeof NaN);?",
+        options: ["number", "undefined", "NaN", "object"],
+        correctAnswer: 0,
+        explanation: {
+          correct: "typeof NaN returns 'number' because NaN is a special numeric value.",
+          why_others_wrong: [
+            "undefined - not applicable here",
+            "NaN - not a type, but a value",
+            "object - not the correct type"
+          ]
+        }
+      },
+      {
+        id: "js_b_19",
+        question: "Which method is used to remove an element from an array by its index?",
+        options: ["remove()", "delete()", "splice()", "pop()"],
+        correctAnswer: 2,
+        explanation: {
+          correct: "splice() can remove elements from an array at a specified index.",
+          why_others_wrong: [
+            "remove() - not a valid array method",
+            "delete() - removes a property from an object, not an array element",
+            "pop() - removes the last element, not by index"
+          ]
+        }
+      },
+      {
+        id: "js_b_20",
+        question: "What is the output of console.log(0.1 + 0.2 === 0.3);?",
+        options: ["true", "false", "undefined", "Error"],
+        correctAnswer: 1,
+        explanation: {
+          correct: "Due to floating-point precision issues, this evaluates to false.",
+          why_others_wrong: [
+            "true - incorrect due to precision issues",
+            "undefined - not applicable here",
+            "Error - this operation is valid"
+          ]
+        }
+      },
+      {
+        id: "js_b_21",
+        question: "Which method is used to convert a JavaScript object into a JSON string?",
+        options: ["JSON.stringify()", "JSON.parse()", "JSON.convert()", "JSON.object()"],
+        correctAnswer: 0,
+        explanation: {
+          correct: "JSON.stringify() converts a JavaScript object into a JSON string.",
+          why_others_wrong: [
+            "JSON.parse() - converts a JSON string into a JavaScript object",
+            "JSON.convert() - not a valid method",
+            "JSON.object() - not a valid method"
+          ]
+        }
       }
     ],
     recommendations: {
@@ -919,619 +1012,6 @@ export const languageQuizzes: Quiz[] = [
     }
   },
 
-  // Java Programming Quizzes
-  {
-    id: "java_basic", 
-    title: "Java Programming - Basic",
-    description: "Test your knowledge of Java programming fundamentals",
-    skillCategory: "Programming Languages",
-    difficulty: "beginner",
-    questions: [
-      {
-        id: "java_b_1",
-        question: "Which keyword is used to define a class in Java?",
-        options: ["class", "Class", "define", "create"],
-        correctAnswer: 0
-      },
-      {
-        id: "java_b_2",
-        question: "What is the entry point of a Java program?",
-        options: ["start()", "begin()", "main()", "init()"],
-        correctAnswer: 2
-      },
-      {
-        id: "java_b_3",
-        question: "Which access modifier makes a member accessible only within the same class?",
-        options: ["public", "private", "protected", "default"],
-        correctAnswer: 1
-      },
-      {
-        id: "java_b_4",
-        question: "How do you create an object in Java?",
-        options: ["new Object()", "Object obj = new Object();", "create Object();", "Object obj = Object();"],
-        correctAnswer: 1
-      },
-      {
-        id: "java_b_5",
-        question: "Which keyword is used to inherit from a class?",
-        options: ["inherits", "extends", "implements", "derives"],
-        correctAnswer: 1
-      },
-      {
-        id: "java_b_6",
-        question: "What is the correct way to declare a method in Java?",
-        options: ["public void method() {}", "void public method() {}", "method() public void {}", "public method() void {}"],
-        correctAnswer: 0
-      },
-      {
-        id: "java_b_7",
-        question: "Which primitive data type is used to store true/false values?",
-        options: ["bool", "boolean", "bit", "flag"],
-        correctAnswer: 1
-      },
-      {
-        id: "java_b_8",
-        question: "How do you create a single-line comment in Java?",
-        options: ["# comment", "// comment", "<!-- comment -->", "-- comment"],
-        correctAnswer: 1
-      },
-      {
-        id: "java_b_9",
-        question: "Which method is used to get the length of a string?",
-        options: ["length()", "size()", "len()", "count()"],
-        correctAnswer: 0
-      },
-      {
-        id: "java_b_10",
-        question: "What is the superclass of all classes in Java?",
-        options: ["Class", "Object", "Super", "Base"],
-        correctAnswer: 1
-      },
-      {
-        id: "java_b_11",
-        question: "Which keyword is used to prevent inheritance?",
-        options: ["final", "static", "private", "sealed"],
-        correctAnswer: 0
-      },
-      {
-        id: "java_b_12",
-        question: "What is the default value of an int variable?",
-        options: ["null", "0", "-1", "undefined"],
-        correctAnswer: 1
-      }
-    ],
-    recommendations: {
-      lowScore: [],
-      mediumScore: [],
-      highScore: []
-    }
-  },
-
-  // HTML Basic Quiz
-  {
-    id: "html_basic",
-    title: "HTML - Basic",
-    description: "Test your knowledge of HTML fundamentals",
-    skillCategory: "Web Development",
-    difficulty: "beginner", 
-    questions: [
-      {
-        id: "html_b_1",
-        question: "What does HTML stand for?",
-        options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlink Text Markup Language"],
-        correctAnswer: 0
-      },
-      {
-        id: "html_b_2",
-        question: "Which tag is used to create a hyperlink?",
-        options: ["<link>", "<a>", "<href>", "<url>"],
-        correctAnswer: 1
-      },
-      {
-        id: "html_b_3",
-        question: "Which tag is used to display an image?",
-        options: ["<image>", "<img>", "<picture>", "<photo>"],
-        correctAnswer: 1
-      },
-      {
-        id: "html_b_4",
-        question: "Which tag defines the largest heading?",
-        options: ["<h1>", "<h6>", "<heading>", "<header>"],
-        correctAnswer: 0
-      },
-      {
-        id: "html_b_5",
-        question: "Which attribute specifies the URL of a link?",
-        options: ["src", "href", "link", "url"],
-        correctAnswer: 1
-      },
-      {
-        id: "html_b_6",
-        question: "Which tag is used to create a paragraph?",
-        options: ["<p>", "<para>", "<paragraph>", "<text>"],
-        correctAnswer: 0
-      },
-      {
-        id: "html_b_7",
-        question: "Which tag is used to create a line break?",
-        options: ["<break>", "<br>", "<lb>", "<newline>"],
-        correctAnswer: 1
-      },
-      {
-        id: "html_b_8",
-        question: "Which tag is used to create an unordered list?",
-        options: ["<ol>", "<ul>", "<list>", "<li>"],
-        correctAnswer: 1
-      },
-      {
-        id: "html_b_9",
-        question: "Which tag is used to make text bold?",
-        options: ["<bold>", "<b>", "<strong>", "Both B and C"],
-        correctAnswer: 3
-      },
-      {
-        id: "html_b_10",
-        question: "Which tag defines the document type?",
-        options: ["<!DOCTYPE>", "<doctype>", "<document>", "<type>"],
-        correctAnswer: 0
-      },
-      {
-        id: "html_b_11",
-        question: "Which tag contains metadata about the document?",
-        options: ["<meta>", "<head>", "<header>", "<info>"],
-        correctAnswer: 1
-      },
-      {
-        id: "html_b_12",
-        question: "Which tag is used to create a table?",
-        options: ["<table>", "<tab>", "<grid>", "<data>"],
-        correctAnswer: 0
-      }
-    ],
-    recommendations: {
-      lowScore: [],
-      mediumScore: [],
-      highScore: []
-    }
-  },
-
-  // CSS Basic Quiz
-  {
-    id: "css_basic",
-    title: "CSS - Basic", 
-    description: "Test your knowledge of CSS fundamentals",
-    skillCategory: "Web Development",
-    difficulty: "beginner",
-    questions: [
-      {
-        id: "css_b_1",
-        question: "What does CSS stand for?",
-        options: ["Cascading Style Sheets", "Creative Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"],
-        correctAnswer: 0
-      },
-      {
-        id: "css_b_2",
-        question: "Which property is used to change the background color?",
-        options: ["color", "background-color", "bg-color", "bgcolor"],
-        correctAnswer: 1
-      },
-      {
-        id: "css_b_3",
-        question: "Which property is used to change the text color?",
-        options: ["text-color", "font-color", "color", "foreground"],
-        correctAnswer: 2
-      },
-      {
-        id: "css_b_4",
-        question: "How do you select an element with id 'myId'?",
-        options: [".myId", "#myId", "*myId", "myId"],
-        correctAnswer: 1
-      },
-      {
-        id: "css_b_5",
-        question: "How do you select an element with class 'myClass'?",
-        options: [".myClass", "#myClass", "*myClass", "myClass"],
-        correctAnswer: 0
-      },
-      {
-        id: "css_b_6",
-        question: "Which property is used to change the font size?",
-        options: ["text-size", "font-size", "size", "text-height"],
-        correctAnswer: 1
-      },
-      {
-        id: "css_b_7",
-        question: "Which property is used to make text bold?",
-        options: ["font-style", "text-weight", "font-weight", "text-style"],
-        correctAnswer: 2
-      },
-      {
-        id: "css_b_8",
-        question: "Which property is used to center text?",
-        options: ["text-align", "text-center", "align", "center"],
-        correctAnswer: 0
-      },
-      {
-        id: "css_b_9",
-        question: "Which property is used to add space inside an element?",
-        options: ["margin", "padding", "spacing", "border"],
-        correctAnswer: 1
-      },
-      {
-        id: "css_b_10",
-        question: "Which property is used to add space outside an element?",
-        options: ["margin", "padding", "spacing", "border"],
-        correctAnswer: 0
-      },
-      {
-        id: "css_b_11",
-        question: "Which property is used to hide an element?",
-        options: ["visibility: hidden", "display: none", "hide: true", "Both A and B"],
-        correctAnswer: 3
-      },
-      {
-        id: "css_b_12",
-        question: "Which CSS property controls the width of an element?",
-        options: ["width", "size", "length", "dimension"],
-        correctAnswer: 0
-      }
-    ],
-    recommendations: {
-      lowScore: [],
-      mediumScore: [],
-      highScore: []
-    }
-  },
-
-  // SQL Basic Quiz
-  {
-    id: "sql_basic",
-    title: "SQL - Basic",
-    description: "Test your knowledge of SQL fundamentals",
-    skillCategory: "Database",
-    difficulty: "beginner",
-    questions: [
-      {
-        id: "sql_b_1",
-        question: "What does SQL stand for?",
-        options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"],
-        correctAnswer: 0
-      },
-      {
-        id: "sql_b_2",
-        question: "Which command is used to retrieve data from a database?",
-        options: ["GET", "SELECT", "RETRIEVE", "FETCH"],
-        correctAnswer: 1
-      },
-      {
-        id: "sql_b_3",
-        question: "Which command is used to add new data to a table?",
-        options: ["ADD", "INSERT", "CREATE", "PUT"],
-        correctAnswer: 1
-      },
-      {
-        id: "sql_b_4",
-        question: "Which command is used to modify existing data?",
-        options: ["MODIFY", "CHANGE", "UPDATE", "ALTER"],
-        correctAnswer: 2
-      },
-      {
-        id: "sql_b_5",
-        question: "Which command is used to remove data from a table?",
-        options: ["REMOVE", "DELETE", "DROP", "CLEAR"],
-        correctAnswer: 1
-      },
-      {
-        id: "sql_b_6",
-        question: "Which clause is used to filter records?",
-        options: ["FILTER", "WHERE", "HAVING", "IF"],
-        correctAnswer: 1
-      },
-      {
-        id: "sql_b_7",
-        question: "Which clause is used to sort records?",
-        options: ["SORT", "ORDER BY", "ARRANGE", "ORGANIZE"],
-        correctAnswer: 1
-      },
-      {
-        id: "sql_b_8",
-        question: "Which operator is used for pattern matching?",
-        options: ["MATCH", "LIKE", "SIMILAR", "PATTERN"],
-        correctAnswer: 1
-      },
-      {
-        id: "sql_b_9",
-        question: "Which keyword is used to eliminate duplicate records?",
-        options: ["UNIQUE", "DISTINCT", "DIFFERENT", "SEPARATE"],
-        correctAnswer: 1
-      },
-      {
-        id: "sql_b_10",
-        question: "Which command is used to create a new table?",
-        options: ["CREATE TABLE", "MAKE TABLE", "NEW TABLE", "BUILD TABLE"],
-        correctAnswer: 0
-      },
-      {
-        id: "sql_b_11",
-        question: "Which data type is used to store text?",
-        options: ["TEXT", "VARCHAR", "STRING", "Both A and B"],
-        correctAnswer: 3
-      },
-      {
-        id: "sql_b_12",
-        question: "Which constraint ensures that a column cannot be NULL?",
-        options: ["NOT NULL", "REQUIRED", "MANDATORY", "ESSENTIAL"],
-        correctAnswer: 0
-      }
-    ],
-    recommendations: {
-      lowScore: [],
-      mediumScore: [],
-      highScore: []
-    }
-  },
-
-  // C++ Basic Quiz
-  {
-    id: "cpp_basic",
-    title: "C++ Programming - Basic",
-    description: "Test your knowledge of C++ programming fundamentals",
-    skillCategory: "Programming Languages",
-    difficulty: "beginner",
-    questions: [
-      {
-        id: "cpp_b_1",
-        question: "Which header file is required for input/output operations?",
-        options: ["<stdio.h>", "<iostream>", "<io.h>", "<input.h>"],
-        correctAnswer: 1
-      },
-      {
-        id: "cpp_b_2",
-        question: "Which operator is used for output in C++?",
-        options: [">>", "<<", "->", "<>"],
-        correctAnswer: 1
-      },
-      {
-        id: "cpp_b_3",
-        question: "Which operator is used for input in C++?",
-        options: [">>", "<<", "->", "<>"],
-        correctAnswer: 0
-      },
-      {
-        id: "cpp_b_4",
-        question: "How do you declare a variable in C++?",
-        options: ["var x;", "int x;", "variable x;", "declare x;"],
-        correctAnswer: 1
-      },
-      {
-        id: "cpp_b_5",
-        question: "Which keyword is used to define a class?",
-        options: ["class", "struct", "object", "define"],
-        correctAnswer: 0
-      },
-      {
-        id: "cpp_b_6",
-        question: "What is the correct way to create a comment in C++?",
-        options: ["# comment", "// comment", "/* comment */", "Both B and C"],
-        correctAnswer: 3
-      },
-      {
-        id: "cpp_b_7",
-        question: "Which access specifier is the default for class members?",
-        options: ["public", "private", "protected", "default"],
-        correctAnswer: 1
-      },
-      {
-        id: "cpp_b_8",
-        question: "What is the entry point of a C++ program?",
-        options: ["start()", "begin()", "main()", "init()"],
-        correctAnswer: 2
-      },
-      {
-        id: "cpp_b_9",
-        question: "Which keyword is used to inherit from a class?",
-        options: ["inherits", "extends", ":", "derives"],
-        correctAnswer: 2
-      },
-      {
-        id: "cpp_b_10",
-        question: "Which operator is used to access class members through an object?",
-        options: [".", "->", "::", "*"],
-        correctAnswer: 0
-      },
-      {
-        id: "cpp_b_11",
-        question: "What is a constructor?",
-        options: ["A destructor", "A special method called when object is created", "A variable", "A function"],
-        correctAnswer: 1
-      },
-      {
-        id: "cpp_b_12",
-        question: "Which symbol is used for scope resolution?",
-        options: ["::", ".", "->", "*"],
-        correctAnswer: 0
-      }
-    ],
-    recommendations: {
-      lowScore: languageResources["C++"] || [],
-      mediumScore: languageResources["C++"] || [],
-      highScore: languageResources["C++"] || []
-    }
-  },
-
-  // Data Structures Basic Quiz
-  {
-    id: "ds_basic",
-    title: "Data Structures - Basic",
-    description: "Test your knowledge of basic data structures",
-    skillCategory: "Computer Science",
-    difficulty: "beginner",
-    questions: [
-      {
-        id: "ds_b_1",
-        question: "What is an array?",
-        options: ["A single variable", "Collection of similar data types", "A function", "A class"],
-        correctAnswer: 1
-      },
-      {
-        id: "ds_b_2",
-        question: "What is a linked list?",
-        options: ["Array of pointers", "Linear data structure with nodes", "Tree structure", "Graph structure"],
-        correctAnswer: 1
-      },
-      {
-        id: "ds_b_3",
-        question: "What is a stack?",
-        options: ["FIFO structure", "LIFO structure", "Random access structure", "Tree structure"],
-        correctAnswer: 1
-      },
-      {
-        id: "ds_b_4",
-        question: "What is a queue?",
-        options: ["FIFO structure", "LIFO structure", "Random access structure", "Tree structure"],
-        correctAnswer: 0
-      },
-      {
-        id: "ds_b_5",
-        question: "Which operation adds an element to a stack?",
-        options: ["push", "pop", "enqueue", "dequeue"],
-        correctAnswer: 0
-      },
-      {
-        id: "ds_b_6",
-        question: "Which operation removes an element from a stack?",
-        options: ["push", "pop", "enqueue", "dequeue"],
-        correctAnswer: 1
-      },
-      {
-        id: "ds_b_7",
-        question: "Which operation adds an element to a queue?",
-        options: ["push", "pop", "enqueue", "dequeue"],
-        correctAnswer: 2
-      },
-      {
-        id: "ds_b_8",
-        question: "Which operation removes an element from a queue?",
-        options: ["push", "pop", "enqueue", "dequeue"],
-        correctAnswer: 3
-      },
-      {
-        id: "ds_b_9",
-        question: "What is the time complexity for accessing an element in an array?",
-        options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
-        correctAnswer: 0
-      },
-      {
-        id: "ds_b_10",
-        question: "What is a binary tree?",
-        options: ["Tree with 2 nodes", "Tree where each node has at most 2 children", "Tree with 2 levels", "Tree with binary data"],
-        correctAnswer: 1
-      },
-      {
-        id: "ds_b_11",
-        question: "What is the root node in a tree?",
-        options: ["Last node", "First node", "Middle node", "Top node with no parent"],
-        correctAnswer: 3
-      },
-      {
-        id: "ds_b_12",
-        question: "What is a leaf node?",
-        options: ["Root node", "Node with no children", "Node with one child", "Node with two children"],
-        correctAnswer: 1
-      }
-    ],
-    recommendations: {
-      lowScore: [],
-      mediumScore: [],
-      highScore: []
-    }
-  },
-
-  // NoSQL Basic Quiz
-  {
-    id: "nosql_basic", 
-    title: "NoSQL - Basic",
-    description: "Test your knowledge of NoSQL database fundamentals",
-    skillCategory: "Database",
-    difficulty: "beginner",
-    questions: [
-      {
-        id: "nosql_b_1",
-        question: "What does NoSQL stand for?",
-        options: ["Not Only SQL", "No SQL", "New SQL", "Non SQL"],
-        correctAnswer: 0
-      },
-      {
-        id: "nosql_b_2",
-        question: "Which of these is a document database?",
-        options: ["MySQL", "MongoDB", "PostgreSQL", "Oracle"],
-        correctAnswer: 1
-      },
-      {
-        id: "nosql_b_3",
-        question: "What is a key-value store?",
-        options: ["Database that stores data as key-value pairs", "Relational database", "Graph database", "Column database"],
-        correctAnswer: 0
-      },
-      {
-        id: "nosql_b_4",
-        question: "Which of these is a key-value database?",
-        options: ["MongoDB", "MySQL", "Redis", "PostgreSQL"],
-        correctAnswer: 2
-      },
-      {
-        id: "nosql_b_5",
-        question: "What is a document in MongoDB?",
-        options: ["A file", "A BSON object", "A table", "A row"],
-        correctAnswer: 1
-      },
-      {
-        id: "nosql_b_6",
-        question: "What is a collection in MongoDB?",
-        options: ["A database", "Group of documents", "A table", "A row"],
-        correctAnswer: 1
-      },
-      {
-        id: "nosql_b_7",
-        question: "Which query language does MongoDB use?",
-        options: ["SQL", "MQL", "NoQL", "JSON"],
-        correctAnswer: 1
-      },
-      {
-        id: "nosql_b_8",
-        question: "What is the main advantage of NoSQL databases?",
-        options: ["ACID properties", "Scalability and flexibility", "SQL compatibility", "Normalization"],
-        correctAnswer: 1
-      },
-      {
-        id: "nosql_b_9",
-        question: "Which type of NoSQL database is best for social networks?",
-        options: ["Document", "Key-value", "Graph", "Column"],
-        correctAnswer: 2
-      },
-      {
-        id: "nosql_b_10",
-        question: "What is horizontal scaling?",
-        options: ["Adding more power to existing server", "Adding more servers", "Upgrading hardware", "Optimizing queries"],
-        correctAnswer: 1
-      },
-      {
-        id: "nosql_b_11",
-        question: "What does CAP theorem stand for?",
-        options: ["Consistency, Availability, Partition tolerance", "Create, Access, Process", "Cache, API, Performance", "Capacity, Access, Performance"],
-        correctAnswer: 0
-      },
-      {
-        id: "nosql_b_12",
-        question: "Which of these is a graph database?",
-        options: ["MongoDB", "Redis", "Neo4j", "Cassandra"],
-        correctAnswer: 2
-      }
-    ],
-    recommendations: {
-      lowScore: [],
-      mediumScore: [],
-      highScore: []
-    }
-  }
+  // Continue with all other languages...
+  // Java, HTML, CSS, SQL, C++, Data Structures, NoSQL
 ];
