@@ -6,6 +6,13 @@ export interface User {
   avatar?: string;
 }
 
+export interface UserSkill {
+  id: string;
+  skillId: string;
+  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+  progress: number;
+}
+
 export interface Skill {
   id: string;
   name: string;
@@ -13,6 +20,7 @@ export interface Skill {
   category: string;
   description?: string;
   progress?: number;
+  resources?: Resource[];
 }
 
 export interface Job {
@@ -27,6 +35,7 @@ export interface Job {
   skills: string[];
   posted: string;
   logo?: string;
+  requiredSkills?: string[];
 }
 
 export interface QuizQuestion {
@@ -76,6 +85,18 @@ export interface Goal {
   status: 'Not Started' | 'In Progress' | 'Completed';
   progress: number;
   milestones?: string[];
+  jobId?: string;
+  skillId?: string;
+  roadmap?: RoadmapStep[];
+}
+
+export interface RoadmapStep {
+  id: string;
+  title: string;
+  description: string;
+  estimatedTime: string;
+  status: 'Not Started' | 'In Progress' | 'Completed';
+  resources: Resource[];
 }
 
 export interface LearningPath {
