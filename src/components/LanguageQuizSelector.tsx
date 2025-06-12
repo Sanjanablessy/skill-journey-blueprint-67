@@ -170,7 +170,7 @@ const LanguageQuizSelector: React.FC<LanguageQuizSelectorProps> = ({ onSelectQui
   return (
     <div className="max-w-6xl mx-auto p-6">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4">Programming Language Quizzes</h1>
+        <h1 className="text-4xl font-bold mb-4">Take Your Quizzes</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Test your knowledge across multiple programming languages with our comprehensive quiz system. 
           Progress from basic to advanced levels and track your improvement.

@@ -7,7 +7,7 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { CheckCircle, XCircle, ArrowRight, RotateCcw } from 'lucide-react';
+import { CheckCircle, XCircle, ArrowRight, RotateCcw, Check, X } from 'lucide-react';
 import { calculateQuizResult, getLanguageTopics } from '@/utils/quizScoring';
 
 interface LanguageQuizTakerProps {
@@ -172,20 +172,6 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
                 ))}
               </div>
             </div>
-
-            {/* Suggested Topics */}
-            {quizResult.suggestedTopics && quizResult.suggestedTopics.length > 0 && (
-              <div>
-                <h3 className="font-semibold mb-3">Topics to Focus On</h3>
-                <div className="flex flex-wrap gap-2">
-                  {quizResult.suggestedTopics.map((topic: string, index: number) => (
-                    <Badge key={index} variant="outline">
-                      {topic}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4">

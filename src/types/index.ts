@@ -1,33 +1,43 @@
 
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  avatar?: string;
+}
+
 export interface Skill {
   id: string;
   name: string;
+  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
   category: string;
-  level?: 'beginner' | 'intermediate' | 'advanced';
-  description: string;
-  resources?: Resource[];  // Added resources for learning this skill
-}
-
-export interface Resource {
-  id: string;
-  title: string;
-  url: string;
-  type: 'article' | 'video' | 'course' | 'book';
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
   description?: string;
+  progress?: number;
 }
 
 export interface Job {
   id: string;
   title: string;
-  company?: string;
+  company: string;
+  location: string;
+  type: 'Full-time' | 'Part-time' | 'Contract' | 'Remote';
+  salary?: string;
   description: string;
-  requiredSkills: Skill[];
-  salaryRange?: string;
-  experience?: string;
-  category: string;
-  matchPercentage?: number;
-  roadmap?: RoadmapStep[];  // Added roadmap for job preparation
+  requirements: string[];
+  skills: string[];
+  posted: string;
+  logo?: string;
+}
+
+export interface QuizQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation?: {
+    correct: string;
+    why_others_wrong: string[];
+  };
 }
 
 export interface Quiz {
@@ -37,6 +47,7 @@ export interface Quiz {
   skillCategory: string;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   questions: QuizQuestion[];
+  timeLimit?: number;
   recommendations?: {
     lowScore: Resource[];
     mediumScore: Resource[];
@@ -44,30 +55,35 @@ export interface Quiz {
   };
 }
 
-export interface QuizQuestion {
-  id: string;
-  question: string;
-  options: string[];
-  correctAnswer: number;
-}
-
-export interface RoadmapStep {
+export interface Resource {
   id: string;
   title: string;
+  type: 'article' | 'video' | 'course' | 'book' | 'tutorial';
+  url: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
   description: string;
-  completed: boolean;
-  resources?: string[];
+  category?: string;
+  rating?: number;
+  duration?: string;
 }
 
 export interface Goal {
   id: string;
   title: string;
-  jobId?: string;
-  skillId?: string;
-  roadmap: RoadmapStep[];
+  description: string;
+  category: string;
+  targetDate: string;
+  status: 'Not Started' | 'In Progress' | 'Completed';
   progress: number;
+  milestones?: string[];
 }
 
-export interface UserSkill extends Skill {
-  proficiency: number;
+export interface LearningPath {
+  id: string;
+  name: string;
+  description: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  estimatedTime: string;
+  skills: string[];
+  courses: Resource[];
 }
