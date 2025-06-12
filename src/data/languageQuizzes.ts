@@ -1,4 +1,3 @@
-
 import { Quiz, Resource } from "@/types";
 
 // Sample resources for different languages
@@ -84,7 +83,7 @@ const languageResources: { [key: string]: Resource[] } = {
 };
 
 export const languageQuizzes: Quiz[] = [
-  // C Programming Quizzes
+  // C Programming Quizzes - Updated with comprehensive questions
   {
     id: "c_basic",
     title: "C Programming - Basic",
@@ -94,74 +93,128 @@ export const languageQuizzes: Quiz[] = [
     questions: [
       {
         id: "c_b_1",
-        question: "Which header file is required for printf() function?",
-        options: ["<stdio.h>", "<stdlib.h>", "<string.h>", "<math.h>"],
-        correctAnswer: 0
+        question: "What is the correct syntax to include a standard header file?",
+        options: ["#import <stdio.h>", "#include <stdio.h>", "include <stdio.h>", "#using <stdio.h>"],
+        correctAnswer: 1
       },
       {
         id: "c_b_2",
-        question: "What is the correct syntax to declare an integer variable in C?",
-        options: ["integer x;", "int x;", "var x;", "x integer;"],
+        question: "Which of the following is a valid variable name in C?",
+        options: ["1value", "value_1", "@value", "int"],
         correctAnswer: 1
       },
       {
         id: "c_b_3",
-        question: "Which operator is used to get the address of a variable?",
-        options: ["*", "&", "%", "#"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_b_4",
-        question: "What does the '\\n' character represent?",
-        options: ["New line", "Tab", "Space", "Backslash"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_b_5",
-        question: "Which function is used to read a character from keyboard?",
-        options: ["getchar()", "putchar()", "scanf()", "printf()"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_b_6",
-        question: "What is the size of int data type in C (typically)?",
-        options: ["1 byte", "2 bytes", "4 bytes", "8 bytes"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_b_7",
-        question: "Which symbol is used to terminate a statement in C?",
-        options: [".", ",", ";", ":"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_b_8",
-        question: "What is the correct way to comment a single line in C?",
-        options: ["# comment", "// comment", "/* comment", "-- comment"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_b_9",
-        question: "Which keyword is used to return a value from a function?",
-        options: ["return", "exit", "break", "continue"],
-        correctAnswer: 0
-      },
-      {
-        id: "c_b_10",
-        question: "What is the entry point of a C program?",
-        options: ["start()", "begin()", "main()", "init()"],
-        correctAnswer: 2
-      },
-      {
-        id: "c_b_11",
-        question: "Which format specifier is used for integer in printf()?",
+        question: "Which format specifier is used to print an integer?",
         options: ["%s", "%d", "%c", "%f"],
         correctAnswer: 1
       },
       {
+        id: "c_b_4",
+        question: "What is the default return type of the main function?",
+        options: ["float", "void", "char", "int"],
+        correctAnswer: 3
+      },
+      {
+        id: "c_b_5",
+        question: "Which keyword is used to declare a variable in C?",
+        options: ["int", "define", "include", "main"],
+        correctAnswer: 0
+      },
+      {
+        id: "c_b_6",
+        question: "Which operator is used to assign a value?",
+        options: ["==", "=", "!=", ":="],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_7",
+        question: "Which symbol is used for a single-line comment?",
+        options: ["/*", "#", "//", "**"],
+        correctAnswer: 2
+      },
+      {
+        id: "c_b_8",
+        question: "Which function is used to print to the console?",
+        options: ["read()", "print()", "printf()", "write()"],
+        correctAnswer: 2
+      },
+      {
+        id: "c_b_9",
+        question: "What is the output of printf(\"%d\", 10/3);?",
+        options: ["3.33", "3", "0", "3.0"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_10",
+        question: "What is the size of an int on a 32-bit system?",
+        options: ["2 bytes", "4 bytes", "8 bytes", "1 byte"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_11",
+        question: "Which of the following is not a data type in C?",
+        options: ["int", "char", "float", "real"],
+        correctAnswer: 3
+      },
+      {
         id: "c_b_12",
-        question: "What does the 'void' keyword mean?",
-        options: ["Empty", "No return value", "Invalid", "Error"],
+        question: "Which escape sequence represents a new line?",
+        options: ["\\t", "\\n", "\\b", "\\a"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_13",
+        question: "How is a string represented in C?",
+        options: ["char*", "Array of characters ending with \\0", "int[]", "char**"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_14",
+        question: "What is the value of 5 % 2?",
+        options: ["2", "1", "0", "2.5"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_15",
+        question: "Which operator is used to access the value of a pointer?",
+        options: ["&", "*", "@", "#"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_16",
+        question: "Which header is used for input/output operations?",
+        options: ["math.h", "stdio.h", "string.h", "stdlib.h"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_17",
+        question: "What is the output of printf(\"%c\", 65);?",
+        options: ["65", "A", "Error", "a"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_b_18",
+        question: "What is the result of sizeof(char)?",
+        options: ["2", "4", "1", "8"],
+        correctAnswer: 2
+      },
+      {
+        id: "c_b_19",
+        question: "Which keyword is used to define constants?",
+        options: ["const", "define", "final", "static"],
+        correctAnswer: 0
+      },
+      {
+        id: "c_b_20",
+        question: "Which function reads input from the user?",
+        options: ["printf()", "getchar()", "scanf()", "puts()"],
+        correctAnswer: 2
+      },
+      {
+        id: "c_b_21",
+        question: "Which of the following is a loop structure?",
+        options: ["switch", "for", "case", "break"],
         correctAnswer: 1
       }
     ],
@@ -180,93 +233,129 @@ export const languageQuizzes: Quiz[] = [
     questions: [
       {
         id: "c_i_1",
-        question: "What is a pointer in C?",
-        options: ["A data type", "A variable that stores address", "A function", "A constant"],
+        question: "What is the output of the following code?\nint a = 5;\nprintf(\"%d\", a++);",
+        options: ["6", "5", "Compilation Error", "Undefined"],
         correctAnswer: 1
       },
       {
         id: "c_i_2",
-        question: "Which function is used to allocate memory dynamically?",
-        options: ["alloc()", "malloc()", "memory()", "new()"],
+        question: "Which of the following is a correct way to declare a pointer?",
+        options: ["int p;", "int *p;", "pointer p;", "int &p;"],
         correctAnswer: 1
       },
       {
         id: "c_i_3",
-        question: "What is the difference between ++i and i++?",
-        options: ["No difference", "++i is pre-increment, i++ is post-increment", "++i is faster", "i++ is safer"],
-        correctAnswer: 1
+        question: "Which operator is used to access structure members via a pointer?",
+        options: [".", "*", "->", "&"],
+        correctAnswer: 2
       },
       {
         id: "c_i_4",
-        question: "What is a structure in C?",
-        options: ["A function", "A user-defined data type", "A library", "A keyword"],
+        question: "What is the output of this code?\nint a = 10;\nint *p = &a;\n*p = 20;\nprintf(\"%d\", a);",
+        options: ["10", "20", "Compilation Error", "Garbage Value"],
         correctAnswer: 1
       },
       {
         id: "c_i_5",
-        question: "Which operator is used to access structure members using pointer?",
-        options: [".", "->", "*", "&"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_6",
-        question: "What is the purpose of the 'static' keyword?",
-        options: ["Make variable constant", "Limit scope to file", "Increase speed", "Save memory"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_7",
-        question: "What is recursion?",
-        options: ["Loop", "Function calling itself", "Memory allocation", "Error handling"],
-        correctAnswer: 1
-      },
-      {
-        id: "c_i_8",
-        question: "Which header file contains string manipulation functions?",
-        options: ["<stdio.h>", "<stdlib.h>", "<string.h>", "<math.h>"],
+        question: "Which of the following is a valid declaration of an array?",
+        options: ["int arr(5);", "int arr[] = new int[5];", "int arr[5];", "array arr[5];"],
         correctAnswer: 2
       },
       {
+        id: "c_i_6",
+        question: "Which function is used to find the length of a string?",
+        options: ["strlen()", "length()", "size()", "len()"],
+        correctAnswer: 0
+      },
+      {
+        id: "c_i_7",
+        question: "What is the output?\nint x = 3;\nprintf(\"%d\", x == 3);",
+        options: ["true", "false", "1", "0"],
+        correctAnswer: 2
+      },
+      {
+        id: "c_i_8",
+        question: "Which function is used to dynamically allocate memory?",
+        options: ["calloc()", "malloc()", "new", "memory_alloc()"],
+        correctAnswer: 1
+      },
+      {
         id: "c_i_9",
-        question: "What is the difference between call by value and call by reference?",
-        options: ["No difference", "Call by value passes copy, call by reference passes address", "Call by reference is faster", "Call by value is safer"],
+        question: "Which header is needed for malloc()?",
+        options: ["stdio.h", "stdlib.h", "malloc.h", "string.h"],
         correctAnswer: 1
       },
       {
         id: "c_i_10",
-        question: "What is an array?",
-        options: ["A single variable", "Collection of similar data types", "A function", "A pointer"],
-        correctAnswer: 1
+        question: "What is a void pointer?",
+        options: ["A pointer to int", "Pointer to char", "Generic pointer", "NULL pointer"],
+        correctAnswer: 2
       },
       {
         id: "c_i_11",
-        question: "Which function is used to copy strings?",
-        options: ["strcopy()", "strcpy()", "stringcopy()", "copy()"],
+        question: "What is the output?\nint arr[] = {1,2,3};\nprintf(\"%d\", *(arr + 1));",
+        options: ["1", "2", "3", "Error"],
         correctAnswer: 1
       },
       {
         id: "c_i_12",
-        question: "What is the purpose of the 'const' keyword?",
-        options: ["Make variable constant", "Increase speed", "Save memory", "Error handling"],
-        correctAnswer: 0
+        question: "Which function copies one string into another?",
+        options: ["strcopy()", "strcpy()", "copystr()", "stringcopy()"],
+        correctAnswer: 1
       },
       {
         id: "c_i_13",
-        question: "What is a union in C?",
-        options: ["Same as structure", "Shares memory among members", "A function", "A library"],
+        question: "What is the output?\nint a = 5;\nint b = a++ + ++a;\nprintf(\"%d\", b);",
+        options: ["10", "12", "11", "13"],
         correctAnswer: 1
       },
       {
         id: "c_i_14",
-        question: "Which operator has the highest precedence?",
-        options: ["*", "+", "()", "="],
-        correctAnswer: 2
+        question: "How many times will this loop run?\nfor(int i = 0; i < 5; ++i){}",
+        options: ["6", "5", "4", "Infinite"],
+        correctAnswer: 1
       },
       {
         id: "c_i_15",
-        question: "What is the purpose of the 'extern' keyword?",
-        options: ["External linkage", "Make variable constant", "Increase speed", "Error handling"],
+        question: "What is the return type of sizeof?",
+        options: ["int", "long", "size_t", "float"],
+        correctAnswer: 2
+      },
+      {
+        id: "c_i_16",
+        question: "Which keyword is used to prevent modification?",
+        options: ["fix", "const", "static", "immutable"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_i_17",
+        question: "Which of the following is a storage class in C?",
+        options: ["auto", "main", "switch", "loop"],
         correctAnswer: 0
+      },
+      {
+        id: "c_i_18",
+        question: "Which keyword is used for conditional branching?",
+        options: ["loop", "if", "do", "static"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_i_19",
+        question: "Which loop is guaranteed to execute at least once?",
+        options: ["for", "while", "do...while", "none"],
+        correctAnswer: 2
+      },
+      {
+        id: "c_i_20",
+        question: "How to declare a function with no return and no parameters?",
+        options: ["void f()", "int f(void)", "function f()", "f()"],
+        correctAnswer: 0
+      },
+      {
+        id: "c_i_21",
+        question: "What is the correct way to free memory?",
+        options: ["remove(ptr);", "free(ptr);", "delete ptr;", "free_memory(ptr);"],
+        correctAnswer: 1
       }
     ],
     recommendations: {
@@ -284,122 +373,128 @@ export const languageQuizzes: Quiz[] = [
     questions: [
       {
         id: "c_a_1",
-        question: "What is a function pointer?",
-        options: ["Pointer to a function", "Function that returns pointer", "Pointer inside function", "Function with pointer parameter"],
-        correctAnswer: 0
+        question: "What is the output of this code?\nint x = 10;\nif (x++ > 10 && ++x > 10) x++;\nprintf(\"%d\", x);",
+        options: ["10", "11", "12", "13"],
+        correctAnswer: 2
       },
       {
         id: "c_a_2",
-        question: "What is memory fragmentation?",
-        options: ["Memory corruption", "Non-contiguous free memory blocks", "Memory overflow", "Memory underflow"],
+        question: "Which of the following is not a valid storage class in C?",
+        options: ["auto", "global", "static", "register"],
         correctAnswer: 1
       },
       {
         id: "c_a_3",
-        question: "What is the difference between malloc() and calloc()?",
-        options: ["No difference", "malloc doesn't initialize, calloc initializes to zero", "calloc is faster", "malloc is safer"],
-        correctAnswer: 1
+        question: "What does #define MAX(a,b) ((a) > (b) ? (a) : (b)) illustrate?",
+        options: ["Function-like macro", "Inline function", "Recursion", "Precompiled function"],
+        correctAnswer: 0
       },
       {
         id: "c_a_4",
-        question: "What is a volatile keyword used for?",
-        options: ["Speed optimization", "Prevent compiler optimization", "Memory allocation", "Error handling"],
+        question: "What is the output of this code?\nint a = 5;\nprintf(\"%d\", a+++a);",
+        options: ["10", "11", "6", "Compilation Error"],
         correctAnswer: 1
       },
       {
         id: "c_a_5",
-        question: "What is the purpose of the 'register' keyword?",
-        options: ["Store in CPU register", "Register with OS", "Create registry entry", "Enable debugging"],
-        correctAnswer: 0
+        question: "What is the use of volatile keyword?",
+        options: ["Makes variable constant", "Prevents compiler optimization", "Allocates in register", "Makes thread-safe"],
+        correctAnswer: 1
       },
       {
         id: "c_a_6",
-        question: "What is a dangling pointer?",
-        options: ["Null pointer", "Pointer to deallocated memory", "Uninitialized pointer", "Pointer to pointer"],
+        question: "Which function moves the file pointer to a specific location?",
+        options: ["ftell()", "fseek()", "fmove()", "rewind()"],
         correctAnswer: 1
       },
       {
         id: "c_a_7",
-        question: "What is the difference between #include <> and #include \"\"?",
-        options: ["No difference", "<> for system headers, \"\" for user headers", "\"\" is faster", "<> is safer"],
-        correctAnswer: 1
+        question: "Which format specifier is used for printing pointer addresses?",
+        options: ["%p", "%x", "%d", "%u"],
+        correctAnswer: 0
       },
       {
         id: "c_a_8",
-        question: "What is a macro in C?",
-        options: ["Function", "Preprocessor directive", "Variable", "Constant"],
+        question: "What does const int *ptr mean?",
+        options: ["Pointer is constant", "Value pointed to is constant", "Both are constant", "Neither is constant"],
         correctAnswer: 1
       },
       {
         id: "c_a_9",
-        question: "What is the difference between stack and heap memory?",
-        options: ["No difference", "Stack is automatic, heap is dynamic", "Heap is faster", "Stack is unlimited"],
-        correctAnswer: 1
+        question: "Which of these cannot be static in C?",
+        options: ["Variable", "Function", "Macro", "Array"],
+        correctAnswer: 2
       },
       {
         id: "c_a_10",
-        question: "What is a segmentation fault?",
-        options: ["Compiler error", "Runtime error accessing invalid memory", "Logic error", "Syntax error"],
+        question: "Which function is used to write formatted output to a string?",
+        options: ["printf()", "sprintf()", "scanf()", "snprintf()"],
         correctAnswer: 1
       },
       {
         id: "c_a_11",
-        question: "What is the purpose of the 'typedef' keyword?",
-        options: ["Define new data type", "Create alias for existing type", "Both A and B", "None of the above"],
-        correctAnswer: 2
+        question: "Which of these is not valid in a switch statement?",
+        options: ["int", "float", "char", "enum"],
+        correctAnswer: 1
       },
       {
         id: "c_a_12",
-        question: "What is a bit field in C?",
-        options: ["Array of bits", "Structure member with specified bit width", "Binary operation", "Memory allocation"],
+        question: "Which file mode creates a binary file for reading and writing?",
+        options: ["r", "wb+", "r+", "a+"],
         correctAnswer: 1
       },
       {
         id: "c_a_13",
-        question: "What is the difference between deep copy and shallow copy?",
-        options: ["No difference", "Deep copy copies all levels, shallow copy copies first level", "Shallow is faster", "Deep is safer"],
-        correctAnswer: 1
+        question: "Which operator cannot be overloaded in C?",
+        options: ["+", "=", "Operator overloading not supported", "[]"],
+        correctAnswer: 2
       },
       {
         id: "c_a_14",
-        question: "What is a memory leak?",
-        options: ["Memory corruption", "Allocated memory not freed", "Memory overflow", "Memory underflow"],
-        correctAnswer: 1
+        question: "What will the following function return when called 3 times?\nint func() {\n  static int x = 0;\n  return ++x;\n}",
+        options: ["1 1 1", "0 1 2", "1 2 3", "0 0 0"],
+        correctAnswer: 2
       },
       {
         id: "c_a_15",
-        question: "What is the purpose of the 'restrict' keyword in C99?",
-        options: ["Restrict access", "Compiler optimization hint", "Memory protection", "Error handling"],
-        correctAnswer: 1
+        question: "What is a memory leak?",
+        options: ["Accessing uninitialized memory", "Reading freed memory", "Allocated memory not freed", "Stack overflow"],
+        correctAnswer: 2
       },
       {
         id: "c_a_16",
-        question: "What is a callback function?",
-        options: ["Function that calls back", "Function passed as parameter", "Recursive function", "Inline function"],
-        correctAnswer: 1
+        question: "Which of the following is used for low-level I/O in C?",
+        options: ["read() / write()", "printf()", "scanf()", "fprintf()"],
+        correctAnswer: 0
       },
       {
         id: "c_a_17",
-        question: "What is the difference between signed and unsigned integers?",
-        options: ["No difference", "Signed can be negative, unsigned cannot", "Unsigned is faster", "Signed is safer"],
+        question: "Which preprocessor directive is used for conditional compilation?",
+        options: ["#define", "#ifdef", "#pragma", "#error"],
         correctAnswer: 1
       },
       {
         id: "c_a_18",
-        question: "What is endianness?",
-        options: ["Memory layout", "Byte order in memory", "Compiler setting", "CPU architecture"],
-        correctAnswer: 1
+        question: "What is the purpose of union in C?",
+        options: ["Group different data types (but only one active at a time)", "Memory protection", "Thread safety", "Memory expansion"],
+        correctAnswer: 0
       },
       {
         id: "c_a_19",
-        question: "What is the purpose of the 'inline' keyword?",
-        options: ["Force inlining", "Suggest inlining to compiler", "Prevent inlining", "Enable debugging"],
+        question: "What is a dangling pointer?",
+        options: ["Uninitialized pointer", "Points to freed memory", "NULL pointer", "Static pointer"],
         correctAnswer: 1
       },
       {
         id: "c_a_20",
-        question: "What is a race condition?",
-        options: ["Speed competition", "Multiple threads accessing shared resource", "Compiler optimization", "Memory allocation"],
+        question: "Which function is used to compare strings in C?",
+        options: ["strcopy()", "strcmp()", "strcat()", "strcmpi()"],
+        correctAnswer: 1
+      },
+      {
+        id: "c_a_21",
+        question: "What is the output of this recursive function?\nint rec(int n) {\n  if(n==0) return 0;\n  return n + rec(n-1);\n}\nCall rec(3);",
+        options: ["3", "6", "0", "9"],
         correctAnswer: 1
       }
     ],
@@ -818,9 +913,9 @@ export const languageQuizzes: Quiz[] = [
       }
     ],
     recommendations: {
-      lowScore: languageResources["JavaScript"] || [],
-      mediumScore: languageResources["JavaScript"] || [],
-      highScore: languageResources["JavaScript"] || []
+      lowScore: [],
+      mediumScore: [],
+      highScore: []
     }
   },
 

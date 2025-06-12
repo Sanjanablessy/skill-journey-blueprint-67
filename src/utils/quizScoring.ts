@@ -37,90 +37,98 @@ export const calculateQuizResult = (
     level = 'low';
   }
 
-  // Generate feedback based on difficulty and performance
+  // Generate C-specific feedback based on difficulty and performance
   switch (difficulty) {
     case 'beginner':
       if (level === 'high') {
-        feedback = "Excellent! You have a strong grasp of the basics.";
+        feedback = "Excellent! You have a strong grasp of C programming basics.";
         recommendations = [
-          "You're ready to move to intermediate level",
-          "Practice implementing basic concepts in projects",
-          "Review advanced syntax and features"
+          "You're ready to move to intermediate C programming",
+          "Focus on pointers, structures, and memory management",
+          "Practice implementing basic data structures in C",
+          "Learn about dynamic memory allocation (malloc, free)"
         ];
-        nextStep = "Take the Intermediate quiz to test your next level skills!";
+        nextStep = "Take the C Intermediate quiz to test your next level skills!";
       } else if (level === 'medium') {
-        feedback = "Good progress! You understand most basic concepts but need some improvement.";
+        feedback = "Good progress! You understand most basic C concepts but need some improvement.";
         recommendations = [
-          "Review the areas where you scored lower",
-          "Practice with more coding exercises",
-          "Strengthen your understanding of fundamental concepts"
+          "Review C syntax and basic data types",
+          "Practice with more C programming exercises",
+          "Strengthen understanding of arrays and strings",
+          "Focus on input/output operations and printf/scanf"
         ];
-        nextStep = "Review basic concepts more and then try the Intermediate quiz.";
+        nextStep = "Review basic C concepts more and then try the Intermediate quiz.";
       } else {
-        feedback = "You're still learning the basics. Don't worry, everyone starts here!";
+        feedback = "You're still learning C basics. Don't worry, everyone starts here!";
         recommendations = [
-          "Focus on learning fundamental concepts",
-          "Take your time with basic syntax and operations",
-          "Practice with simple exercises daily"
+          "Focus on learning C fundamentals: variables, data types, operators",
+          "Practice basic C syntax and program structure",
+          "Learn about functions and parameter passing",
+          "Understand basic control structures (if, loops)"
         ];
-        nextStep = "Continue studying basics and retake this quiz when you feel more confident.";
+        nextStep = "Continue studying C basics and retake this quiz when you feel more confident.";
       }
       break;
 
     case 'intermediate':
       if (level === 'high') {
-        feedback = "Great work! You have solid intermediate knowledge.";
+        feedback = "Great work! You have solid intermediate knowledge of C programming.";
         recommendations = [
-          "You're ready for advanced topics",
-          "Start working on complex projects",
-          "Learn best practices and design patterns"
+          "You're ready for advanced C topics",
+          "Start working on complex pointer operations",
+          "Learn advanced memory management techniques",
+          "Study function pointers and callback functions"
         ];
-        nextStep = "Challenge yourself with the Advanced quiz!";
+        nextStep = "Challenge yourself with the C Advanced quiz!";
       } else if (level === 'medium') {
-        feedback = "You're making good progress with intermediate concepts.";
+        feedback = "You're making good progress with intermediate C concepts.";
         recommendations = [
-          "Review intermediate topics you missed",
-          "Practice more complex programming problems",
-          "Focus on understanding deeper concepts"
+          "Review pointer operations and pointer arithmetic",
+          "Practice more with structures and unions",
+          "Focus on string manipulation functions",
+          "Strengthen understanding of dynamic memory allocation"
         ];
-        nextStep = "Strengthen your intermediate knowledge before moving to advanced.";
+        nextStep = "Strengthen your intermediate C knowledge before moving to advanced.";
       } else {
-        feedback = "You might want to review basic concepts before tackling intermediate material.";
+        feedback = "You might want to review basic C concepts before tackling intermediate material.";
         recommendations = [
-          "Go back to basic fundamentals",
-          "Make sure you understand core concepts thoroughly",
-          "Practice basic programming exercises"
+          "Go back to C fundamentals and basic syntax",
+          "Make sure you understand variables, arrays, and functions",
+          "Practice basic pointer concepts",
+          "Review input/output operations thoroughly"
         ];
-        nextStep = "Consider retaking the Basic quiz and strengthening fundamentals.";
+        nextStep = "Consider retaking the C Basic quiz and strengthening fundamentals.";
       }
       break;
 
     case 'advanced':
       if (level === 'high') {
-        feedback = "Outstanding! You have mastered advanced concepts in this language.";
+        feedback = "Outstanding! You have mastered advanced C programming concepts.";
         recommendations = [
-          "You have expert-level knowledge",
-          "Consider contributing to open source projects",
-          "Mentor others learning this language",
-          "Explore cutting-edge features and updates"
+          "You have expert-level C knowledge",
+          "Consider contributing to C open source projects",
+          "Learn system programming and OS concepts",
+          "Explore embedded C programming or kernel development"
         ];
-        nextStep = "You've mastered this language! Consider learning related technologies or specializing further.";
+        nextStep = "You've mastered C! Consider learning C++, system programming, or embedded development.";
       } else if (level === 'medium') {
-        feedback = "You understand most advanced concepts but there's room for improvement.";
+        feedback = "You understand most advanced C concepts but there's room for improvement.";
         recommendations = [
-          "Review advanced topics you missed",
-          "Work on complex real-world projects",
-          "Study advanced design patterns and architectures"
+          "Review advanced pointer concepts and function pointers",
+          "Study memory management and optimization techniques",
+          "Practice with complex data structures implementation",
+          "Learn about preprocessor directives and macros"
         ];
-        nextStep = "Continue practicing advanced concepts and retake this quiz to track improvement.";
+        nextStep = "Continue practicing advanced C concepts and retake this quiz to track improvement.";
       } else {
-        feedback = "Advanced concepts are challenging. Consider reviewing intermediate material first.";
+        feedback = "Advanced C concepts are challenging. Consider reviewing intermediate material first.";
         recommendations = [
-          "Strengthen your intermediate knowledge",
-          "Focus on understanding core advanced concepts",
-          "Practice with guided advanced tutorials"
+          "Strengthen your intermediate C knowledge",
+          "Focus on understanding pointers and memory management",
+          "Practice with structures and dynamic allocation",
+          "Review string manipulation and file operations"
         ];
-        nextStep = "Review intermediate concepts before attempting advanced material again.";
+        nextStep = "Review intermediate C concepts before attempting advanced material again.";
       }
       break;
   }
@@ -145,15 +153,15 @@ export const getLanguageProgress = (
   let weakAreas: string[] = [];
   let recommendations: string[] = [];
 
-  // Determine overall level
+  // Determine overall level for C programming
   if (advancedResult && advancedResult.level === 'high') {
     overallLevel = 'expert';
-    recommendations.push(`You have expert-level knowledge in ${languageName}!`);
-    recommendations.push("Consider specializing in advanced topics or teaching others");
+    recommendations.push(`You have expert-level knowledge in ${languageName} programming!`);
+    recommendations.push("Consider specializing in system programming, embedded development, or kernel programming");
   } else if (advancedResult && advancedResult.level === 'medium') {
     overallLevel = 'advanced';
     recommendations.push(`You're at an advanced level in ${languageName}`);
-    recommendations.push("Focus on mastering the advanced concepts you missed");
+    recommendations.push("Focus on mastering advanced concepts like function pointers and memory optimization");
   } else if (intermediateResult && intermediateResult.level === 'high') {
     overallLevel = 'advanced';
     recommendations.push(`You're ready for advanced ${languageName} topics`);
@@ -161,26 +169,32 @@ export const getLanguageProgress = (
   } else if (intermediateResult && intermediateResult.level === 'medium') {
     overallLevel = 'intermediate';
     recommendations.push(`You have solid intermediate knowledge in ${languageName}`);
-    recommendations.push("Strengthen your intermediate skills before moving to advanced");
+    recommendations.push("Strengthen your pointer and memory management skills");
   } else if (basicResult && basicResult.level === 'high') {
     overallLevel = 'intermediate';
     recommendations.push(`You've mastered the basics of ${languageName}!`);
-    recommendations.push("You're ready to tackle intermediate concepts");
+    recommendations.push("You're ready to tackle intermediate concepts like pointers and structures");
   } else {
     overallLevel = 'beginner';
     recommendations.push(`Continue learning the fundamentals of ${languageName}`);
-    recommendations.push("Practice basic concepts regularly");
+    recommendations.push("Focus on basic syntax, data types, and control structures");
   }
 
-  // Identify weak areas
+  // Identify weak areas specific to C programming
   if (basicResult && basicResult.level === 'low') {
-    weakAreas.push("Basic fundamentals and syntax");
+    weakAreas.push("Basic C syntax and fundamentals");
+    weakAreas.push("Variables, data types, and operators");
+    weakAreas.push("Basic input/output operations");
   }
   if (intermediateResult && intermediateResult.level === 'low') {
-    weakAreas.push("Intermediate concepts and problem-solving");
+    weakAreas.push("Pointer operations and memory management");
+    weakAreas.push("Structures and string manipulation");
+    weakAreas.push("Dynamic memory allocation");
   }
   if (advancedResult && advancedResult.level === 'low') {
-    weakAreas.push("Advanced topics and complex implementations");
+    weakAreas.push("Advanced pointer concepts and function pointers");
+    weakAreas.push("Memory optimization and system-level programming");
+    weakAreas.push("Complex data structures and algorithms");
   }
 
   return {
@@ -193,13 +207,34 @@ export const getLanguageProgress = (
   };
 };
 
-// Language-specific topic recommendations
+// C-specific topic recommendations
 export const getLanguageTopics = (language: string, level: 'beginner' | 'intermediate' | 'advanced') => {
   const topics: { [key: string]: { [key: string]: string[] } } = {
     "C": {
-      beginner: ["Variables and Data Types", "Functions", "Arrays", "Pointers", "Control Structures"],
-      intermediate: ["Structures", "File Handling", "Dynamic Memory Allocation", "Recursion", "String Manipulation"],
-      advanced: ["Function Pointers", "Memory Management", "Preprocessor Directives", "System Programming", "Optimization"]
+      beginner: [
+        "Variables and Data Types", 
+        "Basic I/O Operations (printf/scanf)", 
+        "Control Structures (if/else, loops)", 
+        "Functions and Parameter Passing", 
+        "Arrays and Basic Pointers",
+        "String Handling Basics"
+      ],
+      intermediate: [
+        "Pointer Arithmetic and Operations", 
+        "Structures and Unions", 
+        "Dynamic Memory Allocation (malloc/free)", 
+        "String Manipulation Functions", 
+        "File I/O Operations",
+        "Multi-dimensional Arrays"
+      ],
+      advanced: [
+        "Function Pointers and Callbacks", 
+        "Advanced Memory Management", 
+        "Preprocessor Directives and Macros", 
+        "System Programming Concepts", 
+        "Data Structures Implementation",
+        "Performance Optimization Techniques"
+      ]
     },
     "Python": {
       beginner: ["Variables", "Functions", "Lists and Dictionaries", "Loops", "Conditionals"],
