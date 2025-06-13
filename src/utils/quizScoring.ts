@@ -67,6 +67,21 @@ export const getLanguageTopics = (language: string, difficulty: string): string[
       beginner: ['Basic Tags', 'Text Formatting', 'Links', 'Images', 'Lists', 'Tables'],
       intermediate: ['Forms', 'Semantic HTML5', 'Media Elements', 'Accessibility', 'Validation'],
       advanced: ['Canvas', 'SVG', 'Web Components', 'Progressive Web Apps', 'Performance Optimization']
+    },
+    CSS: {
+      beginner: ['Selectors', 'Properties', 'Box Model', 'Colors', 'Fonts', 'Basic Layout'],
+      intermediate: ['Flexbox', 'Grid', 'Responsive Design', 'Animations', 'Transforms', 'Media Queries'],
+      advanced: ['CSS Custom Properties', 'Advanced Selectors', 'Performance', 'Architecture', 'Preprocessing']
+    },
+    SQL: {
+      beginner: ['Basic Queries', 'SELECT Statements', 'WHERE Clauses', 'Sorting', 'Basic Functions'],
+      intermediate: ['Joins', 'Subqueries', 'Aggregations', 'Indexes', 'Views', 'Stored Procedures'],
+      advanced: ['Query Optimization', 'Transactions', 'Window Functions', 'Advanced Joins', 'Performance Tuning']
+    },
+    NoSQL: {
+      beginner: ['Document Databases', 'Key-Value Stores', 'Basic Operations', 'Data Modeling'],
+      intermediate: ['Sharding', 'Replication', 'Consistency Models', 'Performance Optimization', 'Aggregation'],
+      advanced: ['Distributed Systems', 'CAP Theorem', 'Advanced Modeling', 'Performance Tuning', 'Multi-Model Databases']
     }
   };
 

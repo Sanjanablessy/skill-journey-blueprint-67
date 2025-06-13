@@ -1,6 +1,7 @@
-
 import { Quiz, Job, Skill, Resource, Goal } from '@/types';
 import { languageQuizzes } from './languageQuizzes';
+import { webTechnologyQuizzes } from './webTechnologyQuizzes';
+import { databaseQuizzes } from './databaseQuizzes';
 
 // Mock Skills
 export const mockSkills: Skill[] = [
@@ -513,147 +514,9 @@ export const mockGoals: Goal[] = [
   }
 ];
 
-// Mock Quizzes
-export const mockQuizzes: Quiz[] = [
-  {
-    id: 'react-quiz',
-    title: 'React Fundamentals',
-    description: 'Test your knowledge of React basics',
-    skillCategory: 'Frontend Frameworks',
-    difficulty: 'beginner',
-    questions: [
-      {
-        id: 'react-1',
-        question: 'What is JSX?',
-        options: [
-          'A JavaScript library',
-          'A syntax extension for JavaScript',
-          'A CSS framework',
-          'A database'
-        ],
-        correctAnswer: 1,
-        explanation: 'JSX is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript files, commonly used with React.'
-      },
-      {
-        id: 'react-2',
-        question: 'What is a React component?',
-        options: [
-          'A reusable piece of UI',
-          'A database table',
-          'A CSS class',
-          'A JavaScript function only'
-        ],
-        correctAnswer: 0,
-        explanation: 'A React component is a reusable piece of UI that can be composed together to build complex user interfaces.'
-      },
-      {
-        id: 'react-3',
-        question: 'Which method is used to render a React component?',
-        options: [
-          'React.render()',
-          'ReactDOM.render()',
-          'Component.render()',
-          'DOM.render()'
-        ],
-        correctAnswer: 1,
-        explanation: 'ReactDOM.render() is the method used to render React components into the DOM.'
-      }
-    ]
-  },
-  {
-    id: 'node-quiz',
-    title: 'Node.js Basics',
-    description: 'Test your knowledge of Node.js fundamentals',
-    skillCategory: 'Backend Technologies',
-    difficulty: 'intermediate',
-    questions: [
-      {
-        id: 'node-1',
-        question: 'What is Node.js?',
-        options: [
-          'A web browser',
-          'A JavaScript runtime for server-side development',
-          'A database',
-          'A CSS framework'
-        ],
-        correctAnswer: 1,
-        explanation: 'Node.js is a JavaScript runtime built on Chrome\'s V8 JavaScript engine that allows you to run JavaScript on the server side.'
-      },
-      {
-        id: 'node-2',
-        question: 'What is npm?',
-        options: [
-          'Node Package Manager',
-          'Network Protocol Manager',
-          'New Programming Method',
-          'Node Performance Monitor'
-        ],
-        correctAnswer: 0,
-        explanation: 'npm stands for Node Package Manager, which is the default package manager for Node.js used to install and manage JavaScript packages.'
-      },
-      {
-        id: 'node-3',
-        question: 'Which file is used to define project dependencies in Node.js?',
-        options: [
-          'dependencies.json',
-          'package.json',
-          'node.json',
-          'config.json'
-        ],
-        correctAnswer: 1,
-        explanation: 'package.json is the file used to define project dependencies, scripts, and metadata in Node.js projects.'
-      }
-    ]
-  },
-  {
-    id: 'db-quiz',
-    title: 'Database Fundamentals',
-    description: 'Test your knowledge of database concepts',
-    skillCategory: 'Databases',
-    difficulty: 'beginner',
-    questions: [
-      {
-        id: 'db-1',
-        question: 'What does SQL stand for?',
-        options: [
-          'Structured Query Language',
-          'Simple Query Language',
-          'System Query Language',
-          'Standard Query Language'
-        ],
-        correctAnswer: 0,
-        explanation: 'SQL stands for Structured Query Language, which is used for managing and manipulating relational databases.'
-      },
-      {
-        id: 'db-2',
-        question: 'Which command is used to retrieve data from a database?',
-        options: [
-          'GET',
-          'SELECT',
-          'FETCH',
-          'RETRIEVE'
-        ],
-        correctAnswer: 1,
-        explanation: 'SELECT is the SQL command used to retrieve data from a database table.'
-      },
-      {
-        id: 'db-3',
-        question: 'What is a primary key?',
-        options: [
-          'The first column in a table',
-          'A unique identifier for each row',
-          'The most important data',
-          'A password for the database'
-        ],
-        correctAnswer: 1,
-        explanation: 'A primary key is a unique identifier for each row in a database table that ensures no duplicate records exist.'
-      }
-    ]
-  }
-];
-
-// Combine all quizzes
+// Combined quiz collection with all categories
 export const allQuizzes: Quiz[] = [
-  ...mockQuizzes,
-  ...languageQuizzes
+  ...languageQuizzes,      // Python, C, C++
+  ...webTechnologyQuizzes, // HTML, CSS, JavaScript
+  ...databaseQuizzes,      // SQL, NoSQL
 ];
