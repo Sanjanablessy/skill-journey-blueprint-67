@@ -1,260 +1,231 @@
 
-import React, { useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Progress } from "@/components/ui/progress";
-import { Check, Briefcase, Flag, BookText, Eye } from "lucide-react";
-import { useAppContext } from "@/context/AppContext";
-import { toast } from "sonner";
-import { RoadmapStep } from "@/types";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, MapPin, DollarSign, Clock, Building, Users, Briefcase } from 'lucide-react';
 
 const JobDetailPage = () => {
-  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { jobs, createGoalForJob, userSkills, getRecommendedSkills, goals } = useAppContext();
-  const [isCreatingGoal, setIsCreatingGoal] = useState(false);
-  
-  const job = jobs.find((j) => j.id === id);
-  
-  if (!job) {
-    return (
-      <div className="container px-4 md:px-6 py-8 max-w-7xl">
-        <Alert variant="destructive">
-          <AlertDescription>
-            Job not found. The job you're looking for may have been removed or doesn't exist.
-          </AlertDescription>
-        </Alert>
-        <div className="mt-4">
-          <Button onClick={() => navigate("/jobs")}>Back to Jobs</Button>
-        </div>
-      </div>
-    );
-  }
-  
-  // Check which skills the user already has
-  const userSkillIds = userSkills.map(s => s.id);
-  const missingSkills = getRecommendedSkills(job.id);
-  
-  // Check if user already has a goal for this job
-  const existingGoal = goals.find(g => g.jobId === job.id);
-  
-  const handleCreateGoal = () => {
-    setIsCreatingGoal(true);
-    
-    setTimeout(() => {
-      createGoalForJob(job.id);
-      setIsCreatingGoal(false);
-      toast.success(`Goal created for ${job.title}!`);
-      navigate("/goals");
-    }, 1000); // simulate some processing time
+  const { id } = useParams();
+
+  // Mock job data - in a real app, this would come from an API
+  const job = {
+    id: parseInt(id || '1'),
+    title: "Frontend Developer",
+    company: "Tech Corp",
+    location: "San Francisco, CA",
+    salary: "$80,000 - $120,000",
+    type: "Full-time",
+    posted: "2 days ago",
+    description: "We're looking for a skilled Frontend Developer to join our growing team. You'll be responsible for building user-facing features and ensuring great user experiences across our web applications.",
+    requirements: [
+      "3+ years of experience with React and JavaScript",
+      "Strong understanding of HTML, CSS, and responsive design",
+      "Experience with state management (Redux, Context API)",
+      "Familiarity with modern build tools (Webpack, Vite)",
+      "Knowledge of version control (Git)",
+      "Strong problem-solving and communication skills"
+    ],
+    responsibilities: [
+      "Develop and maintain user-facing web applications",
+      "Collaborate with designers to implement pixel-perfect UIs",
+      "Optimize applications for maximum speed and scalability",
+      "Participate in code reviews and mentor junior developers",
+      "Work with backend developers to integrate APIs",
+      "Stay up-to-date with emerging technologies and best practices"
+    ],
+    benefits: [
+      "Competitive salary and equity package",
+      "Health, dental, and vision insurance",
+      "401(k) with company matching",
+      "Flexible working hours and remote work options",
+      "Professional development budget",
+      "Free lunch and snacks"
+    ],
+    companyInfo: {
+      size: "50-100 employees",
+      industry: "Technology",
+      founded: "2018"
+    }
   };
 
   return (
-    <div className="container px-4 md:px-6 py-8 max-w-5xl animate-[fade-in_0.3s_ease-out]">
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="mb-6">
-        <Button variant="outline" onClick={() => navigate("/jobs")}>
-          ← Back to Jobs
+        <Button 
+          onClick={() => navigate(-1)}
+          variant="outline"
+          className="flex items-center gap-2 mb-4"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Jobs
         </Button>
       </div>
-      
-      <div className="grid gap-6 lg:grid-cols-3">
+
+      {/* Job Header */}
+      <Card className="mb-6">
+        <CardHeader>
+          <div className="flex justify-between items-start">
+            <div>
+              <CardTitle className="text-2xl mb-2">{job.title}</CardTitle>
+              <CardDescription className="text-xl font-medium text-primary mb-3">
+                {job.company}
+              </CardDescription>
+              <div className="flex flex-wrap gap-4 text-gray-600">
+                <div className="flex items-center gap-1">
+                  <MapPin className="h-4 w-4" />
+                  <span>{job.location}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <DollarSign className="h-4 w-4" />
+                  <span>{job.salary}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Briefcase className="h-4 w-4" />
+                  <span>{job.type}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Clock className="h-4 w-4" />
+                  <span>Posted {job.posted}</span>
+                </div>
+              </div>
+            </div>
+            <Button size="lg">Apply Now</Button>
+          </div>
+        </CardHeader>
+      </Card>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
-          <Card className="overflow-hidden">
-            <CardHeader className="bg-muted/30">
-              <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <Briefcase className="h-5 w-5 text-primary" />
-                    <CardTitle className="text-2xl">{job.title}</CardTitle>
-                  </div>
-                  {job.company && (
-                    <CardDescription className="text-base mt-1">
-                      {job.company}
-                    </CardDescription>
-                  )}
-                </div>
-                <Button 
-                  onClick={handleCreateGoal} 
-                  disabled={isCreatingGoal || !!existingGoal}
-                  className="flex items-center gap-2"
-                >
-                  {isCreatingGoal ? (
-                    "Creating Goal..."
-                  ) : existingGoal ? (
-                    <>
-                      <Check className="h-4 w-4" />
-                      Goal Created
-                    </>
-                  ) : (
-                    <>
-                      <Flag className="h-4 w-4" />
-                      Set as Goal
-                    </>
-                  )}
-                </Button>
-              </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                <Badge variant="outline" className="bg-primary/5">{job.category}</Badge>
-              </div>
+          {/* Job Description */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Job Description</CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-lg font-medium mb-2">Job Description</h3>
-                  <p className="text-muted-foreground">{job.description}</p>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed">{job.description}</p>
+            </CardContent>
+          </Card>
+
+          {/* Requirements */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Requirements</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2">
+                {job.requirements.map((req, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span className="text-gray-700">{req}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          {/* Responsibilities */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Responsibilities</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2">
+                {job.responsibilities.map((resp, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span className="text-gray-700">{resp}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          {/* Benefits */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Benefits & Perks</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2">
+                {job.benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span className="text-gray-700">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {/* Company Info */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Building className="h-5 w-5" />
+                Company Info
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div>
+                <div className="text-sm font-medium text-gray-700">Company Size</div>
+                <div className="flex items-center gap-1">
+                  <Users className="h-4 w-4 text-gray-500" />
+                  <span>{job.companyInfo.size}</span>
                 </div>
-                
-                <div className="bg-brand-50 p-4 rounded-md border border-brand-200">
-                  <h3 className="text-lg font-medium mb-3 flex items-center gap-2 text-brand-800">
-                    <Eye className="h-5 w-5 text-brand-600" />
-                    Required Skills
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {job.requiredSkills.map((skill) => (
-                      <Badge 
-                        key={skill.id} 
-                        variant={userSkillIds.includes(skill.id) ? "default" : "secondary"}
-                        className={cn(
-                          userSkillIds.includes(skill.id) 
-                            ? "bg-brand-600 hover:bg-brand-700" 
-                            : "bg-white border-brand-300 text-brand-800",
-                          "px-3 py-1.5 text-sm shadow-sm"
-                        )}
-                      >
-                        {userSkillIds.includes(skill.id) ? (
-                          <span className="flex items-center gap-1.5">
-                            <Check className="h-3.5 w-3.5" />
-                            {skill.name}
-                          </span>
-                        ) : (
-                          skill.name
-                        )}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
+              </div>
+              <div>
+                <div className="text-sm font-medium text-gray-700">Industry</div>
+                <span>{job.companyInfo.industry}</span>
+              </div>
+              <div>
+                <div className="text-sm font-medium text-gray-700">Founded</div>
+                <span>{job.companyInfo.founded}</span>
               </div>
             </CardContent>
           </Card>
-          
-          {missingSkills.length > 0 && (
-            <Card className="overflow-hidden">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BookText className="h-5 w-5 text-primary" />
-                  Skills You Need to Learn
-                </CardTitle>
-                <CardDescription>
-                  These are the skills you should develop to qualify for this role
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {missingSkills.map((skill) => (
-                    <div key={skill.id} className="flex justify-between items-center border-b pb-2">
-                      <div>
-                        <p className="font-medium">{skill.name}</p>
-                        <p className="text-sm text-muted-foreground">{skill.category}</p>
-                      </div>
-                      <Link to={`/skills`}>
-                        <Button variant="outline" size="sm">Learn More</Button>
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button 
-                  className="w-full" 
-                  variant="outline"
-                  onClick={handleCreateGoal}
-                  disabled={isCreatingGoal || !!existingGoal}
-                >
-                  {isCreatingGoal ? (
-                    "Creating Learning Plan..."
-                  ) : existingGoal ? (
-                    "Learning Plan Created"
-                  ) : (
-                    "Create Learning Plan"
-                  )}
-                </Button>
-              </CardFooter>
-            </Card>
-          )}
-        </div>
-        
-        <div>
-          <Card className="sticky top-24">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Flag className="h-5 w-5 text-primary" />
-                Career Path
-              </CardTitle>
-              <CardDescription>Create a roadmap to become a {job.title}</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <h4 className="font-medium">What you'll learn</h4>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  {job.requiredSkills.map((skill) => (
-                    <li key={skill.id}>{skill.name} fundamentals</li>
-                  ))}
-                  <li>Project portfolio development</li>
-                  <li>Interview preparation</li>
-                </ul>
-              </div>
-              
-              <div className="space-y-2">
-                <h4 className="font-medium">Estimated time</h4>
-                <p className="text-sm text-muted-foreground">
-                  {job.requiredSkills.length * 2}-{job.requiredSkills.length * 4} months
-                </p>
-              </div>
 
-              {existingGoal && (
-                <div className="space-y-2 pt-2">
-                  <h4 className="font-medium flex items-center gap-2">
-                    <Check className="h-4 w-4 text-green-500" />
-                    Goal in progress
-                  </h4>
-                  <Progress value={existingGoal.progress} className="h-2" />
-                  <p className="text-xs text-center text-muted-foreground">{existingGoal.progress}% complete</p>
-                </div>
-              )}
-            </CardContent>
-            <CardFooter className="flex-col gap-2">
-              {existingGoal ? (
-                <Link to="/goals" className="w-full">
-                  <Button className="w-full">
-                    View Your Roadmap
-                  </Button>
-                </Link>
-              ) : (
-                <Button 
-                  onClick={handleCreateGoal} 
-                  disabled={isCreatingGoal}
-                  className="w-full"
-                >
-                  {isCreatingGoal ? "Creating..." : "Start Learning Journey"}
+          {/* Apply Card */}
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center space-y-4">
+                <h3 className="font-semibold">Ready to Apply?</h3>
+                <p className="text-sm text-gray-600">
+                  Join {job.company} and take your career to the next level
+                </p>
+                <Button className="w-full" size="lg">
+                  Apply for this Position
                 </Button>
-              )}
-              <Link to="/skills" className="w-full">
                 <Button variant="outline" className="w-full">
-                  Assess Your Skills
+                  Save Job
                 </Button>
-              </Link>
-            </CardFooter>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Similar Jobs */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Similar Jobs</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                <div className="font-medium">React Developer</div>
+                <div className="text-sm text-gray-600">StartupXYZ • Remote</div>
+                <div className="text-sm text-primary">$75k - $110k</div>
+              </div>
+              <div className="p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                <div className="font-medium">UI/UX Developer</div>
+                <div className="text-sm text-gray-600">Design Co • Austin, TX</div>
+                <div className="text-sm text-primary">$70k - $100k</div>
+              </div>
+            </CardContent>
           </Card>
         </div>
       </div>

@@ -1,13 +1,15 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { User, Mail, Calendar } from 'lucide-react';
+import { User, Mail, Calendar, ArrowLeft } from 'lucide-react';
 
 const ProfilePage = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   if (!user) {
     return (
@@ -32,9 +34,19 @@ const ProfilePage = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
       <div className="space-y-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
-          <p className="mt-2 text-gray-600">Manage your account information</p>
+        <div className="mb-6">
+          <Button 
+            onClick={() => navigate(-1)}
+            variant="outline"
+            className="flex items-center gap-2 mb-4"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back
+          </Button>
+          <div className="text-center">
+            <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
+            <p className="mt-2 text-gray-600">Manage your account information</p>
+          </div>
         </div>
 
         <Card>

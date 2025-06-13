@@ -1,188 +1,94 @@
 
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Briefcase, Search } from "lucide-react";
-import { useAppContext } from "@/context/AppContext";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowLeft, Briefcase, MapPin, DollarSign } from 'lucide-react';
 
 const JobsPage = () => {
-  const { jobs } = useAppContext();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [filteredJobs, setFilteredJobs] = useState<typeof jobs>([]);
-  const [visibleJobsCount, setVisibleJobsCount] = useState(12);
+  const navigate = useNavigate();
 
-  // Get unique job categories
-  const categories = Array.from(new Set(jobs.map((job) => job.category)));
-
-  useEffect(() => {
-    const filtered = jobs.filter((job) => {
-      const matchesSearch = 
-        job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (job.company && job.company.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        job.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        job.requiredSkills.some(skill => 
-          skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          skill.category.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      
-      const matchesCategory = selectedCategory ? job.category === selectedCategory : true;
-      
-      return matchesSearch && matchesCategory;
-    });
-    
-    setFilteredJobs(filtered);
-    setVisibleJobsCount(12); // Reset visible count when filters change
-  }, [searchTerm, selectedCategory, jobs]);
-
-  const visibleJobs = filteredJobs.slice(0, visibleJobsCount);
-  const hasMoreJobs = visibleJobsCount < filteredJobs.length;
-
-  const loadMoreJobs = () => {
-    setVisibleJobsCount(prev => Math.min(prev + 12, filteredJobs.length));
-  };
+  const jobs = [
+    {
+      id: 1,
+      title: "Frontend Developer",
+      company: "Tech Corp",
+      location: "San Francisco, CA",
+      salary: "$80,000 - $120,000",
+      type: "Full-time",
+      description: "We're looking for a skilled Frontend Developer..."
+    },
+    {
+      id: 2,
+      title: "Backend Engineer",
+      company: "StartupXYZ",
+      location: "Remote",
+      salary: "$90,000 - $130,000",
+      type: "Full-time",
+      description: "Join our growing team as a Backend Engineer..."
+    },
+    {
+      id: 3,
+      title: "Full Stack Developer",
+      company: "Digital Agency",
+      location: "New York, NY",
+      salary: "$85,000 - $125,000",
+      type: "Contract",
+      description: "Exciting opportunity for a Full Stack Developer..."
+    }
+  ];
 
   return (
-    <div className="container px-4 md:px-6 py-8 max-w-7xl">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
-            <Briefcase className="h-8 w-8 text-primary" />
-            IT Jobs
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            Explore available jobs in the IT industry and find your perfect role
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search jobs..."
-              className="pl-8 w-full md:w-[300px]"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-        </div>
+    <div className="container mx-auto px-4 py-8">
+      <div className="mb-6">
+        <Button 
+          onClick={() => navigate(-1)}
+          variant="outline"
+          className="flex items-center gap-2 mb-4"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back
+        </Button>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">IT Job Opportunities</h1>
+        <p className="text-gray-600">Discover your next career opportunity in technology</p>
       </div>
 
-      {/* Category Filters */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        <Button
-          variant={selectedCategory === null ? "default" : "outline"}
-          size="sm"
-          onClick={() => setSelectedCategory(null)}
-          className="rounded-full bg-primary/80 hover:bg-primary"
-        >
-          All
-        </Button>
-        {categories.map((category) => (
-          <Button
-            key={category}
-            variant={selectedCategory === category ? "default" : "outline"}
-            size="sm"
-            onClick={() => setSelectedCategory(category)}
-            className={cn(
-              "rounded-full",
-              selectedCategory === category 
-                ? "bg-primary text-primary-foreground" 
-                : "bg-accent/60 text-accent-foreground hover:bg-accent"
-            )}
-          >
-            {category}
-          </Button>
+      <div className="grid gap-6">
+        {jobs.map((job) => (
+          <Card key={job.id} className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="flex justify-between items-start">
+                <div>
+                  <CardTitle className="text-xl mb-2">{job.title}</CardTitle>
+                  <CardDescription className="text-lg font-medium text-primary">
+                    {job.company}
+                  </CardDescription>
+                </div>
+                <Button variant="outline" onClick={() => navigate(`/jobs/${job.id}`)}>
+                  View Details
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <MapPin className="h-4 w-4" />
+                  <span>{job.location}</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <DollarSign className="h-4 w-4" />
+                  <span>{job.salary}</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <Briefcase className="h-4 w-4" />
+                  <span>{job.type}</span>
+                </div>
+                <p className="text-gray-700 mt-3">{job.description}</p>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
-
-      {/* Results count */}
-      <div className="mb-4">
-        <p className="text-sm text-muted-foreground">
-          Showing {visibleJobs.length} of {filteredJobs.length} jobs
-        </p>
-      </div>
-
-      {/* Jobs List */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {visibleJobs.length > 0 ? (
-          visibleJobs.map((job, index) => (
-            <Card 
-              key={job.id} 
-              className={cn(
-                "overflow-hidden transition-all hover:shadow-md fade-in",
-                { "animate-[fade-in_0.3s_ease-out]": true }
-              )}
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <CardHeader className="pb-3">
-                <CardTitle className="text-xl">{job.title}</CardTitle>
-                <CardDescription className="flex items-center gap-2">
-                  {job.company && <span>{job.company}</span>}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pb-4">
-                <div className="mb-4">
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {job.description}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-1 mb-3">
-                  <Badge variant="outline" className="bg-primary/5">{job.category}</Badge>
-                </div>
-                <div className="flex flex-wrap gap-1">
-                  {job.requiredSkills.slice(0, 3).map((skill) => (
-                    <Badge key={skill.id} variant="secondary" className="bg-secondary/30 text-foreground">
-                      {skill.name}
-                    </Badge>
-                  ))}
-                  {job.requiredSkills.length > 3 && (
-                    <Badge variant="secondary" className="bg-secondary/30 text-foreground">
-                      +{job.requiredSkills.length - 3} more
-                    </Badge>
-                  )}
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Link to={`/jobs/${job.id}`} className="w-full">
-                  <Button className="w-full">View Details</Button>
-                </Link>
-              </CardFooter>
-            </Card>
-          ))
-        ) : (
-          <div className="col-span-full text-center py-12">
-            <h3 className="text-lg font-medium mb-2">No jobs found</h3>
-            <p className="text-muted-foreground">
-              Try adjusting your search or filters
-            </p>
-          </div>
-        )}
-      </div>
-
-      {/* Load More Button */}
-      {hasMoreJobs && (
-        <div className="flex justify-center mt-8">
-          <Button 
-            onClick={loadMoreJobs}
-            variant="outline"
-            className="px-8"
-          >
-            Load More Jobs ({filteredJobs.length - visibleJobsCount} remaining)
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
