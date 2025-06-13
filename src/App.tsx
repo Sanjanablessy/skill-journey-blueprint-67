@@ -8,6 +8,7 @@ import { AppProvider } from "@/context/AppContext";
 import { AuthProvider } from "@/context/AuthContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import HomePage from "@/pages/HomePage";
 import JobsPage from "@/pages/JobsPage";
 import JobDetailPage from "@/pages/JobDetailPage";
@@ -32,14 +33,42 @@ const App = () => (
               <Header />
               <main className="flex-1">
                 <Routes>
-                  <Route path="/" element={<HomePage />} />
                   <Route path="/auth" element={<AuthPage />} />
-                  <Route path="/profile" element={<ProfilePage />} />
-                  <Route path="/jobs" element={<JobsPage />} />
-                  <Route path="/jobs/:id" element={<JobDetailPage />} />
-                  <Route path="/skills" element={<SkillsPage />} />
-                  <Route path="/quizzes" element={<LanguageQuizzesPage />} />
-                  <Route path="/goals" element={<GoalsPage />} />
+                  <Route path="/" element={
+                    <ProtectedRoute>
+                      <HomePage />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/profile" element={
+                    <ProtectedRoute>
+                      <ProfilePage />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/jobs" element={
+                    <ProtectedRoute>
+                      <JobsPage />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/jobs/:id" element={
+                    <ProtectedRoute>
+                      <JobDetailPage />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/skills" element={
+                    <ProtectedRoute>
+                      <SkillsPage />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/quizzes" element={
+                    <ProtectedRoute>
+                      <LanguageQuizzesPage />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/goals" element={
+                    <ProtectedRoute>
+                      <GoalsPage />
+                    </ProtectedRoute>
+                  } />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

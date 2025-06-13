@@ -7,8 +7,9 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { CheckCircle, XCircle, ArrowRight, RotateCcw } from 'lucide-react';
+import { CheckCircle, XCircle, ArrowRight, RotateCcw, AlertCircle } from 'lucide-react';
 import { calculateQuizResult, getLanguageTopics } from '@/utils/quizScoring';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface LanguageQuizTakerProps {
   quiz: Quiz;
@@ -25,8 +26,10 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
   const [showResults, setShowResults] = useState(false);
   const [quizResult, setQuizResult] = useState<any>(null);
-  const [timeRemaining, setTimeRemaining] = useState(600); // 10 minutes
+  const [timeRemaining, setTimeRemaining] = useState(900); // 15 minutes
   const [isTimerActive, setIsTimerActive] = useState(true);
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [questionResults, setQuestionResults] = useState<{ [key: number]: { correct: boolean; explanation: string } }>({});
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
@@ -54,9 +57,44 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
       ...selectedAnswers,
       [currentQuestionIndex]: answerIndex
     });
+    setShowExplanation(false);
+  };
+
+  const getExplanation = (questionIndex: number, selectedAnswer: number, correctAnswer: number) => {
+    const question = quiz.questions[questionIndex];
+    const isCorrect = selectedAnswer === correctAnswer;
+    
+    if (isCorrect) {
+      return `Correct! ${question.options[correctAnswer]} is the right answer.`;
+    } else {
+      return `Incorrect. You selected "${question.options[selectedAnswer]}" but the correct answer is "${question.options[correctAnswer]}". This is because the correct option demonstrates the proper syntax/concept for this programming language feature.`;
+    }
   };
 
   const handleNext = () => {
+    const selectedAnswer = selectedAnswers[currentQuestionIndex];
+    const correctAnswer = currentQuestion.correctAnswer;
+    const isCorrect = selectedAnswer === correctAnswer;
+    
+    // Store the result and explanation for this question
+    setQuestionResults(prev => ({
+      ...prev,
+      [currentQuestionIndex]: {
+        correct: isCorrect,
+        explanation: getExplanation(currentQuestionIndex, selectedAnswer, correctAnswer)
+      }
+    }));
+
+    if (!isCorrect) {
+      setShowExplanation(true);
+      return;
+    }
+
+    proceedToNext();
+  };
+
+  const proceedToNext = () => {
+    setShowExplanation(false);
     if (currentQuestionIndex < quiz.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -66,6 +104,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
 
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
+      setShowExplanation(false);
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
@@ -93,7 +132,8 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
       language: language,
       suggestedTopics: topics,
       answeredQuestions: Object.keys(selectedAnswers).length,
-      totalQuestions: quiz.questions.length
+      totalQuestions: quiz.questions.length,
+      questionResults: questionResults
     };
 
     setQuizResult(enhancedResult);
@@ -106,8 +146,10 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
     setSelectedAnswers({});
     setShowResults(false);
     setQuizResult(null);
-    setTimeRemaining(600);
+    setTimeRemaining(900); // Reset to 15 minutes
     setIsTimerActive(true);
+    setShowExplanation(false);
+    setQuestionResults({});
   };
 
   if (showResults && quizResult) {
@@ -244,7 +286,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
         </CardHeader>
         <CardContent>
           <RadioGroup
-            value={selectedAnswers[currentQuestionIndex]?.toString()}
+            value={selectedAnswers[currentQuestionIndex]?.toString() || ""}
             onValueChange={(value) => handleAnswerSelect(parseInt(value))}
           >
             {currentQuestion.options.map((option, index) => (
@@ -256,6 +298,16 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
               </div>
             ))}
           </RadioGroup>
+
+          {/* Show explanation if answer is wrong */}
+          {showExplanation && questionResults[currentQuestionIndex] && (
+            <Alert className="mt-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                {questionResults[currentQuestionIndex].explanation}
+              </AlertDescription>
+            </Alert>
+          )}
         </CardContent>
       </Card>
 
@@ -274,7 +326,11 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
             Exit Quiz
           </Button>
           
-          {currentQuestionIndex === quiz.questions.length - 1 ? (
+          {showExplanation ? (
+            <Button onClick={proceedToNext}>
+              Continue
+            </Button>
+          ) : currentQuestionIndex === quiz.questions.length - 1 ? (
             <Button 
               onClick={handleSubmit}
               disabled={selectedAnswers[currentQuestionIndex] === undefined}
