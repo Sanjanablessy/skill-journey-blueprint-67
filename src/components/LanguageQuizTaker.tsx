@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { CheckCircle, XCircle, ArrowRight, RotateCcw, AlertCircle } from 'lucide-react';
 import { calculateQuizResult, getLanguageTopics } from '@/utils/quizScoring';
@@ -23,7 +23,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
   onBackToSelection 
 }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
+  const [userAnswers, setUserAnswers] = useState<{ [key: number]: string }>({});
   const [showResults, setShowResults] = useState(false);
   const [quizResult, setQuizResult] = useState<any>(null);
   const [timeRemaining, setTimeRemaining] = useState(900); // 15 minutes
@@ -52,36 +52,53 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-  const handleAnswerSelect = (answerIndex: number) => {
-    setSelectedAnswers({
-      ...selectedAnswers,
-      [currentQuestionIndex]: answerIndex
+  const handleAnswerInput = (value: string) => {
+    setUserAnswers({
+      ...userAnswers,
+      [currentQuestionIndex]: value
     });
     setShowExplanation(false);
   };
 
-  const getExplanation = (questionIndex: number, selectedAnswer: number, correctAnswer: number) => {
-    const question = quiz.questions[questionIndex];
-    const isCorrect = selectedAnswer === correctAnswer;
+  const findClosestOption = (userInput: string, options: string[]): number => {
+    const input = userInput.toLowerCase().trim();
     
-    if (isCorrect) {
-      return `Correct! ${question.options[correctAnswer]} is the right answer.`;
-    } else {
-      return `Incorrect. You selected "${question.options[selectedAnswer]}" but the correct answer is "${question.options[correctAnswer]}". This is because the correct option demonstrates the proper syntax/concept for this programming language feature.`;
+    // First try exact match
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].toLowerCase() === input) {
+        return i;
+      }
     }
+    
+    // Then try partial match
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].toLowerCase().includes(input) || input.includes(options[i].toLowerCase())) {
+        return i;
+      }
+    }
+    
+    // Try matching by option letter (A, B, C, D)
+    const optionLetters = ['a', 'b', 'c', 'd'];
+    const letterIndex = optionLetters.indexOf(input);
+    if (letterIndex !== -1 && letterIndex < options.length) {
+      return letterIndex;
+    }
+    
+    return -1; // No match found
   };
 
   const handleNext = () => {
-    const selectedAnswer = selectedAnswers[currentQuestionIndex];
+    const userInput = userAnswers[currentQuestionIndex]?.trim() || '';
+    const selectedOptionIndex = findClosestOption(userInput, currentQuestion.options);
     const correctAnswer = currentQuestion.correctAnswer;
-    const isCorrect = selectedAnswer === correctAnswer;
+    const isCorrect = selectedOptionIndex === correctAnswer;
     
     // Store the result and explanation for this question
     setQuestionResults(prev => ({
       ...prev,
       [currentQuestionIndex]: {
         correct: isCorrect,
-        explanation: getExplanation(currentQuestionIndex, selectedAnswer, correctAnswer)
+        explanation: currentQuestion.explanation
       }
     }));
 
@@ -115,7 +132,9 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
     // Calculate score
     let correctAnswers = 0;
     quiz.questions.forEach((question, index) => {
-      if (selectedAnswers[index] === question.correctAnswer) {
+      const userInput = userAnswers[index]?.trim() || '';
+      const selectedOptionIndex = findClosestOption(userInput, question.options);
+      if (selectedOptionIndex === question.correctAnswer) {
         correctAnswers++;
       }
     });
@@ -131,7 +150,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
       quiz: quiz,
       language: language,
       suggestedTopics: topics,
-      answeredQuestions: Object.keys(selectedAnswers).length,
+      answeredQuestions: Object.keys(userAnswers).length,
       totalQuestions: quiz.questions.length,
       questionResults: questionResults
     };
@@ -143,7 +162,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
 
   const resetQuiz = () => {
     setCurrentQuestionIndex(0);
-    setSelectedAnswers({});
+    setUserAnswers({});
     setShowResults(false);
     setQuizResult(null);
     setTimeRemaining(900); // Reset to 15 minutes
@@ -271,7 +290,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
             <span>Question {currentQuestionIndex + 1} of {quiz.questions.length}</span>
-            <span>{Object.keys(selectedAnswers).length} answered</span>
+            <span>{Object.keys(userAnswers).length} answered</span>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
@@ -285,29 +304,34 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <RadioGroup
-            value={selectedAnswers[currentQuestionIndex]?.toString() || ""}
-            onValueChange={(value) => handleAnswerSelect(parseInt(value))}
-          >
-            {currentQuestion.options.map((option, index) => (
-              <div key={index} className="flex items-center space-x-2 p-3 rounded-lg hover:bg-muted">
-                <RadioGroupItem value={index.toString()} id={`option-${index}`} />
-                <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
-                  {option}
-                </Label>
-              </div>
-            ))}
-          </RadioGroup>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="answer-input" className="text-sm font-medium">
+                Type your answer:
+              </Label>
+              <Input
+                id="answer-input"
+                type="text"
+                placeholder="Enter your answer (e.g., A, B, .py, def, etc.)"
+                value={userAnswers[currentQuestionIndex] || ''}
+                onChange={(e) => handleAnswerInput(e.target.value)}
+                className="mt-1"
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Available options: {currentQuestion.options.map((opt, idx) => `${String.fromCharCode(65 + idx)}) ${opt}`).join(', ')}
+              </p>
+            </div>
 
-          {/* Show explanation if answer is wrong */}
-          {showExplanation && questionResults[currentQuestionIndex] && (
-            <Alert className="mt-4">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>
-                {questionResults[currentQuestionIndex].explanation}
-              </AlertDescription>
-            </Alert>
-          )}
+            {/* Show explanation if answer is wrong */}
+            {showExplanation && questionResults[currentQuestionIndex] && (
+              <Alert className="mt-4">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Explanation:</strong> {questionResults[currentQuestionIndex].explanation}
+                </AlertDescription>
+              </Alert>
+            )}
+          </div>
         </CardContent>
       </Card>
 
@@ -333,14 +357,14 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
           ) : currentQuestionIndex === quiz.questions.length - 1 ? (
             <Button 
               onClick={handleSubmit}
-              disabled={selectedAnswers[currentQuestionIndex] === undefined}
+              disabled={!userAnswers[currentQuestionIndex]?.trim()}
             >
               Submit Quiz
             </Button>
           ) : (
             <Button 
               onClick={handleNext}
-              disabled={selectedAnswers[currentQuestionIndex] === undefined}
+              disabled={!userAnswers[currentQuestionIndex]?.trim()}
             >
               Next
             </Button>
