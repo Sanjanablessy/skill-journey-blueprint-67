@@ -1,207 +1,201 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Target, Plus, CheckCircle, Clock, AlertCircle } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Progress } from "@/components/ui/progress";
+import { useAppContext } from "@/context/AppContext";
+import { CheckCircle } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 const GoalsPage = () => {
-  const navigate = useNavigate();
+  const { goals, jobs, skills, updateRoadmapStep } = useAppContext();
   
-  const [goals] = useState([
-    {
-      id: 1,
-      title: "Learn React Advanced Patterns",
-      description: "Master hooks, context, and performance optimization",
-      progress: 75,
-      status: "in-progress",
-      deadline: "2024-07-15",
-      category: "Frontend"
-    },
-    {
-      id: 2,
-      title: "Complete AWS Certification",
-      description: "Get AWS Solutions Architect Associate certification",
-      progress: 40,
-      status: "in-progress",
-      deadline: "2024-08-30",
-      category: "Cloud"
-    },
-    {
-      id: 3,
-      title: "Build Full-Stack Portfolio Project",
-      description: "Create a complete application with React and Node.js",
-      progress: 100,
-      status: "completed",
-      deadline: "2024-06-01",
-      category: "Project"
-    },
-    {
-      id: 4,
-      title: "Learn TypeScript",
-      description: "Understand advanced TypeScript concepts and patterns",
-      progress: 25,
-      status: "in-progress",
-      deadline: "2024-09-15",
-      category: "Language"
+  const getJobOrSkillName = (goal: any) => {
+    if (goal.jobId) {
+      const job = jobs.find(j => j.id === goal.jobId);
+      return job ? job.title : "Unknown Job";
+    } else if (goal.skillId) {
+      const skill = skills.find(s => s.id === goal.skillId);
+      return skill ? skill.name : "Unknown Skill";
     }
-  ]);
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'completed':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'in-progress':
-        return <Clock className="h-4 w-4 text-blue-500" />;
-      case 'overdue':
-        return <AlertCircle className="h-4 w-4 text-red-500" />;
-      default:
-        return <Target className="h-4 w-4 text-gray-500" />;
-    }
+    return goal.title;
   };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'completed':
-        return 'bg-green-100 text-green-800';
-      case 'in-progress':
-        return 'bg-blue-100 text-blue-800';
-      case 'overdue':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
+  
+  const handleCompleteGoal = (goalId: string) => {
+    // In a real application, we would update the state here
+    // For now, we'll just show a toast notification
+    toast.success("Congratulations! You've completed this goal!");
   };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
-  };
-
+  
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-6">
-        <Button 
-          onClick={() => navigate(-1)}
-          variant="outline"
-          className="flex items-center gap-2 mb-4"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back
-        </Button>
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Career Goals</h1>
-            <p className="text-gray-600">Track your progress and stay motivated</p>
-          </div>
-          <Button className="flex items-center gap-2">
-            <Plus className="h-4 w-4" />
-            Add New Goal
-          </Button>
+    <div className="container px-4 md:px-6 py-8 max-w-7xl">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">My Learning Goals</h1>
+          <p className="text-muted-foreground mt-1">
+            Track your progress towards career and skill development goals
+          </p>
+        </div>
+        <div className="flex space-x-2">
+          <Link to="/jobs">
+            <Button variant="outline">Browse Jobs</Button>
+          </Link>
+          <Link to="/skills">
+            <Button>Add Skills</Button>
+          </Link>
         </div>
       </div>
 
-      {/* Goals Overview */}
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
-        <Card>
-          <CardContent className="pt-6">
-            <div className="flex items-center gap-2">
-              <Target className="h-8 w-8 text-blue-500" />
-              <div>
-                <div className="text-2xl font-bold">{goals.length}</div>
-                <div className="text-sm text-gray-600">Total Goals</div>
+      {goals.length === 0 ? (
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>No Goals Set Yet</CardTitle>
+            <CardDescription>
+              Start by setting career goals or skill learning paths
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center py-10 space-y-6">
+            <div className="text-center max-w-md">
+              <p className="mb-6 text-muted-foreground">
+                Get started by exploring jobs or skills and creating your personalized learning roadmap.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/jobs">
+                  <Button variant="outline" className="w-full">Browse Jobs</Button>
+                </Link>
+                <Link to="/skills">
+                  <Button className="w-full">Explore Skills</Button>
+                </Link>
               </div>
             </div>
           </CardContent>
         </Card>
-        
-        <Card>
-          <CardContent className="pt-6">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-8 w-8 text-green-500" />
-              <div>
-                <div className="text-2xl font-bold">
-                  {goals.filter(g => g.status === 'completed').length}
-                </div>
-                <div className="text-sm text-gray-600">Completed</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="pt-6">
-            <div className="flex items-center gap-2">
-              <Clock className="h-8 w-8 text-blue-500" />
-              <div>
-                <div className="text-2xl font-bold">
-                  {goals.filter(g => g.status === 'in-progress').length}
-                </div>
-                <div className="text-sm text-gray-600">In Progress</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Goals List */}
-      <div className="space-y-4">
-        {goals.map((goal) => (
-          <Card key={goal.id} className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    {getStatusIcon(goal.status)}
-                    <CardTitle className="text-lg">{goal.title}</CardTitle>
-                    <Badge variant="outline">{goal.category}</Badge>
+      ) : (
+        <div className="space-y-8">
+          {goals.map((goal) => (
+            <Card key={goal.id} className="relative overflow-hidden">
+              <CardHeader>
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center">
+                  <div>
+                    <CardTitle className="text-xl">{goal.title}</CardTitle>
+                    <CardDescription className="mt-1">
+                      {getJobOrSkillName(goal)}
+                    </CardDescription>
                   </div>
-                  <CardDescription>{goal.description}</CardDescription>
-                </div>
-                <Badge className={getStatusColor(goal.status)}>
-                  {goal.status.replace('-', ' ')}
-                </Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Progress</span>
-                    <span>{goal.progress}%</span>
+                  <div className="mt-2 sm:mt-0">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm font-medium">{goal.progress}%</span>
+                      <Progress value={goal.progress} className="h-2 w-24" />
+                    </div>
                   </div>
-                  <Progress value={goal.progress} className="h-2" />
                 </div>
-                <div className="flex justify-between items-center text-sm text-gray-600">
-                  <span>Deadline: {formatDate(goal.deadline)}</span>
-                  <Button variant="outline" size="sm">
-                    Edit Goal
-                  </Button>
+              </CardHeader>
+              <CardContent>
+                <div className="relative space-y-4">
+                  {goal.roadmap.length > 0 && <div className="roadmap-line"></div>}
+                  
+                  {goal.roadmap.map((step, index) => (
+                    <div 
+                      key={step.id} 
+                      className={`pl-12 pb-4 relative ${
+                        index !== goal.roadmap.length - 1 ? "border-b" : ""
+                      }`}
+                    >
+                      <div className="absolute left-4 top-1 w-3 h-3 rounded-full bg-white border-2 border-brand-300 z-10"></div>
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <div className="flex items-center gap-3">
+                            <Checkbox 
+                              id={`step-${step.id}`} 
+                              checked={step.completed}
+                              onCheckedChange={(checked) => {
+                                updateRoadmapStep(goal.id, step.id, checked === true);
+                              }}
+                            />
+                            <label
+                              htmlFor={`step-${step.id}`}
+                              className={`font-medium ${step.completed ? "line-through text-muted-foreground" : ""}`}
+                            >
+                              {step.title}
+                            </label>
+                          </div>
+                          <p className={`mt-1 ml-7 text-sm ${step.completed ? "text-muted-foreground/70" : "text-muted-foreground"}`}>
+                            {step.description}
+                          </p>
+                          
+                          {step.resources && step.resources.length > 0 && (
+                            <div className="mt-2 ml-7">
+                              <p className="text-xs text-muted-foreground mb-1">Suggested resources:</p>
+                              <ul className="list-disc list-inside text-xs text-muted-foreground space-y-1">
+                                {step.resources.map((resource, i) => (
+                                  <li key={i}>{resource}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {/* Call to Action */}
-      <div className="mt-8 text-center">
-        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-          <CardContent className="pt-6">
-            <Target className="h-12 w-12 mx-auto mb-4 text-blue-500" />
-            <h3 className="text-lg font-semibold mb-2">Set Your Next Goal</h3>
-            <p className="text-gray-600 mb-4">
-              Define clear objectives to advance your IT career
-            </p>
-            <Button>Create New Goal</Button>
-          </CardContent>
-        </Card>
-      </div>
+              </CardContent>
+              <CardFooter className="flex justify-end pt-4 border-t">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button 
+                      className="flex items-center gap-2" 
+                      disabled={goal.progress < 100}
+                    >
+                      <CheckCircle className="h-4 w-4" />
+                      Finish Goal
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Complete Your Goal</DialogTitle>
+                      <DialogDescription>
+                        Are you ready to mark this goal as complete? Congratulations on your achievement!
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="py-4">
+                      <p>Goal: <span className="font-medium">{goal.title}</span></p>
+                      <p className="mt-2">Progress: <span className="font-medium">{goal.progress}%</span></p>
+                      {goal.progress < 100 && (
+                        <p className="text-yellow-600 mt-2">
+                          You still have incomplete steps in your roadmap. Are you sure you want to mark this goal as complete?
+                        </p>
+                      )}
+                    </div>
+                    <DialogFooter>
+                      <Button variant="outline" onClick={() => handleCompleteGoal(goal.id)}>
+                        Complete Goal
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,131 +1,218 @@
 
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Code, Database, Globe, Server } from 'lucide-react';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Search, X } from "lucide-react";
+import { useAppContext } from "@/context/AppContext";
+import { Skill } from "@/types";
 
 const SkillsPage = () => {
-  const navigate = useNavigate();
-
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      icon: Globe,
-      skills: [
-        { name: "React", level: 85, category: "Framework" },
-        { name: "TypeScript", level: 80, category: "Language" },
-        { name: "CSS/Tailwind", level: 90, category: "Styling" },
-        { name: "JavaScript", level: 88, category: "Language" }
-      ]
-    },
-    {
-      title: "Backend Development",
-      icon: Server,
-      skills: [
-        { name: "Node.js", level: 75, category: "Runtime" },
-        { name: "Python", level: 70, category: "Language" },
-        { name: "API Design", level: 80, category: "Architecture" },
-        { name: "Authentication", level: 65, category: "Security" }
-      ]
-    },
-    {
-      title: "Database & Storage",
-      icon: Database,
-      skills: [
-        { name: "SQL", level: 85, category: "Query Language" },
-        { name: "PostgreSQL", level: 80, category: "Database" },
-        { name: "MongoDB", level: 70, category: "NoSQL" },
-        { name: "Redis", level: 60, category: "Cache" }
-      ]
-    },
-    {
-      title: "Programming Languages",
-      icon: Code,
-      skills: [
-        { name: "JavaScript", level: 90, category: "Web" },
-        { name: "TypeScript", level: 85, category: "Web" },
-        { name: "Python", level: 75, category: "General" },
-        { name: "Java", level: 65, category: "Enterprise" }
-      ]
-    }
-  ];
-
-  const getSkillColor = (level: number) => {
-    if (level >= 80) return "bg-green-500";
-    if (level >= 60) return "bg-yellow-500";
-    return "bg-red-500";
+  const { skills, userSkills, addUserSkill, removeUserSkill, getMatchingJobs, clearUserSkills } = useAppContext();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showUserSkills, setShowUserSkills] = useState(false);
+  
+  // Get unique skill categories
+  const categories = Array.from(new Set(skills.map((skill) => skill.category)));
+  
+  // Filter skills based on search term and category
+  const filteredSkills = skills.filter((skill) => {
+    const matchesSearch = 
+      skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      skill.description.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesCategory = selectedCategory ? skill.category === selectedCategory : true;
+    
+    return matchesSearch && matchesCategory;
+  });
+  
+  const matchingJobs = getMatchingJobs();
+  
+  const handleAddSkill = (skill: Skill) => {
+    addUserSkill(skill, 3); // Default proficiency level
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-6">
-        <Button 
-          onClick={() => navigate(-1)}
-          variant="outline"
-          className="flex items-center gap-2 mb-4"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back
-        </Button>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Skills Development</h1>
-        <p className="text-gray-600">Track and improve your technical skills</p>
+    <div className="container px-4 md:px-6 py-8 max-w-7xl">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Skills Assessment</h1>
+          <p className="text-muted-foreground mt-1">
+            Track your skills and find matching job opportunities
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Search skills..."
+              className="pl-8 w-full md:w-[300px]"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <Button 
+            variant={showUserSkills ? "default" : "outline"}
+            onClick={() => setShowUserSkills(!showUserSkills)}
+          >
+            My Skills
+          </Button>
+        </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {skillCategories.map((category, index) => {
-          const Icon = category.icon;
-          return (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Icon className="h-5 w-5" />
-                  {category.title}
-                </CardTitle>
-                <CardDescription>
-                  Your progress in {category.title.toLowerCase()}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                          <span className="font-medium">{skill.name}</span>
-                          <Badge variant="outline" className="text-xs">
-                            {skill.category}
-                          </Badge>
-                        </div>
-                        <span className="text-sm text-gray-600">{skill.level}%</span>
-                      </div>
-                      <Progress 
-                        value={skill.level} 
-                        className={`h-2 ${getSkillColor(skill.level)}`}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-
-      <div className="mt-8 text-center">
-        <Card className="bg-blue-50 border-blue-200">
-          <CardContent className="pt-6">
-            <h3 className="text-lg font-semibold mb-2">Ready to Level Up?</h3>
-            <p className="text-gray-600 mb-4">
-              Take our programming quizzes to assess and improve your skills
-            </p>
-            <Button onClick={() => navigate('/quizzes')}>
-              Start Learning
+      {/* User's Skills Section */}
+      {showUserSkills && (
+        <Card className="mb-8">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-xl">My Skills</CardTitle>
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={clearUserSkills}
+              disabled={userSkills.length === 0}
+            >
+              Clear All
             </Button>
+          </CardHeader>
+          <CardContent>
+            {userSkills.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {userSkills.map((skill) => (
+                  <Badge 
+                    key={skill.id} 
+                    className="px-3 py-1.5 flex items-center gap-1"
+                  >
+                    {skill.name}
+                    <button 
+                      className="ml-1 hover:bg-primary-foreground rounded-full"
+                      onClick={() => removeUserSkill(skill.id)}
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </Badge>
+                ))}
+              </div>
+            ) : (
+              <p className="text-muted-foreground text-center py-6">
+                You haven't added any skills yet. Use the list below to add skills to your profile.
+              </p>
+            )}
           </CardContent>
+          {userSkills.length > 0 && matchingJobs.length > 0 && (
+            <CardFooter className="flex-col items-start">
+              <h3 className="font-medium mb-2">Matching Jobs</h3>
+              <div className="space-y-2 w-full">
+                {matchingJobs.slice(0, 3).map((job) => (
+                  <div 
+                    key={job.id}
+                    className="flex justify-between items-center border-b pb-2"
+                  >
+                    <div>
+                      <p className="font-medium">{job.title}</p>
+                      <div className="flex items-center gap-1">
+                        <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-primary" 
+                            style={{ width: `${job.matchPercentage}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-xs text-muted-foreground">{job.matchPercentage}% match</span>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      asChild
+                      className="whitespace-nowrap"
+                    >
+                      <a href={`/jobs/${job.id}`}>View Job</a>
+                    </Button>
+                  </div>
+                ))}
+                {matchingJobs.length > 3 && (
+                  <Button variant="ghost" className="w-full" asChild>
+                    <a href="/jobs">View All Matching Jobs</a>
+                  </Button>
+                )}
+              </div>
+            </CardFooter>
+          )}
         </Card>
+      )}
+
+      {/* Category Filters */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        <Button
+          variant={selectedCategory === null ? "default" : "outline"}
+          size="sm"
+          onClick={() => setSelectedCategory(null)}
+          className="rounded-full"
+        >
+          All
+        </Button>
+        {categories.map((category) => (
+          <Button
+            key={category}
+            variant={selectedCategory === category ? "default" : "outline"}
+            size="sm"
+            onClick={() => setSelectedCategory(category)}
+            className="rounded-full"
+          >
+            {category}
+          </Button>
+        ))}
+      </div>
+
+      {/* Skills List */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {filteredSkills.length > 0 ? (
+          filteredSkills.map((skill) => {
+            const isAdded = userSkills.some((s) => s.id === skill.id);
+            
+            return (
+              <Card key={skill.id} className="overflow-hidden transition-all hover:shadow-md">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg">{skill.name}</CardTitle>
+                  <CardDescription>{skill.category}</CardDescription>
+                </CardHeader>
+                <CardContent className="pb-4">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {skill.description}
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <Badge variant="outline">{skill.category}</Badge>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button 
+                    className="w-full"
+                    variant={isAdded ? "outline" : "default"}
+                    onClick={() => isAdded ? removeUserSkill(skill.id) : handleAddSkill(skill)}
+                  >
+                    {isAdded ? "Remove Skill" : "Add to My Skills"}
+                  </Button>
+                </CardFooter>
+              </Card>
+            );
+          })
+        ) : (
+          <div className="col-span-full text-center py-12">
+            <h3 className="text-lg font-medium mb-2">No skills found</h3>
+            <p className="text-muted-foreground">
+              Try adjusting your search or filters
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

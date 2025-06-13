@@ -1,8 +1,6 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
 import { Quiz } from '@/types';
 import { getLanguageProgress } from '@/utils/quizScoring';
 import { languageQuizzes } from '@/data/languageQuizzes';
@@ -18,7 +16,6 @@ interface LanguageQuizSelectorProps {
 
 const LanguageQuizSelector: React.FC<LanguageQuizSelectorProps> = ({ onSelectQuiz }) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
-  const navigate = useNavigate();
 
   // Combine all quizzes into a single flat array
   const allQuizzes = [
