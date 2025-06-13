@@ -1,3 +1,4 @@
+
 import { Quiz, Job, Skill, Resource, Goal } from '@/types';
 import { languageQuizzes } from './languageQuizzes';
 
@@ -16,7 +17,7 @@ export const mockSkills: Skill[] = [
         url: 'https://example.com/js-good-parts',
         type: 'book',
         difficulty: 'intermediate',
-        description: 'A book focusing on the good features of JavaScript, showing how to use them and why they're good.'
+        description: 'A book focusing on the good features of JavaScript, showing how to use them and why they are good.'
       },
       {
         id: 'js-resource-2',
