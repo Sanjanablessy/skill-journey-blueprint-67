@@ -1,1211 +1,658 @@
-import { Job, Quiz, Skill, Goal, Resource, RoadmapStep } from "@/types";
+import { Quiz, Job, Skill, Resource, Goal } from '@/types';
+import { languageQuizzes } from './languageQuizzes';
 
-// Resources data
-export const resourcesData: Resource[] = [
+// Mock Skills
+export const mockSkills: Skill[] = [
   {
-    id: "r1",
-    title: "Modern JavaScript Tutorial",
-    url: "https://javascript.info/",
-    type: "article",
-    difficulty: "beginner",
-    description: "A comprehensive tutorial on modern JavaScript from basics to advanced concepts."
+    id: 'js',
+    name: 'JavaScript',
+    category: 'Programming Languages',
+    level: 'intermediate',
+    description: 'JavaScript is a programming language that enables interactive web pages and is an essential part of web applications.',
+    resources: [
+      {
+        id: 'js-resource-1',
+        title: 'JavaScript: The Good Parts',
+        url: 'https://example.com/js-good-parts',
+        type: 'book',
+        difficulty: 'intermediate',
+        description: 'A book focusing on the good features of JavaScript, showing how to use them and why they're good.'
+      },
+      {
+        id: 'js-resource-2',
+        title: 'Eloquent JavaScript',
+        url: 'https://eloquentjavascript.net/',
+        type: 'book',
+        difficulty: 'beginner',
+        description: 'A comprehensive introduction to JavaScript, programming, and the wonders of the digital world.'
+      }
+    ]
   },
   {
-    id: "r2",
-    title: "React Official Documentation",
-    url: "https://reactjs.org/docs/getting-started.html",
-    type: "article",
-    difficulty: "beginner",
-    description: "The official React documentation, starting from the basics."
+    id: 'react',
+    name: 'React',
+    category: 'Frontend Frameworks',
+    level: 'beginner',
+    description: 'React is a JavaScript library for building user interfaces, particularly single-page applications.',
+    resources: [
+      {
+        id: 'react-resource-1',
+        title: 'React Documentation',
+        url: 'https://reactjs.org/docs/getting-started.html',
+        type: 'article',
+        difficulty: 'beginner',
+        description: 'Official React documentation with guides, API reference, and tutorials.'
+      }
+    ]
   },
   {
-    id: "r3",
-    title: "Node.js Crash Course",
-    url: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
-    type: "video",
-    difficulty: "beginner",
-    description: "A crash course on Node.js for beginners."
+    id: 'node',
+    name: 'Node.js',
+    category: 'Backend Technologies',
+    level: 'intermediate',
+    description: 'Node.js is a JavaScript runtime built on Chrome\'s V8 JavaScript engine for building scalable network applications.',
+    resources: [
+      {
+        id: 'node-resource-1',
+        title: 'Node.js in Action',
+        url: 'https://example.com/nodejs-in-action',
+        type: 'book',
+        difficulty: 'intermediate',
+        description: 'A comprehensive guide to building real-world applications with Node.js.'
+      }
+    ]
   },
   {
-    id: "r4",
-    title: "Python for Data Science Handbook",
-    url: "https://jakevdp.github.io/PythonDataScienceHandbook/",
-    type: "book",
-    difficulty: "intermediate",
-    description: "A comprehensive guide to using Python for data analysis and science."
+    id: 'python',
+    name: 'Python',
+    category: 'Programming Languages',
+    level: 'advanced',
+    description: 'Python is an interpreted, high-level, general-purpose programming language with dynamic semantics.',
+    resources: [
+      {
+        id: 'python-resource-1',
+        title: 'Python Crash Course',
+        url: 'https://example.com/python-crash-course',
+        type: 'book',
+        difficulty: 'beginner',
+        description: 'A hands-on, project-based introduction to Python programming.'
+      }
+    ]
   },
   {
-    id: "r5",
-    title: "SQL Basics Course",
-    url: "https://www.khanacademy.org/computing/computer-programming/sql",
-    type: "course",
-    difficulty: "beginner",
-    description: "Learn the basics of SQL for database management."
+    id: 'sql',
+    name: 'SQL',
+    category: 'Databases',
+    level: 'beginner',
+    description: 'SQL (Structured Query Language) is a domain-specific language used for managing data in relational database management systems.',
+    resources: [
+      {
+        id: 'sql-resource-1',
+        title: 'SQL for Dummies',
+        url: 'https://example.com/sql-for-dummies',
+        type: 'book',
+        difficulty: 'beginner',
+        description: 'A beginner-friendly guide to learning SQL and database concepts.'
+      }
+    ]
   },
   {
-    id: "r6",
-    title: "Advanced JavaScript Concepts",
-    url: "https://www.udemy.com/course/advanced-javascript-concepts/",
-    type: "course",
-    difficulty: "advanced",
-    description: "Deep dive into advanced JavaScript concepts like closures, prototypes, and more."
+    id: 'aws',
+    name: 'AWS',
+    category: 'Cloud Services',
+    level: 'intermediate',
+    description: 'Amazon Web Services (AWS) is a comprehensive cloud computing platform offering over 200 fully featured services.',
+    resources: [
+      {
+        id: 'aws-resource-1',
+        title: 'AWS Certified Solutions Architect Study Guide',
+        url: 'https://example.com/aws-cert-guide',
+        type: 'book',
+        difficulty: 'intermediate',
+        description: 'Comprehensive study guide for the AWS Solutions Architect certification.'
+      }
+    ]
   },
   {
-    id: "r7",
-    title: "AWS Certified Solutions Architect",
-    url: "https://www.amazon.com/Certified-Solutions-Architect-Study-Guide/dp/1119713080/",
-    type: "book",
-    difficulty: "advanced",
-    description: "Comprehensive guide for AWS certification preparation."
+    id: 'docker',
+    name: 'Docker',
+    category: 'DevOps',
+    level: 'beginner',
+    description: 'Docker is a platform for developing, shipping, and running applications in containers.',
+    resources: [
+      {
+        id: 'docker-resource-1',
+        title: 'Docker Deep Dive',
+        url: 'https://example.com/docker-deep-dive',
+        type: 'book',
+        difficulty: 'intermediate',
+        description: 'A comprehensive guide to Docker and container technology.'
+      }
+    ]
+  },
+  {
+    id: 'typescript',
+    name: 'TypeScript',
+    category: 'Programming Languages',
+    level: 'intermediate',
+    description: 'TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.',
+    resources: [
+      {
+        id: 'ts-resource-1',
+        title: 'TypeScript Documentation',
+        url: 'https://www.typescriptlang.org/docs/',
+        type: 'article',
+        difficulty: 'beginner',
+        description: 'Official TypeScript documentation with guides and examples.'
+      }
+    ]
+  },
+  {
+    id: 'git',
+    name: 'Git',
+    category: 'Version Control',
+    level: 'intermediate',
+    description: 'Git is a distributed version control system for tracking changes in source code during software development.',
+    resources: [
+      {
+        id: 'git-resource-1',
+        title: 'Pro Git',
+        url: 'https://git-scm.com/book/en/v2',
+        type: 'book',
+        difficulty: 'intermediate',
+        description: 'Comprehensive guide to Git version control system.'
+      }
+    ]
+  },
+  {
+    id: 'html-css',
+    name: 'HTML & CSS',
+    category: 'Frontend Technologies',
+    level: 'beginner',
+    description: 'HTML (Hypertext Markup Language) and CSS (Cascading Style Sheets) are the core technologies for building web pages.',
+    resources: [
+      {
+        id: 'html-css-resource-1',
+        title: 'HTML & CSS: Design and Build Websites',
+        url: 'https://example.com/html-css-book',
+        type: 'book',
+        difficulty: 'beginner',
+        description: 'A beautifully designed introduction to HTML and CSS for beginners.'
+      }
+    ]
   }
 ];
 
-// Common roadmap steps for JavaScript learning
-const jsRoadmapSteps: RoadmapStep[] = [
+// Mock Jobs
+export const mockJobs: Job[] = [
   {
-    id: "rs1",
-    title: "Learn JavaScript Basics",
-    description: "Master the fundamentals of JavaScript including variables, data types, and functions.",
-    completed: false,
-    resources: ["r1"]
+    id: 'frontend-dev',
+    title: 'Frontend Developer',
+    company: 'TechCorp',
+    description: 'Develop and maintain user interfaces for web applications using modern JavaScript frameworks.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'js')!,
+      mockSkills.find(skill => skill.id === 'react')!,
+      mockSkills.find(skill => skill.id === 'html-css')!
+    ],
+    salaryRange: '$70,000 - $100,000',
+    experience: '2-4 years',
+    category: 'Web Development',
+    roadmap: [
+      {
+        id: 'frontend-1',
+        title: 'Learn HTML & CSS Fundamentals',
+        description: 'Master the basics of HTML5 and CSS3 including semantic markup and responsive design.',
+        completed: false,
+        resources: ['html-css-resource-1']
+      },
+      {
+        id: 'frontend-2',
+        title: 'JavaScript Essentials',
+        description: 'Learn core JavaScript concepts including ES6+ features, DOM manipulation, and asynchronous programming.',
+        completed: false,
+        resources: ['js-resource-1', 'js-resource-2']
+      },
+      {
+        id: 'frontend-3',
+        title: 'React Framework',
+        description: 'Build applications with React, understanding components, state management, and hooks.',
+        completed: false,
+        resources: ['react-resource-1']
+      }
+    ]
   },
   {
-    id: "rs2",
-    title: "Understand DOM Manipulation",
-    description: "Learn how to interact with the Document Object Model using JavaScript.",
-    completed: false,
-    resources: ["r1"]
+    id: 'backend-dev',
+    title: 'Backend Developer',
+    company: 'DataSystems Inc.',
+    description: 'Design and implement server-side logic, databases, and APIs for web applications.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'node')!,
+      mockSkills.find(skill => skill.id === 'sql')!
+    ],
+    salaryRange: '$80,000 - $120,000',
+    experience: '3-5 years',
+    category: 'Web Development',
+    roadmap: [
+      {
+        id: 'backend-1',
+        title: 'Server-side Programming',
+        description: 'Learn Node.js and Express for building server applications.',
+        completed: false,
+        resources: ['node-resource-1']
+      },
+      {
+        id: 'backend-2',
+        title: 'Database Design',
+        description: 'Master SQL and database design principles for efficient data storage and retrieval.',
+        completed: false,
+        resources: ['sql-resource-1']
+      },
+      {
+        id: 'backend-3',
+        title: 'API Development',
+        description: 'Create RESTful and GraphQL APIs for client-server communication.',
+        completed: false
+      }
+    ]
   },
   {
-    id: "rs3",
-    title: "Master ES6+ Features",
-    description: "Get familiar with modern JavaScript features like arrow functions, destructuring, and modules.",
-    completed: false,
-    resources: ["r1", "r6"]
+    id: 'fullstack-dev',
+    title: 'Full Stack Developer',
+    company: 'WebSolutions',
+    description: 'Develop both client and server sides of web applications, working with various technologies across the stack.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'js')!,
+      mockSkills.find(skill => skill.id === 'react')!,
+      mockSkills.find(skill => skill.id === 'node')!,
+      mockSkills.find(skill => skill.id === 'sql')!
+    ],
+    salaryRange: '$90,000 - $130,000',
+    experience: '4-6 years',
+    category: 'Web Development',
+    roadmap: [
+      {
+        id: 'fullstack-1',
+        title: 'Frontend Development',
+        description: 'Master HTML, CSS, JavaScript, and React for building user interfaces.',
+        completed: false,
+        resources: ['html-css-resource-1', 'js-resource-2', 'react-resource-1']
+      },
+      {
+        id: 'fullstack-2',
+        title: 'Backend Development',
+        description: 'Learn server-side programming with Node.js and database management.',
+        completed: false,
+        resources: ['node-resource-1', 'sql-resource-1']
+      },
+      {
+        id: 'fullstack-3',
+        title: 'DevOps Basics',
+        description: 'Understand deployment, CI/CD, and containerization with Docker.',
+        completed: false,
+        resources: ['docker-resource-1']
+      }
+    ]
   },
   {
-    id: "rs4",
-    title: "Build a JavaScript Project",
-    description: "Create a small project to apply your JavaScript knowledge.",
-    completed: false
+    id: 'devops-engineer',
+    title: 'DevOps Engineer',
+    company: 'CloudTech',
+    description: 'Implement and manage CI/CD pipelines, infrastructure automation, and cloud services.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'aws')!,
+      mockSkills.find(skill => skill.id === 'docker')!,
+      mockSkills.find(skill => skill.id === 'git')!
+    ],
+    salaryRange: '$100,000 - $140,000',
+    experience: '3-5 years',
+    category: 'DevOps',
+    roadmap: [
+      {
+        id: 'devops-1',
+        title: 'Cloud Services',
+        description: 'Learn AWS core services and architecture patterns.',
+        completed: false,
+        resources: ['aws-resource-1']
+      },
+      {
+        id: 'devops-2',
+        title: 'Containerization',
+        description: 'Master Docker and container orchestration with Kubernetes.',
+        completed: false,
+        resources: ['docker-resource-1']
+      },
+      {
+        id: 'devops-3',
+        title: 'CI/CD Pipelines',
+        description: 'Implement continuous integration and deployment pipelines.',
+        completed: false
+      }
+    ]
+  },
+  {
+    id: 'data-scientist',
+    title: 'Data Scientist',
+    company: 'AnalyticsPro',
+    description: 'Analyze and interpret complex data to help organizations make better decisions.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'sql')!
+    ],
+    salaryRange: '$90,000 - $140,000',
+    experience: '3-6 years',
+    category: 'Data Science',
+    roadmap: [
+      {
+        id: 'data-1',
+        title: 'Python for Data Science',
+        description: 'Learn Python libraries for data analysis: NumPy, Pandas, and Matplotlib.',
+        completed: false,
+        resources: ['python-resource-1']
+      },
+      {
+        id: 'data-2',
+        title: 'SQL for Data Analysis',
+        description: 'Master SQL queries for extracting and analyzing data from databases.',
+        completed: false,
+        resources: ['sql-resource-1']
+      },
+      {
+        id: 'data-3',
+        title: 'Machine Learning Fundamentals',
+        description: 'Understand core machine learning algorithms and their applications.',
+        completed: false
+      }
+    ]
   }
 ];
 
-// Common roadmap steps for React learning
-const reactRoadmapSteps: RoadmapStep[] = [
+// Mock Resources
+export const mockResources: Resource[] = [
   {
-    id: "rs5",
-    title: "Learn React Fundamentals",
-    description: "Understand components, props, and state in React.",
-    completed: false,
-    resources: ["r2"]
+    id: 'resource-1',
+    title: 'Modern JavaScript: From Fundamentals to Functional JS',
+    url: 'https://example.com/modern-js-course',
+    type: 'course',
+    difficulty: 'intermediate',
+    description: 'A comprehensive course covering JavaScript from basics to advanced functional programming techniques.'
   },
   {
-    id: "rs6",
-    title: "Master React Hooks",
-    description: "Learn how to use React hooks like useState, useEffect, and useContext.",
-    completed: false,
-    resources: ["r2"]
+    id: 'resource-2',
+    title: 'React: The Complete Guide',
+    url: 'https://example.com/react-complete-guide',
+    type: 'course',
+    difficulty: 'beginner',
+    description: 'Learn React from scratch with hands-on projects and real-world examples.'
   },
   {
-    id: "rs7",
-    title: "State Management in React",
-    description: "Explore state management solutions like Redux or Context API.",
-    completed: false,
-    resources: ["r2"]
+    id: 'resource-3',
+    title: 'Node.js Developer Course',
+    url: 'https://example.com/nodejs-course',
+    type: 'course',
+    difficulty: 'intermediate',
+    description: 'Build server-side applications with Node.js, Express, and MongoDB.'
   },
   {
-    id: "rs8",
-    title: "Build a React Application",
-    description: "Create a complete application using React.",
-    completed: false
+    id: 'resource-4',
+    title: 'Python Crash Course',
+    url: 'https://example.com/python-book',
+    type: 'book',
+    difficulty: 'beginner',
+    description: 'A hands-on, project-based introduction to programming with Python.'
+  },
+  {
+    id: 'resource-5',
+    title: 'SQL Fundamentals',
+    url: 'https://example.com/sql-fundamentals',
+    type: 'article',
+    difficulty: 'beginner',
+    description: 'Learn the basics of SQL queries and database management.'
+  },
+  {
+    id: 'resource-6',
+    title: 'AWS Certified Solutions Architect',
+    url: 'https://example.com/aws-certification',
+    type: 'course',
+    difficulty: 'advanced',
+    description: 'Prepare for the AWS Solutions Architect certification with comprehensive training.'
+  },
+  {
+    id: 'resource-7',
+    title: 'Docker & Kubernetes: The Complete Guide',
+    url: 'https://example.com/docker-kubernetes',
+    type: 'course',
+    difficulty: 'intermediate',
+    description: 'Master containerization and orchestration with Docker and Kubernetes.'
+  },
+  {
+    id: 'resource-8',
+    title: 'TypeScript Handbook',
+    url: 'https://www.typescriptlang.org/docs/handbook/intro.html',
+    type: 'article',
+    difficulty: 'intermediate',
+    description: 'Official documentation for learning TypeScript features and best practices.'
+  },
+  {
+    id: 'resource-9',
+    title: 'Pro Git',
+    url: 'https://git-scm.com/book/en/v2',
+    type: 'book',
+    difficulty: 'intermediate',
+    description: 'Everything you need to know about Git, from basics to advanced workflows.'
+  },
+  {
+    id: 'resource-10',
+    title: 'CSS Tricks',
+    url: 'https://css-tricks.com/',
+    type: 'article',
+    difficulty: 'beginner',
+    description: 'Tips, tricks, and techniques on using CSS for modern web development.'
   }
 ];
 
-// Define skills with resources and roadmap steps
-export const skillsData: Skill[] = [
+// Mock Goals
+export const mockGoals: Goal[] = [
   {
-    id: "s1",
-    name: "JavaScript",
-    category: "Frontend Development",
-    description: "JavaScript is a scripting language that enables interactive web pages.",
-    resources: [resourcesData.find(r => r.id === "r1"), resourcesData.find(r => r.id === "r6")]
+    id: 'goal-1',
+    title: 'Become a Frontend Developer',
+    jobId: 'frontend-dev',
+    roadmap: [
+      {
+        id: 'frontend-goal-1',
+        title: 'Learn HTML & CSS',
+        description: 'Complete HTML & CSS course and build a responsive website',
+        completed: true,
+        resources: ['resource-10']
+      },
+      {
+        id: 'frontend-goal-2',
+        title: 'Master JavaScript',
+        description: 'Complete JavaScript course and build interactive web applications',
+        completed: false,
+        resources: ['resource-1']
+      },
+      {
+        id: 'frontend-goal-3',
+        title: 'Learn React',
+        description: 'Build a portfolio project using React',
+        completed: false,
+        resources: ['resource-2']
+      }
+    ],
+    progress: 33
   },
   {
-    id: "s2",
-    name: "React",
-    category: "Frontend Development",
-    description: "React is a JavaScript library for building user interfaces.",
-    resources: [resourcesData.find(r => r.id === "r2")]
-  },
-  {
-    id: "s3",
-    name: "Node.js",
-    category: "Backend Development",
-    description: "Node.js is a JavaScript runtime for server-side programming.",
-    resources: [resourcesData.find(r => r.id === "r3")]
-  },
-  {
-    id: "s4",
-    name: "Python",
-    category: "Programming Languages",
-    description: "Python is a versatile programming language used for web development, data science, and more.",
-    resources: [resourcesData.find(r => r.id === "r4")]
-  },
-  {
-    id: "s5",
-    name: "SQL",
-    category: "Database",
-    description: "SQL is used to communicate with and manipulate databases.",
-    resources: [resourcesData.find(r => r.id === "r5")]
-  },
-  {
-    id: "s6",
-    name: "Java",
-    category: "Programming Languages",
-    description: "Java is a class-based, object-oriented programming language.",
-    resources: []
-  },
-  {
-    id: "s7",
-    name: "AWS",
-    category: "Cloud Computing",
-    description: "Amazon Web Services offers reliable, scalable cloud computing services.",
-    resources: []
-  },
-  {
-    id: "s8",
-    name: "Docker",
-    category: "DevOps",
-    description: "Docker is a platform for developing, shipping, and running applications in containers.",
-    resources: []
-  },
-  {
-    id: "s9",
-    name: "TypeScript",
-    category: "Programming Languages",
-    description: "TypeScript is a strict syntactical superset of JavaScript that adds static typing.",
-    resources: []
-  },
-  {
-    id: "s10",
-    name: "Angular",
-    category: "Frontend Development",
-    description: "Angular is a platform for building mobile and desktop web applications.",
-    resources: []
-  },
-  {
-    id: "s11",
-    name: "Vue.js",
-    category: "Frontend Development",
-    description: "Vue.js is a progressive framework for building user interfaces.",
-    resources: []
-  },
-  {
-    id: "s12",
-    name: "MongoDB",
-    category: "Database",
-    description: "MongoDB is a source-available cross-platform document-oriented database program.",
-    resources: []
-  },
-  {
-    id: "s13",
-    name: "Git",
-    category: "Version Control",
-    description: "Git is a distributed version control system for tracking changes in source code.",
-    resources: []
-  },
-  {
-    id: "s14",
-    name: "GraphQL",
-    category: "API",
-    description: "GraphQL is a query language for APIs and a runtime for executing those queries.",
-    resources: []
-  },
-  {
-    id: "s15",
-    name: "Kubernetes",
-    category: "DevOps",
-    description: "Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.",
-    resources: []
-  },
-  {
-    id: "s16",
-    name: "HTML5",
-    category: "Frontend Development",
-    description: "HTML5 is the latest version of HTML for structuring web content.",
-    resources: []
-  },
-  {
-    id: "s17",
-    name: "CSS3",
-    category: "Frontend Development",
-    description: "CSS3 is used for styling and layout of web pages.",
-    resources: []
-  },
-  {
-    id: "s18",
-    name: "SASS/SCSS",
-    category: "Frontend Development",
-    description: "SASS is a CSS preprocessor that adds features like variables and nesting.",
-    resources: []
-  },
-  {
-    id: "s19",
-    name: "Webpack",
-    category: "Build Tools",
-    description: "Webpack is a module bundler for JavaScript applications.",
-    resources: []
-  },
-  {
-    id: "s20",
-    name: "Jest",
-    category: "Testing",
-    description: "Jest is a JavaScript testing framework.",
-    resources: []
-  },
-  {
-    id: "s21",
-    name: "PostgreSQL",
-    category: "Database",
-    description: "PostgreSQL is an advanced open-source relational database.",
-    resources: []
-  },
-  {
-    id: "s22",
-    name: "Redis",
-    category: "Database",
-    description: "Redis is an in-memory data structure store used as a cache.",
-    resources: []
-  },
-  {
-    id: "s23",
-    name: "Express.js",
-    category: "Backend Development",
-    description: "Express.js is a web framework for Node.js.",
-    resources: []
-  },
-  {
-    id: "s24",
-    name: "REST API",
-    category: "API",
-    description: "REST is an architectural style for designing web services.",
-    resources: []
-  },
-  {
-    id: "s25",
-    name: "Agile/Scrum",
-    category: "Project Management",
-    description: "Agile is a methodology for software development and project management.",
-    resources: []
-  },
-  {
-    id: "s26",
-    name: "CI/CD",
-    category: "DevOps",
-    description: "Continuous Integration and Continuous Deployment practices.",
-    resources: []
-  },
-  {
-    id: "s27",
-    name: "Linux",
-    category: "Operating Systems",
-    description: "Linux is an open-source operating system kernel.",
-    resources: []
-  },
-  {
-    id: "s28",
-    name: "Terraform",
-    category: "Infrastructure as Code",
-    description: "Terraform is a tool for building and managing infrastructure.",
-    resources: []
-  },
-  {
-    id: "s29",
-    name: "Firebase",
-    category: "Backend as a Service",
-    description: "Firebase is Google's platform for mobile and web application development.",
-    resources: []
-  },
-  {
-    id: "s30",
-    name: "Figma",
-    category: "Design Tools",
-    description: "Figma is a collaborative interface design tool.",
-    resources: []
+    id: 'goal-2',
+    title: 'Master Python for Data Science',
+    skillId: 'python',
+    roadmap: [
+      {
+        id: 'python-goal-1',
+        title: 'Python Basics',
+        description: 'Learn Python syntax and basic programming concepts',
+        completed: true,
+        resources: ['resource-4']
+      },
+      {
+        id: 'python-goal-2',
+        title: 'Data Analysis with Python',
+        description: 'Learn NumPy, Pandas, and data visualization libraries',
+        completed: false
+      },
+      {
+        id: 'python-goal-3',
+        title: 'Machine Learning Fundamentals',
+        description: 'Implement basic machine learning algorithms with scikit-learn',
+        completed: false
+      }
+    ],
+    progress: 33
   }
 ];
 
-// Define jobs with expanded required skills
-export const jobsData: Job[] = [
+// Mock Quizzes
+export const mockQuizzes: Quiz[] = [
   {
-    id: "j1",
-    title: "Frontend Developer",
-    company: "TechCorp Inc.",
-    description: "Responsible for creating and maintaining user interfaces for web applications.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s9")!, // TypeScript
-      skillsData.find(s => s.id === "s16")!, // HTML5
-      skillsData.find(s => s.id === "s17")!, // CSS3
-      skillsData.find(s => s.id === "s18")!, // SASS/SCSS
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s19")!, // Webpack
-      skillsData.find(s => s.id === "s20")!, // Jest
-      skillsData.find(s => s.id === "s24")! // REST API
-    ],
-    salaryRange: "$80,000 - $120,000",
-    experience: "2-4 years",
-    category: "Development",
-    roadmap: [
-      ...jsRoadmapSteps,
-      ...reactRoadmapSteps,
-      {
-        id: "rs9",
-        title: "Learn TypeScript Fundamentals",
-        description: "Understand the basics of TypeScript and its application in React projects.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs10",
-        title: "Master Git Version Control",
-        description: "Learn how to effectively use Git for version control in team projects.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs11",
-        title: "Build a Professional Portfolio",
-        description: "Create a portfolio showcasing your frontend development projects.",
-        completed: false
-      }
-    ]
-  },
-  {
-    id: "j2",
-    title: "Backend Developer",
-    company: "WebSolutions Ltd.",
-    description: "Build and maintain server-side applications that power web services.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s3")!, // Node.js
-      skillsData.find(s => s.id === "s23")!, // Express.js
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s22")!, // Redis
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s14")!, // GraphQL
-      skillsData.find(s => s.id === "s20")!, // Jest
-      skillsData.find(s => s.id === "s8")! // Docker
-    ],
-    salaryRange: "$90,000 - $130,000",
-    experience: "3-5 years",
-    category: "Development",
-    roadmap: [
-      {
-        id: "rs12",
-        title: "Learn Node.js Fundamentals",
-        description: "Understand the basics of server-side JavaScript with Node.js.",
-        completed: false,
-        resources: ["r3"]
-      },
-      {
-        id: "rs13",
-        title: "Master Database Management",
-        description: "Learn how to work with SQL and NoSQL databases effectively.",
-        completed: false,
-        resources: ["r5"]
-      },
-      {
-        id: "rs14",
-        title: "Understand API Development",
-        description: "Learn how to create RESTful and GraphQL APIs.",
-        completed: false
-      },
-      {
-        id: "rs15",
-        title: "Implement Authentication & Authorization",
-        description: "Learn how to secure web applications with proper auth mechanisms.",
-        completed: false
-      }
-    ]
-  },
-  {
-    id: "j3",
-    title: "Full Stack Developer",
-    company: "InnovateX",
-    description: "Develop both client and server software for complete web applications.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s9")!, // TypeScript
-      skillsData.find(s => s.id === "s3")!, // Node.js
-      skillsData.find(s => s.id === "s23")!, // Express.js
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
-      skillsData.find(s => s.id === "s26")! // CI/CD
-    ],
-    salaryRange: "$100,000 - $150,000",
-    experience: "4-6 years",
-    category: "Development",
-    roadmap: [
-      ...jsRoadmapSteps,
-      ...reactRoadmapSteps,
-      {
-        id: "rs16",
-        title: "Learn RESTful API Development",
-        description: "Understand how to build and maintain RESTful APIs.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs17",
-        title: "Master NoSQL Databases",
-        description: "Learn how to work with NoSQL databases effectively.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs18",
-        title: "Build a Full Stack Application",
-        description: "Create a complete full-stack application using React and Node.js.",
-        completed: false
-      }
-    ]
-  },
-  {
-    id: "j4",
-    title: "DevOps Engineer",
-    company: "CloudNative Systems",
-    description: "Implement and manage CI/CD pipelines and cloud infrastructure.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s15")!, // Kubernetes
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s28")!, // Terraform
-      skillsData.find(s => s.id === "s26")!, // CI/CD
-      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
-      skillsData.find(s => s.id === "s3")! // Node.js
-    ],
-    salaryRange: "$110,000 - $160,000",
-    experience: "3-6 years",
-    category: "Infrastructure",
-    roadmap: [
-      {
-        id: "rs19",
-        title: "Learn CI/CD Pipelines",
-        description: "Understand how to set up and manage CI/CD pipelines.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs20",
-        title: "Master Cloud Infrastructure",
-        description: "Learn how to manage cloud infrastructure effectively.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs21",
-        title: "Build a Cloud Native Application",
-        description: "Create a complete cloud-native application using Kubernetes.",
-        completed: false
-      }
-    ]
-  },
-  {
-    id: "j5",
-    title: "Data Scientist",
-    company: "AnalyticsPro",
-    description: "Analyze data to extract valuable insights and build predictive models.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s22")!, // Redis
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$95,000 - $145,000",
-    experience: "2-5 years",
-    category: "Data",
-    roadmap: [
-      {
-        id: "rs22",
-        title: "Learn Data Analysis",
-        description: "Understand the basics of data analysis and visualization.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs23",
-        title: "Master Machine Learning",
-        description: "Learn how to build and deploy machine learning models.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs24",
-        title: "Build a Data Science Project",
-        description: "Create a complete data science project using Python and SQL.",
-        completed: false
-      }
-    ]
-  },
-  {
-    id: "j6",
-    title: "UI/UX Designer",
-    company: "DesignHub",
-    description: "Design intuitive and visually appealing user interfaces for web and mobile applications.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s30")!, // Figma
-      skillsData.find(s => s.id === "s16")!, // HTML5
-      skillsData.find(s => s.id === "s17")!, // CSS3
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s18")!, // SASS/SCSS
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$75,000 - $110,000",
-    experience: "2-4 years",
-    category: "Design",
-    roadmap: [
-      {
-        id: "rs25",
-        title: "Learn UI/UX Design",
-        description: "Understand the principles of UI/UX design.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs26",
-        title: "Master Design Tools",
-        description: "Learn how to use design tools like Sketch and Figma.",
-        completed: false,
-        resources: []
-      },
-      {
-        id: "rs27",
-        title: "Build a Design Portfolio",
-        description: "Create a portfolio showcasing your UI/UX design projects.",
-        completed: false
-      }
-    ]
-  },
-  {
-    id: "j7",
-    title: "Software Engineer",
-    company: "Innovate Solutions",
-    description: "Design, develop, and maintain software applications across various platforms.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s6")!, // Java
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s20")!, // Jest
-      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
-      skillsData.find(s => s.id === "s24")! // REST API
-    ],
-    salaryRange: "$85,000 - $125,000",
-    experience: "2-5 years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j8",
-    title: "Mobile Developer",
-    company: "AppMakers Co.",
-    description: "Create and optimize applications for mobile devices (iOS and Android).",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s6")!, // Java (for Android)
-      skillsData.find(s => s.id === "s1")!, // JavaScript (for React Native/Ionic)
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s9")!, // TypeScript
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s29")!, // Firebase
-      skillsData.find(s => s.id === "s20")!, // Jest
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$90,000 - $130,000",
-    experience: "2-4 years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j9",
-    title: "AI Developer",
-    company: "FutureAI Labs",
-    description: "Develop artificial intelligence models and applications.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s6")!, // Java
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$100,000 - $150,000",
-    experience: "3+ years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j10",
-    title: "Network Engineer",
-    company: "ConnectNet",
-    description: "Design, implement, and manage network infrastructure.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python (for scripting)
-      skillsData.find(s => s.id === "s7")!, // AWS (networking in cloud)
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s26")!, // CI/CD
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$80,000 - $120,000",
-    experience: "3-5 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j11",
-    title: "Cloud Engineer",
-    company: "SkyCloud Services",
-    description: "Develop and manage cloud-based infrastructure and services.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s15")!, // Kubernetes
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s28")!, // Terraform
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s26")!, // CI/CD
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$95,000 - $140,000",
-    experience: "2-5 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j12",
-    title: "System Administrator",
-    company: "Server 관리자 Inc.",
-    description: "Maintain and administer computer systems and servers.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$70,000 - $110,000",
-    experience: "2-4 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j13",
-    title: "Data Engineer",
-    company: "DataFlow Corp",
-    description: "Build and maintain data pipelines and infrastructure.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s3")!, // Node.js
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s22")!, // Redis
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$90,000 - $135,000",
-    experience: "3-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j14",
-    title: "Data Analyst",
-    company: "Insightful Data",
-    description: "Analyze data to provide insights and support decision-making.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$70,000 - $100,000",
-    experience: "1-3 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j15",
-    title: "Business Intelligence Developer",
-    company: "Strategic BI",
-    description: "Develop BI solutions, dashboards, and reports.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$85,000 - $125,000",
-    experience: "2-5 years",
-    category: "Data",
-    roadmap: []
-  },
-  {
-    id: "j16",
-    title: "Cloud Architect",
-    company: "CloudArch Design",
-    description: "Design and plan cloud computing strategies and architectures.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s15")!, // Kubernetes
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s28")!, // Terraform
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s26")!, // CI/CD
-      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
-      skillsData.find(s => s.id === "s24")! // REST API
-    ],
-    salaryRange: "$120,000 - $180,000",
-    experience: "5+ years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j17",
-    title: "Cybersecurity Analyst",
-    company: "SecureNet Solutions",
-    description: "Monitor, detect, and respond to security threats and vulnerabilities in IT systems.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$85,000 - $130,000",
-    experience: "2-5 years",
-    category: "Security",
-    roadmap: []
-  },
-  {
-    id: "j18",
-    title: "Game Developer",
-    company: "GameStudio Pro",
-    description: "Design and develop video games for various platforms including mobile, PC, and console.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s6")!, // Java
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s20")!, // Jest
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$75,000 - $120,000",
-    experience: "2-4 years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j19",
-    title: "QA Engineer",
-    company: "TestPro Inc.",
-    description: "Ensure software quality through manual and automated testing processes.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s20")!, // Jest
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
-      skillsData.find(s => s.id === "s24")! // REST API
-    ],
-    salaryRange: "$70,000 - $110,000",
-    experience: "1-4 years",
-    category: "Testing",
-    roadmap: []
-  },
-  {
-    id: "j20",
-    title: "Product Manager (Technical)",
-    company: "InnovateTech",
-    description: "Lead product development and strategy for technical products and platforms.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s30")! // Figma
-    ],
-    salaryRange: "$100,000 - $160,000",
-    experience: "4-7 years",
-    category: "Management",
-    roadmap: []
-  },
-  {
-    id: "j21",
-    title: "Machine Learning Engineer",
-    company: "AI Innovations Lab",
-    description: "Build and deploy machine learning models and AI systems at scale.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s15")!, // Kubernetes
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$120,000 - $180,000",
-    experience: "3-6 years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j22",
-    title: "Blockchain Developer",
-    company: "CryptoTech Solutions",
-    description: "Develop decentralized applications and smart contracts on blockchain platforms.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s9")!, // TypeScript
-      skillsData.find(s => s.id === "s3")!, // Node.js
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$100,000 - $160,000",
-    experience: "2-5 years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j23",
-    title: "Technical Writer",
-    company: "DocuTech Corp",
-    description: "Create technical documentation, API guides, and user manuals for software products.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s16")!, // HTML5
-      skillsData.find(s => s.id === "s17")!, // CSS3
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$65,000 - $95,000",
-    experience: "2-4 years",
-    category: "Documentation",
-    roadmap: []
-  },
-  {
-    id: "j24",
-    title: "Site Reliability Engineer (SRE)",
-    company: "ScaleOps",
-    description: "Ensure system reliability, performance, and scalability of large-scale applications.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s15")!, // Kubernetes
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s28")!, // Terraform
-      skillsData.find(s => s.id === "s26")!, // CI/CD
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$110,000 - $170,000",
-    experience: "3-6 years",
-    category: "Infrastructure",
-    roadmap: []
-  },
-  {
-    id: "j25",
-    title: "Database Administrator",
-    company: "DataVault Systems",
-    description: "Manage, maintain, and optimize database systems for enterprise applications.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s12")!, // MongoDB
-      skillsData.find(s => s.id === "s22")!, // Redis
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s27")!, // Linux
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$80,000 - $125,000",
-    experience: "3-6 years",
-    category: "Database",
-    roadmap: []
-  },
-  {
-    id: "j26",
-    title: "Frontend Architect",
-    company: "DesignTech Studios",
-    description: "Lead frontend architecture decisions and mentor development teams.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s9")!, // TypeScript
-      skillsData.find(s => s.id === "s2")!, // React
-      skillsData.find(s => s.id === "s10")!, // Angular
-      skillsData.find(s => s.id === "s11")!, // Vue.js
-      skillsData.find(s => s.id === "s19")!, // Webpack
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$130,000 - $180,000",
-    experience: "6+ years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j27",
-    title: "API Developer",
-    company: "ConnectAPI Ltd",
-    description: "Design, develop, and maintain RESTful and GraphQL APIs for various applications.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s3")!, // Node.js
-      skillsData.find(s => s.id === "s23")!, // Express.js
-      skillsData.find(s => s.id === "s24")!, // REST API
-      skillsData.find(s => s.id === "s14")!, // GraphQL
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s21")!, // PostgreSQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s20")!, // Jest
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$85,000 - $125,000",
-    experience: "2-5 years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j28",
-    title: "WordPress Developer",
-    company: "WebCraft Agency",
-    description: "Develop and customize WordPress websites and plugins for clients.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s16")!, // HTML5
-      skillsData.find(s => s.id === "s17")!, // CSS3
-      skillsData.find(s => s.id === "s18")!, // SASS/SCSS
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$60,000 - $90,000",
-    experience: "1-4 years",
-    category: "Development",
-    roadmap: []
-  },
-  {
-    id: "j29",
-    title: "IT Project Manager",
-    company: "TechLead Solutions",
-    description: "Lead and coordinate IT projects from planning to delivery.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s25")!, // Agile/Scrum
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s26")! // CI/CD
-    ],
-    salaryRange: "$95,000 - $140,000",
-    experience: "4-8 years",
-    category: "Management",
-    roadmap: []
-  },
-  {
-    id: "j30",
-    title: "Software Architect",
-    company: "ArchTech Systems",
-    description: "Design high-level software architecture and guide technical decisions.",
-    requiredSkills: [
-      skillsData.find(s => s.id === "s1")!, // JavaScript
-      skillsData.find(s => s.id === "s9")!, // TypeScript
-      skillsData.find(s => s.id === "s6")!, // Java
-      skillsData.find(s => s.id === "s4")!, // Python
-      skillsData.find(s => s.id === "s5")!, // SQL
-      skillsData.find(s => s.id === "s7")!, // AWS
-      skillsData.find(s => s.id === "s8")!, // Docker
-      skillsData.find(s => s.id === "s13")!, // Git
-      skillsData.find(s => s.id === "s25")! // Agile/Scrum
-    ],
-    salaryRange: "$140,000 - $200,000",
-    experience: "7+ years",
-    category: "Architecture",
-    roadmap: []
-  }
-];
-
-// Add quiz recommendations
-export const quizzesData: Quiz[] = [
-  {
-    id: "q1",
-    title: "JavaScript Fundamentals",
-    description: "Test your knowledge of JavaScript basics.",
-    skillCategory: "Frontend Development",
-    difficulty: "beginner",
+    id: 'react-quiz',
+    title: 'React Fundamentals',
+    description: 'Test your knowledge of React basics',
+    skillCategory: 'Frontend Frameworks',
+    difficulty: 'beginner',
     questions: [
       {
-        id: "q1_1",
-        question: "What is the correct way to declare a JavaScript variable?",
-        options: ["var myVar = 10;", "variable myVar = 10;", "v myVar = 10;", "int myVar = 10;"],
-        correctAnswer: 0
-      },
-      {
-        id: "q1_2",
-        question: "Which method adds an element to the end of an array?",
-        options: ["push()", "append()", "add()", "insert()"],
-        correctAnswer: 0
-      },
-      {
-        id: "q1_3",
-        question: "What does DOM stand for in JavaScript?",
+        id: 'react-1',
+        question: 'What is JSX?',
         options: [
-          "Document Object Model",
-          "Data Object Model",
-          "Document Orientation Model",
-          "Digital Object Model"
+          'A JavaScript library',
+          'A syntax extension for JavaScript',
+          'A CSS framework',
+          'A database'
         ],
-        correctAnswer: 0
-      }
-    ],
-    recommendations: {
-      lowScore: [resourcesData.find(r => r.id === "r1")!],
-      mediumScore: [resourcesData.find(r => r.id === "r1")!, resourcesData.find(r => r.id === "r6")!],
-      highScore: [resourcesData.find(r => r.id === "r6")!]
-    }
-  },
-  {
-    id: "q2",
-    title: "React Essentials",
-    description: "Evaluate your understanding of React basics.",
-    skillCategory: "Frontend Development",
-    difficulty: "intermediate",
-    questions: [
+        correctAnswer: 1,
+        explanation: 'JSX is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript files, commonly used with React.'
+      },
       {
-        id: "q2_1",
-        question: "What is JSX?",
+        id: 'react-2',
+        question: 'What is a React component?',
         options: [
-          "A syntax extension to JavaScript",
-          "A new programming language",
-          "A database query language",
-          "JavaScript XML parser"
+          'A reusable piece of UI',
+          'A database table',
+          'A CSS class',
+          'A JavaScript function only'
         ],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explanation: 'A React component is a reusable piece of UI that can be composed together to build complex user interfaces.'
       },
       {
-        id: "q2_2",
-        question: "What hook would you use to perform side effects in a component?",
-        options: ["useEffect", "useState", "useContext", "useReducer"],
-        correctAnswer: 0
-      },
-      {
-        id: "q2_3",
-        question: "Which lifecycle method is called after a component is rendered for the first time?",
-        options: ["componentDidMount", "componentWillMount", "componentDidUpdate", "componentDidRender"],
-        correctAnswer: 0
+        id: 'react-3',
+        question: 'Which method is used to render a React component?',
+        options: [
+          'React.render()',
+          'ReactDOM.render()',
+          'Component.render()',
+          'DOM.render()'
+        ],
+        correctAnswer: 1,
+        explanation: 'ReactDOM.render() is the method used to render React components into the DOM.'
       }
-    ],
-    recommendations: {
-      lowScore: [resourcesData.find(r => r.id === "r2")!],
-      mediumScore: [resourcesData.find(r => r.id === "r2")!],
-      highScore: [resourcesData.find(r => r.id === "r2")!]
-    }
+    ]
   },
   {
-    id: "q3",
-    title: "Python Basics",
-    description: "Test your knowledge of Python fundamentals.",
-    skillCategory: "Programming Languages",
-    difficulty: "beginner",
+    id: 'node-quiz',
+    title: 'Node.js Basics',
+    description: 'Test your knowledge of Node.js fundamentals',
+    skillCategory: 'Backend Technologies',
+    difficulty: 'intermediate',
     questions: [
       {
-        id: "q3_1",
-        question: "What is the correct way to declare a variable in Python?",
-        options: ["var x = 5;", "int x = 5;", "x = 5", "let x = 5"],
-        correctAnswer: 2
+        id: 'node-1',
+        question: 'What is Node.js?',
+        options: [
+          'A web browser',
+          'A JavaScript runtime for server-side development',
+          'A database',
+          'A CSS framework'
+        ],
+        correctAnswer: 1,
+        explanation: 'Node.js is a JavaScript runtime built on Chrome\'s V8 JavaScript engine that allows you to run JavaScript on the server side.'
       },
       {
-        id: "q3_2",
-        question: "How do you create a list in Python?",
-        options: ["array(1, 2, 3)", "[1, 2, 3]", "list(1, 2, 3)", "{1, 2, 3}"],
-        correctAnswer: 1
+        id: 'node-2',
+        question: 'What is npm?',
+        options: [
+          'Node Package Manager',
+          'Network Protocol Manager',
+          'New Programming Method',
+          'Node Performance Monitor'
+        ],
+        correctAnswer: 0,
+        explanation: 'npm stands for Node Package Manager, which is the default package manager for Node.js used to install and manage JavaScript packages.'
       },
       {
-        id: "q3_3",
-        question: "What is the output of print(3 * '7')?",
-        options: ["21", "777", "337", "Error"],
-        correctAnswer: 1
+        id: 'node-3',
+        question: 'Which file is used to define project dependencies in Node.js?',
+        options: [
+          'dependencies.json',
+          'package.json',
+          'node.json',
+          'config.json'
+        ],
+        correctAnswer: 1,
+        explanation: 'package.json is the file used to define project dependencies, scripts, and metadata in Node.js projects.'
       }
-    ],
-    recommendations: {
-      lowScore: [resourcesData.find(r => r.id === "r4")!],
-      mediumScore: [resourcesData.find(r => r.id === "r4")!],
-      highScore: [resourcesData.find(r => r.id === "r4")!]
-    }
+    ]
+  },
+  {
+    id: 'db-quiz',
+    title: 'Database Fundamentals',
+    description: 'Test your knowledge of database concepts',
+    skillCategory: 'Databases',
+    difficulty: 'beginner',
+    questions: [
+      {
+        id: 'db-1',
+        question: 'What does SQL stand for?',
+        options: [
+          'Structured Query Language',
+          'Simple Query Language',
+          'System Query Language',
+          'Standard Query Language'
+        ],
+        correctAnswer: 0,
+        explanation: 'SQL stands for Structured Query Language, which is used for managing and manipulating relational databases.'
+      },
+      {
+        id: 'db-2',
+        question: 'Which command is used to retrieve data from a database?',
+        options: [
+          'GET',
+          'SELECT',
+          'FETCH',
+          'RETRIEVE'
+        ],
+        correctAnswer: 1,
+        explanation: 'SELECT is the SQL command used to retrieve data from a database table.'
+      },
+      {
+        id: 'db-3',
+        question: 'What is a primary key?',
+        options: [
+          'The first column in a table',
+          'A unique identifier for each row',
+          'The most important data',
+          'A password for the database'
+        ],
+        correctAnswer: 1,
+        explanation: 'A primary key is a unique identifier for each row in a database table that ensures no duplicate records exist.'
+      }
+    ]
   }
 ];
 
-// Sample user goals
-export const goalsData: Goal[] = [
-  {
-    id: "g1",
-    title: "Become a Frontend Developer",
-    jobId: "j1",
-    roadmap: jobsData.find(j => j.id === "j1")?.roadmap || [],
-    progress: 0
-  },
-  {
-    id: "g2",
-    title: "Master JavaScript",
-    skillId: "s1",
-    roadmap: jsRoadmapSteps,
-    progress: 0
-  }
+// Combine all quizzes
+export const allQuizzes: Quiz[] = [
+  ...mockQuizzes,
+  ...languageQuizzes
 ];
