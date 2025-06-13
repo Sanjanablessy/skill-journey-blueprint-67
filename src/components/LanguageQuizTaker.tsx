@@ -7,7 +7,7 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { CheckCircle, XCircle, ArrowRight, RotateCcw, AlertCircle } from 'lucide-react';
+import { CheckCircle, XCircle, ArrowRight, RotateCcw, AlertCircle, ArrowLeft } from 'lucide-react';
 import { calculateQuizResult, getLanguageTopics } from '@/utils/quizScoring';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -142,6 +142,17 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
       <div className="max-w-4xl mx-auto p-6">
         <Card>
           <CardHeader className="text-center">
+            <div className="flex justify-between items-center mb-4">
+              <Button 
+                onClick={onBackToSelection}
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back to Quizzes
+              </Button>
+              <div></div>
+            </div>
             <CardTitle className="flex items-center justify-center gap-2">
               {quizResult.level === 'high' ? (
                 <CheckCircle className="h-8 w-8 text-green-500" />
@@ -295,6 +306,14 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
       {/* Header */}
       <div className="mb-6">
         <div className="flex justify-between items-center mb-4">
+          <Button 
+            onClick={onBackToSelection}
+            variant="outline"
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Quizzes
+          </Button>
           <div>
             <h1 className="text-2xl font-bold">{quiz.title}</h1>
             <p className="text-muted-foreground">{quiz.description}</p>
