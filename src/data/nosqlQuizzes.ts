@@ -1,4 +1,3 @@
-
 import { Quiz } from '@/types';
 
 export const nosqlQuizzes: Quiz[] = [
@@ -521,6 +520,267 @@ export const nosqlQuizzes: Quiz[] = [
         ],
         correctAnswer: 1,
         explanation: 'Embedding stores related data within the same document, while referencing stores it in separate documents.'
+      }
+    ]
+  },
+  {
+    id: 'nosql-advanced',
+    title: 'NoSQL - Advanced',
+    description: 'Test your advanced NoSQL knowledge',
+    skillCategory: 'NoSQL',
+    difficulty: 'advanced',
+    questions: [
+      {
+        id: 'nosql-adv-1',
+        question: 'Which NoSQL database supports ACID transactions with tunable consistency?',
+        options: [
+          'Cassandra',
+          'FoundationDB',
+          'Couchbase',
+          'HBase'
+        ],
+        correctAnswer: 1,
+        explanation: 'FoundationDB supports ACID transactions and is multi-model.'
+      },
+      {
+        id: 'nosql-adv-2',
+        question: 'In MongoDB, what does a $lookup operation do?',
+        options: [
+          'Insert data',
+          'Delete documents',
+          'Perform a left outer join',
+          'Update field values'
+        ],
+        correctAnswer: 2,
+        explanation: '$lookup enables join-like functionality in MongoDB aggregations.'
+      },
+      {
+        id: 'nosql-adv-3',
+        question: 'What is the purpose of a Bloom Filter in Cassandra?',
+        options: [
+          'Caching',
+          'Reducing disk reads',
+          'Logging',
+          'Backups'
+        ],
+        correctAnswer: 1,
+        explanation: 'Bloom filters help determine if a value might exist before disk read.'
+      },
+      {
+        id: 'nosql-adv-4',
+        question: 'Which technique ensures high availability in DynamoDB globally?',
+        options: [
+          'Local replication',
+          'Global tables',
+          'Joins',
+          'Nested documents'
+        ],
+        correctAnswer: 1,
+        explanation: 'Global tables replicate data across regions automatically.'
+      },
+      {
+        id: 'nosql-adv-5',
+        question: 'What does sharding mean in a distributed NoSQL system?',
+        options: [
+          'Caching',
+          'Partitioning data across nodes',
+          'Full replication',
+          'Clustering indexes'
+        ],
+        correctAnswer: 1,
+        explanation: 'Sharding splits large datasets across nodes for scalability.'
+      },
+      {
+        id: 'nosql-adv-6',
+        question: 'What is the function of the gossip protocol in Cassandra?',
+        options: [
+          'Key management',
+          'Node communication and cluster membership',
+          'Query parsing',
+          'Indexing'
+        ],
+        correctAnswer: 1,
+        explanation: 'Gossip protocol allows Cassandra nodes to exchange state information.'
+      },
+      {
+        id: 'nosql-adv-7',
+        question: 'What does the CAP theorem suggest in distributed systems?',
+        options: [
+          'All properties can be guaranteed',
+          'Only two of three: Consistency, Availability, Partition Tolerance',
+          'Consistency is optional',
+          'Availability is never compromised'
+        ],
+        correctAnswer: 1,
+        explanation: 'You must compromise on one of the three.'
+      },
+      {
+        id: 'nosql-adv-8',
+        question: 'How does Cassandra handle write-heavy workloads?',
+        options: [
+          'Uses disk buffering',
+          'Writes are first stored in memory (memtable) and flushed later',
+          'Avoids logs',
+          'Replicates data to a master only'
+        ],
+        correctAnswer: 1,
+        explanation: 'Cassandra optimizes write path using memtable and SSTables.'
+      },
+      {
+        id: 'nosql-adv-9',
+        question: 'What is Time-To-Live (TTL) in Redis?',
+        options: [
+          'Backup expiration',
+          'Expiry time of a key',
+          'Transaction life',
+          'Session timeout only'
+        ],
+        correctAnswer: 1,
+        explanation: 'TTL defines how long a key remains in Redis.'
+      },
+      {
+        id: 'nosql-adv-10',
+        question: 'Which of these systems provides a graph engine over NoSQL backends?',
+        options: [
+          'MongoDB',
+          'JanusGraph',
+          'Cassandra',
+          'CouchDB'
+        ],
+        correctAnswer: 1,
+        explanation: 'JanusGraph supports graph queries over various NoSQL stores.'
+      },
+      {
+        id: 'nosql-adv-11',
+        question: 'In HBase, what role does the HMaster play?',
+        options: [
+          'Executes MapReduce',
+          'Manages region servers and schema',
+          'Directly stores data',
+          'Does indexing'
+        ],
+        correctAnswer: 1,
+        explanation: 'HMaster oversees the distribution of regions.'
+      },
+      {
+        id: 'nosql-adv-12',
+        question: 'Which command in MongoDB improves search speed by creating indexes?',
+        options: [
+          'createDocument()',
+          'createIndex()',
+          'searchOptimize()',
+          'optimizeIndex()'
+        ],
+        correctAnswer: 1,
+        explanation: 'createIndex() improves query performance.'
+      },
+      {
+        id: 'nosql-adv-13',
+        question: 'Which file system does HBase rely on?',
+        options: [
+          'GFS',
+          'HDFS',
+          'ext4',
+          'NTFS'
+        ],
+        correctAnswer: 1,
+        explanation: 'HBase is built on top of Hadoop\'s HDFS.'
+      },
+      {
+        id: 'nosql-adv-14',
+        question: 'What is the purpose of MapReduce in NoSQL databases?',
+        options: [
+          'Caching',
+          'Distributed processing and aggregation',
+          'Normalization',
+          'Replication'
+        ],
+        correctAnswer: 1,
+        explanation: 'MapReduce helps with distributed computation on large data.'
+      },
+      {
+        id: 'nosql-adv-15',
+        question: 'Which structure does a document in CouchDB follow?',
+        options: [
+          'Table',
+          'JSON',
+          'CSV',
+          'Parquet'
+        ],
+        correctAnswer: 1,
+        explanation: 'CouchDB uses JSON to store document data.'
+      },
+      {
+        id: 'nosql-adv-16',
+        question: 'What is the main advantage of column-oriented NoSQL databases?',
+        options: [
+          'Transaction speed',
+          'Analytical query performance',
+          'Relationship handling',
+          'Text search'
+        ],
+        correctAnswer: 1,
+        explanation: 'Columnar layout suits aggregation-heavy queries.'
+      },
+      {
+        id: 'nosql-adv-17',
+        question: 'Which NoSQL type is most suited for storing session data?',
+        options: [
+          'Graph',
+          'Key-Value',
+          'Columnar',
+          'RDF'
+        ],
+        correctAnswer: 1,
+        explanation: 'Key-value stores like Redis excel at session data handling.'
+      },
+      {
+        id: 'nosql-adv-18',
+        question: 'What is a primary benefit of denormalization in NoSQL databases?',
+        options: [
+          'Space saving',
+          'Faster read performance',
+          'Strong typing',
+          'Transaction support'
+        ],
+        correctAnswer: 1,
+        explanation: 'Denormalization reduces joins and speeds up reads.'
+      },
+      {
+        id: 'nosql-adv-19',
+        question: 'Which command is used to monitor live Redis operations?',
+        options: [
+          'WATCH',
+          'MONITOR',
+          'STREAM',
+          'TRACE'
+        ],
+        correctAnswer: 1,
+        explanation: 'MONITOR streams every command received by the server.'
+      },
+      {
+        id: 'nosql-adv-20',
+        question: 'Which company originally developed BigTable?',
+        options: [
+          'Amazon',
+          'Google',
+          'Facebook',
+          'Oracle'
+        ],
+        correctAnswer: 1,
+        explanation: 'BigTable is a distributed storage system built by Google.'
+      },
+      {
+        id: 'nosql-adv-21',
+        question: 'Which is a valid reason to choose NoSQL over SQL?',
+        options: [
+          'Lack of schema constraints',
+          'Scalability requirements',
+          'Complex hierarchical data',
+          'All of the above'
+        ],
+        correctAnswer: 3,
+        explanation: 'NoSQL excels when flexibility, scalability, and non-tabular data are needed.'
       }
     ]
   }
