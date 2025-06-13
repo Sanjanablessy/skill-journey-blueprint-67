@@ -12,8 +12,6 @@ import HomePage from "@/pages/HomePage";
 import JobsPage from "@/pages/JobsPage";
 import JobDetailPage from "@/pages/JobDetailPage";
 import SkillsPage from "@/pages/SkillsPage";
-import QuizzesPage from "@/pages/QuizzesPage";
-import QuizDetailPage from "@/pages/QuizDetailPage";
 import LanguageQuizzesPage from "@/pages/LanguageQuizzesPage";
 import GoalsPage from "@/pages/GoalsPage";
 import AuthPage from "@/pages/AuthPage";
@@ -40,9 +38,7 @@ const App = () => (
                   <Route path="/jobs" element={<JobsPage />} />
                   <Route path="/jobs/:id" element={<JobDetailPage />} />
                   <Route path="/skills" element={<SkillsPage />} />
-                  <Route path="/quizzes" element={<QuizzesPage />} />
-                  <Route path="/quizzes/:id" element={<QuizDetailPage />} />
-                  <Route path="/language-quizzes" element={<LanguageQuizzesPage />} />
+                  <Route path="/quizzes" element={<LanguageQuizzesPage />} />
                   <Route path="/goals" element={<GoalsPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

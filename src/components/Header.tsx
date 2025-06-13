@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -14,7 +13,7 @@ const Header = () => {
     { path: "/", label: "Home" },
     { path: "/jobs", label: "Jobs" },
     { path: "/skills", label: "Skills" },
-    { path: "/quizzes", label: "Quizzes" },
+    { path: "/quizzes", label: "Take Quizzes" },
     { path: "/goals", label: "Goals" },
   ];
 
