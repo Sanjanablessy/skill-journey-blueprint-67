@@ -46,7 +46,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onSelect }) => {
               <BookOpen className="h-4 w-4" />
               {quiz.questions.length} Questions
             </span>
-            <span>~{Math.ceil(quiz.questions.length * 0.5)} minutes</span>
+            <span>~15 minutes</span>
           </div>
           
           <div className="space-y-2">

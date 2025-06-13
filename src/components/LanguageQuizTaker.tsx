@@ -75,11 +75,6 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
       }
     }));
 
-    if (!isCorrect) {
-      setShowExplanation(true);
-      return;
-    }
-
     proceedToNext();
   };
 
@@ -180,6 +175,62 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
             <div className="bg-muted p-4 rounded-lg">
               <h3 className="font-semibold mb-2">Feedback</h3>
               <p className="text-muted-foreground">{quizResult.feedback}</p>
+            </div>
+
+            {/* Question-by-Question Review */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold">Question Review</h3>
+              {quiz.questions.map((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.correctAnswer;
+                
+                return (
+                  <Card key={index} className={`border-l-4 ${isCorrect ? 'border-l-green-500' : 'border-l-red-500'}`}>
+                    <CardHeader className="pb-3">
+                      <div className="flex items-start justify-between">
+                        <CardTitle className="text-base">
+                          Question {index + 1}
+                        </CardTitle>
+                        <Badge variant={isCorrect ? 'default' : 'destructive'}>
+                          {isCorrect ? 'Correct' : 'Incorrect'}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{question.question}</p>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-2">
+                        {question.options.map((option, optionIndex) => (
+                          <div 
+                            key={optionIndex} 
+                            className={`p-2 rounded text-sm ${
+                              optionIndex === question.correctAnswer 
+                                ? 'bg-green-100 text-green-800 border border-green-300' 
+                                : optionIndex === userAnswer && userAnswer !== question.correctAnswer
+                                ? 'bg-red-100 text-red-800 border border-red-300'
+                                : 'bg-gray-50'
+                            }`}
+                          >
+                            <span className="font-medium">{String.fromCharCode(65 + optionIndex)}.</span> {option}
+                            {optionIndex === question.correctAnswer && (
+                              <span className="ml-2 text-green-600">✓ Correct Answer</span>
+                            )}
+                            {optionIndex === userAnswer && userAnswer !== question.correctAnswer && (
+                              <span className="ml-2 text-red-600">✗ Your Answer</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <Alert>
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>
+                          <strong>Explanation:</strong> {question.explanation}
+                        </AlertDescription>
+                      </Alert>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
 
             {/* Next Steps */}
@@ -322,11 +373,7 @@ const LanguageQuizTaker: React.FC<LanguageQuizTakerProps> = ({
             Exit Quiz
           </Button>
           
-          {showExplanation ? (
-            <Button onClick={proceedToNext}>
-              Continue
-            </Button>
-          ) : currentQuestionIndex === quiz.questions.length - 1 ? (
+          {currentQuestionIndex === quiz.questions.length - 1 ? (
             <Button 
               onClick={handleSubmit}
               disabled={userAnswers[currentQuestionIndex] === undefined}
