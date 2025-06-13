@@ -1,6 +1,6 @@
 
 import React, { createContext, useState, useContext, ReactNode } from "react";
-import { skillsData, jobsData, quizzesData, goalsData } from "@/data/mockData";
+import { mockSkills, mockJobs, allQuizzes, mockGoals } from "@/data/mockData";
 import { Skill, Job, Quiz, Goal, UserSkill, RoadmapStep } from "@/types";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "@/lib/utils";
@@ -25,7 +25,7 @@ interface AppContextProps {
 export const AppContext = createContext<AppContextProps | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [goals, setGoals] = useState<Goal[]>(goalsData);
+  const [goals, setGoals] = useState<Goal[]>(mockGoals);
   const [userSkills, setUserSkills] = useState<UserSkill[]>([]);
 
   const addUserSkill = (skill: Skill, proficiency: number) => {
@@ -57,7 +57,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const createRoadmapForJob = (jobId: string): RoadmapStep[] => {
-    const job = jobsData.find((j) => j.id === jobId);
+    const job = mockJobs.find((j) => j.id === jobId);
     if (!job) return [];
 
     const steps: RoadmapStep[] = [];
@@ -104,7 +104,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const createRoadmapForSkill = (skillId: string): RoadmapStep[] => {
-    const skill = skillsData.find((s) => s.id === skillId);
+    const skill = mockSkills.find((s) => s.id === skillId);
     if (!skill) return [];
 
     return [
@@ -143,7 +143,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const createGoalForJob = (jobId: string) => {
-    const job = jobsData.find((j) => j.id === jobId);
+    const job = mockJobs.find((j) => j.id === jobId);
     if (!job) return;
 
     const roadmap = createRoadmapForJob(jobId);
@@ -160,7 +160,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const createGoalForSkill = (skillId: string) => {
-    const skill = skillsData.find((s) => s.id === skillId);
+    const skill = mockSkills.find((s) => s.id === skillId);
     if (!skill) return;
 
     const roadmap = createRoadmapForSkill(skillId);
@@ -205,7 +205,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     
     const userSkillIds = userSkills.map((skill) => skill.id);
     
-    return jobsData
+    return mockJobs
       .map((job) => {
         const requiredSkillIds = job.requiredSkills.map((skill) => skill.id);
         const matchedSkills = requiredSkillIds.filter((id) => userSkillIds.includes(id));
@@ -220,7 +220,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getRecommendedSkills = (jobId: string): Skill[] => {
-    const job = jobsData.find((j) => j.id === jobId);
+    const job = mockJobs.find((j) => j.id === jobId);
     if (!job) return [];
     
     const userSkillIds = userSkills.map((skill) => skill.id);
@@ -232,9 +232,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AppContext.Provider
       value={{
-        skills: skillsData,
-        jobs: jobsData,
-        quizzes: quizzesData,
+        skills: mockSkills,
+        jobs: mockJobs,
+        quizzes: allQuizzes,
         goals,
         userSkills,
         addUserSkill,
