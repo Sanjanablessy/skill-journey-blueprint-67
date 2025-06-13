@@ -58,7 +58,7 @@ const HomePage = () => {
       </div>
 
       {/* Features Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
@@ -80,25 +80,6 @@ const HomePage = () => {
             </Card>
           );
         })}
-      </div>
-
-      {/* Stats Section */}
-      <div className="bg-gray-50 rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-bold mb-6">Join Thousands of IT Professionals</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">10,000+</div>
-            <div className="text-gray-600">Job Opportunities</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">500+</div>
-            <div className="text-gray-600">Skill Assessments</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">95%</div>
-            <div className="text-gray-600">Success Rate</div>
-          </div>
-        </div>
       </div>
     </div>
   );
