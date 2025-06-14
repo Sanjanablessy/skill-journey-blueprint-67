@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -20,9 +20,10 @@ const SkillsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showUserSkills, setShowUserSkills] = useState(false);
+  const [visibleSkillsCount, setVisibleSkillsCount] = useState(24);
   
   // Get unique skill categories
-  const categories = Array.from(new Set(skills.map((skill) => skill.category)));
+  const categories = Array.from(new Set(skills.map((skill) => skill.category))).sort();
   
   // Filter skills based on search term and category
   const filteredSkills = skills.filter((skill) => {
@@ -35,11 +36,23 @@ const SkillsPage = () => {
     return matchesSearch && matchesCategory;
   });
   
+  const visibleSkills = filteredSkills.slice(0, visibleSkillsCount);
+  const hasMoreSkills = visibleSkillsCount < filteredSkills.length;
+
+  const loadMoreSkills = () => {
+    setVisibleSkillsCount(prev => Math.min(prev + 24, filteredSkills.length));
+  };
+  
   const matchingJobs = getMatchingJobs();
   
   const handleAddSkill = (skill: Skill) => {
     addUserSkill(skill, 3); // Default proficiency level
   };
+
+  useEffect(() => {
+    // Reset visible count when filters change
+    setVisibleSkillsCount(24);
+  }, [searchTerm, selectedCategory]);
 
   return (
     <div className="container px-4 md:px-6 py-8 max-w-7xl">
@@ -151,7 +164,7 @@ const SkillsPage = () => {
       )}
 
       {/* Category Filters */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-6 overflow-x-auto pb-2">
         <Button
           variant={selectedCategory === null ? "default" : "outline"}
           size="sm"
@@ -173,10 +186,17 @@ const SkillsPage = () => {
         ))}
       </div>
 
+      {/* Results count */}
+      <div className="mb-4">
+        <p className="text-sm text-muted-foreground">
+          Showing {visibleSkills.length} of {filteredSkills.length} skills
+        </p>
+      </div>
+
       {/* Skills List */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredSkills.length > 0 ? (
-          filteredSkills.map((skill) => {
+        {visibleSkills.length > 0 ? (
+          visibleSkills.map((skill) => {
             const isAdded = userSkills.some((s) => s.id === skill.id);
             
             return (
@@ -214,6 +234,19 @@ const SkillsPage = () => {
           </div>
         )}
       </div>
+      
+      {/* Load More Button */}
+      {hasMoreSkills && (
+        <div className="flex justify-center mt-8">
+          <Button 
+            onClick={loadMoreSkills}
+            variant="outline"
+            className="px-8"
+          >
+            Load More Skills ({filteredSkills.length - visibleSkillsCount} remaining)
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
