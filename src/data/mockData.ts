@@ -2404,3 +2404,158 @@ export const allQuizzes: Quiz[] = [
   ...cybersecurityQuizzes,
   ...mobileQuizzes
 ];
+
+export const skills: Skill[] = [
+  // Frontend Development
+  { id: "1", name: "HTML", category: "Frontend Development", description: "Markup language for creating web pages and web applications" },
+  { id: "2", name: "CSS", category: "Frontend Development", description: "Style sheet language for describing the presentation of web pages" },
+  { id: "3", name: "JavaScript", category: "Frontend Development", description: "Programming language for web development and interactive web pages" },
+  { id: "4", name: "TypeScript", category: "Frontend Development", description: "Typed superset of JavaScript that compiles to plain JavaScript" },
+  { id: "5", name: "React.js", category: "Frontend Development", description: "JavaScript library for building user interfaces" },
+  { id: "6", name: "Angular", category: "Frontend Development", description: "Platform for building mobile and desktop web applications" },
+  { id: "7", name: "Vue.js", category: "Frontend Development", description: "Progressive JavaScript framework for building user interfaces" },
+  { id: "8", name: "Next.js", category: "Frontend Development", description: "React framework for production with server-side rendering" },
+
+  // Backend Development
+  { id: "9", name: "Node.js", category: "Backend Development", description: "JavaScript runtime for building server-side applications" },
+  { id: "10", name: "Express.js", category: "Backend Development", description: "Web application framework for Node.js" },
+  { id: "11", name: "PHP", category: "Backend Development", description: "Server-side scripting language for web development" },
+  { id: "12", name: "Laravel", category: "Backend Development", description: "PHP web application framework with elegant syntax" },
+  { id: "13", name: "Python", category: "Backend Development", description: "High-level programming language for various applications" },
+  { id: "14", name: "Django", category: "Backend Development", description: "High-level Python web framework for rapid development" },
+  { id: "15", name: "Flask", category: "Backend Development", description: "Lightweight Python web framework" },
+  { id: "16", name: "Java", category: "Backend Development", description: "Object-oriented programming language for enterprise applications" },
+  { id: "17", name: "Spring Boot", category: "Backend Development", description: "Java framework for creating production-ready applications" },
+
+  // Mobile Development
+  { id: "18", name: "Kotlin", category: "Mobile Development", description: "Modern programming language for Android development" },
+  { id: "19", name: "Swift", category: "Mobile Development", description: "Programming language for iOS and macOS development" },
+  { id: "20", name: "Flutter", category: "Mobile Development", description: "UI toolkit for building cross-platform applications" },
+  { id: "21", name: "Dart", category: "Mobile Development", description: "Programming language optimized for Flutter development" },
+  { id: "22", name: "React Native", category: "Mobile Development", description: "Framework for building native mobile apps using React" },
+
+  // Database
+  { id: "23", name: "SQL", category: "Database", description: "Standard language for managing and querying databases" },
+  { id: "24", name: "MySQL", category: "Database", description: "Open-source relational database management system" },
+  { id: "25", name: "PostgreSQL", category: "Database", description: "Advanced open-source relational database" },
+  { id: "26", name: "MongoDB", category: "Database", description: "NoSQL document database for modern applications" },
+  { id: "27", name: "Oracle DB", category: "Database", description: "Enterprise relational database management system" },
+  { id: "28", name: "Redis", category: "Database", description: "In-memory data structure store and cache" },
+  { id: "29", name: "GraphQL", category: "Database", description: "Query language and runtime for APIs" },
+  { id: "30", name: "REST API", category: "Database", description: "Architectural style for designing web services" },
+
+  // DevOps
+  { id: "31", name: "Git", category: "DevOps", description: "Distributed version control system" },
+  { id: "32", name: "GitHub", category: "DevOps", description: "Web-based Git repository hosting service" },
+  { id: "33", name: "Bitbucket", category: "DevOps", description: "Git repository management and collaboration platform" },
+  { id: "34", name: "Docker", category: "DevOps", description: "Platform for developing and running containerized applications" },
+  { id: "35", name: "Kubernetes", category: "DevOps", description: "Container orchestration platform for automating deployment" },
+  { id: "36", name: "Jenkins", category: "DevOps", description: "Automation server for continuous integration and deployment" },
+  { id: "37", name: "Travis CI", category: "DevOps", description: "Continuous integration service for testing and deployment" },
+  { id: "38", name: "CircleCI", category: "DevOps", description: "Continuous integration and delivery platform" },
+  { id: "39", name: "Terraform", category: "DevOps", description: "Infrastructure as code tool for building and managing infrastructure" },
+  { id: "40", name: "Ansible", category: "DevOps", description: "Automation tool for configuration management and deployment" },
+
+  // Cloud Computing
+  { id: "41", name: "AWS", category: "Cloud Computing", description: "Amazon Web Services cloud computing platform" },
+  { id: "42", name: "Azure", category: "Cloud Computing", description: "Microsoft cloud computing services platform" },
+  { id: "43", name: "Google Cloud Platform (GCP)", category: "Cloud Computing", description: "Google's suite of cloud computing services" },
+  { id: "44", name: "Firebase", category: "Cloud Computing", description: "Google's mobile and web application development platform" },
+
+  // System Administration
+  { id: "45", name: "Linux", category: "System Administration", description: "Open-source operating system for servers and development" },
+  { id: "46", name: "Bash / Shell Scripting", category: "System Administration", description: "Command-line scripting for Unix-like systems" },
+  { id: "47", name: "PowerShell", category: "System Administration", description: "Microsoft's command-line shell and scripting language" },
+
+  // Programming Languages
+  { id: "48", name: "C++", category: "Programming Languages", description: "General-purpose programming language for system programming" },
+  { id: "49", name: "C#", category: "Programming Languages", description: "Object-oriented programming language by Microsoft" },
+  { id: "50", name: ".NET / ASP.NET", category: "Programming Languages", description: "Microsoft's web application framework" },
+
+  // Game Development
+  { id: "51", name: "Unity", category: "Game Development", description: "Cross-platform game engine for creating games" },
+  { id: "52", name: "Unreal Engine", category: "Game Development", description: "Game engine for creating high-quality games" },
+
+  // Design
+  { id: "53", name: "Figma", category: "Design", description: "Web-based design and prototyping tool" },
+  { id: "54", name: "Adobe XD", category: "Design", description: "Vector-based user experience design tool" },
+  { id: "55", name: "Sketch", category: "Design", description: "Digital design toolkit for creating user interfaces" },
+  { id: "56", name: "Photoshop", category: "Design", description: "Image editing and graphic design software" },
+  { id: "57", name: "Illustrator", category: "Design", description: "Vector graphics editor for creating illustrations" },
+  { id: "58", name: "UI Design Principles", category: "Design", description: "Fundamental principles for creating effective user interfaces" },
+  { id: "59", name: "UX Research", category: "Design", description: "Methods for understanding user needs and behaviors" },
+  { id: "60", name: "Wireframing", category: "Design", description: "Creating low-fidelity layouts for digital products" },
+  { id: "61", name: "Prototyping", category: "Design", description: "Building interactive models of digital products" },
+
+  // Project Management
+  { id: "62", name: "Agile Methodology", category: "Project Management", description: "Iterative approach to project management and software development" },
+  { id: "63", name: "Scrum", category: "Project Management", description: "Framework for managing work with emphasis on software development" },
+  { id: "64", name: "JIRA", category: "Project Management", description: "Issue tracking and project management tool" },
+  { id: "65", name: "Confluence", category: "Project Management", description: "Collaboration and documentation platform" },
+  { id: "66", name: "Project Management", category: "Project Management", description: "Planning, executing, and managing projects effectively" },
+  { id: "67", name: "Product Management", category: "Project Management", description: "Overseeing product development from conception to launch" },
+
+  // Testing
+  { id: "68", name: "Test Automation", category: "Testing", description: "Automating the execution of software tests" },
+  { id: "69", name: "Selenium", category: "Testing", description: "Web browser automation framework for testing" },
+  { id: "70", name: "Cypress", category: "Testing", description: "End-to-end testing framework for web applications" },
+  { id: "71", name: "JUnit", category: "Testing", description: "Unit testing framework for Java applications" },
+  { id: "72", name: "Mocha / Chai", category: "Testing", description: "JavaScript testing frameworks for unit and integration tests" },
+  { id: "73", name: "Load Testing (JMeter)", category: "Testing", description: "Performance testing tool for web applications" },
+  { id: "74", name: "Manual Testing", category: "Testing", description: "Human-executed testing to find defects in software" },
+  { id: "75", name: "API Testing (Postman)", category: "Testing", description: "Testing application programming interfaces" },
+
+  // Cybersecurity
+  { id: "76", name: "Cybersecurity Fundamentals", category: "Cybersecurity", description: "Basic principles and practices of information security" },
+  { id: "77", name: "Ethical Hacking", category: "Cybersecurity", description: "Authorized testing of systems for security vulnerabilities" },
+  { id: "78", name: "Penetration Testing", category: "Cybersecurity", description: "Simulated cyber attacks to test system security" },
+  { id: "79", name: "Firewalls", category: "Cybersecurity", description: "Network security systems that monitor and control traffic" },
+  { id: "80", name: "Network Security", category: "Cybersecurity", description: "Protecting computer networks from threats and attacks" },
+  { id: "81", name: "SIEM Tools (Splunk, QRadar)", category: "Cybersecurity", description: "Security information and event management tools" },
+  { id: "82", name: "Encryption", category: "Cybersecurity", description: "Converting information into code to prevent unauthorized access" },
+
+  // Blockchain
+  { id: "83", name: "Blockchain Basics", category: "Blockchain", description: "Fundamental concepts of distributed ledger technology" },
+  { id: "84", name: "Solidity", category: "Blockchain", description: "Programming language for Ethereum smart contracts" },
+  { id: "85", name: "Smart Contracts", category: "Blockchain", description: "Self-executing contracts with terms directly written into code" },
+  { id: "86", name: "Web3.js", category: "Blockchain", description: "JavaScript library for interacting with Ethereum blockchain" },
+  { id: "87", name: "Metamask Integration", category: "Blockchain", description: "Integrating cryptocurrency wallet functionality" },
+
+  // AI/ML
+  { id: "88", name: "Machine Learning", category: "AI/ML", description: "Algorithms that learn and make predictions from data" },
+  { id: "89", name: "Deep Learning", category: "AI/ML", description: "Neural networks with multiple layers for complex pattern recognition" },
+  { id: "90", name: "Computer Vision", category: "AI/ML", description: "Teaching computers to interpret and understand visual information" },
+  { id: "91", name: "Natural Language Processing (NLP)", category: "AI/ML", description: "Processing and analyzing human language data" },
+  { id: "92", name: "TensorFlow", category: "AI/ML", description: "Open-source machine learning framework by Google" },
+  { id: "93", name: "PyTorch", category: "AI/ML", description: "Machine learning library based on Torch" },
+  { id: "94", name: "Scikit-learn", category: "AI/ML", description: "Machine learning library for Python" },
+  { id: "95", name: "OpenCV", category: "AI/ML", description: "Computer vision and machine learning software library" },
+  { id: "96", name: "Pandas", category: "AI/ML", description: "Data manipulation and analysis library for Python" },
+  { id: "97", name: "NumPy", category: "AI/ML", description: "Numerical computing library for Python" },
+  { id: "98", name: "Matplotlib", category: "AI/ML", description: "Plotting library for creating visualizations in Python" },
+
+  // Data Analytics
+  { id: "99", name: "Power BI", category: "Data Analytics", description: "Business analytics tool for creating reports and dashboards" },
+  { id: "100", name: "Tableau", category: "Data Analytics", description: "Data visualization software for business intelligence" },
+  { id: "101", name: "Excel (Advanced)", category: "Data Analytics", description: "Advanced spreadsheet skills for data analysis" },
+  { id: "102", name: "Data Cleaning", category: "Data Analytics", description: "Process of preparing raw data for analysis" },
+  { id: "103", name: "Data Visualization", category: "Data Analytics", description: "Presenting data in graphical formats for insights" },
+  { id: "104", name: "ETL Tools", category: "Data Analytics", description: "Extract, Transform, Load processes for data warehousing" },
+  { id: "105", name: "Big Data (Hadoop, Spark)", category: "Data Analytics", description: "Technologies for processing large datasets" },
+  { id: "106", name: "Data Warehousing", category: "Data Analytics", description: "Storing and managing large volumes of data" },
+
+  // Embedded Systems
+  { id: "107", name: "Embedded C", category: "Embedded Systems", description: "Programming microcontrollers and embedded devices" },
+  { id: "108", name: "IoT (Arduino, Raspberry Pi)", category: "Embedded Systems", description: "Internet of Things development with microcontrollers" },
+  { id: "109", name: "Robotics Frameworks (ROS)", category: "Embedded Systems", description: "Robot Operating System for robotics development" },
+  { id: "110", name: "Firmware Development", category: "Embedded Systems", description: "Low-level software that controls hardware devices" },
+  { id: "111", name: "Control Systems", category: "Embedded Systems", description: "Systems that manage and regulate other systems" },
+  { id: "112", name: "Debugging Tools", category: "Embedded Systems", description: "Tools for finding and fixing software bugs" },
+
+  // Soft Skills
+  { id: "113", name: "Communication Skills", category: "Soft Skills", description: "Effective verbal and written communication abilities" },
+  { id: "114", name: "Problem-Solving", category: "Soft Skills", description: "Analytical thinking to identify and resolve issues" },
+  { id: "115", name: "Critical Thinking", category: "Soft Skills", description: "Objective analysis and evaluation of information" },
+  { id: "116", name: "Time Management", category: "Soft Skills", description: "Efficiently organizing and planning time usage" },
+  { id: "117", name: "Collaboration / Teamwork", category: "Soft Skills", description: "Working effectively with others towards common goals" }
+];
