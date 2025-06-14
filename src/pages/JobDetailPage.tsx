@@ -13,11 +13,79 @@ import {
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
-import { Check, Briefcase, Flag, BookText, Eye } from "lucide-react";
+import { Check, Briefcase, Flag, BookText, Eye, Star, Plus } from "lucide-react";
 import { useAppContext } from "@/context/AppContext";
 import { toast } from "sonner";
 import { RoadmapStep } from "@/types";
 import { cn } from "@/lib/utils";
+
+// Skills data organized by job categories
+const jobSkillsMap: Record<string, { main: string[], additional: string[] }> = {
+  "Web Development": {
+    main: ["HTML & CSS", "JavaScript", "React / Angular / Vue.js", "Node.js / Express.js", "Git & GitHub"],
+    additional: ["TypeScript", "Webpack / Babel", "REST APIs", "Responsive Design", "Next.js / Nuxt.js", "Bootstrap / Tailwind CSS", "Testing (Jest, Cypress)"]
+  },
+  "DevOps": {
+    main: ["CI/CD (Jenkins, GitLab CI)", "Docker", "Kubernetes", "Git", "Linux/Unix", "Infrastructure as Code (Terraform, Ansible)"],
+    additional: ["AWS / Azure / GCP", "Monitoring (Prometheus, Grafana)", "Scripting (Bash, Python)", "Load Balancing", "NGINX / Apache"]
+  },
+  "Data Science": {
+    main: ["Python / R", "Pandas, NumPy, Scikit-learn", "SQL", "Data Visualization (Matplotlib, Seaborn)"],
+    additional: ["Jupyter Notebooks", "Machine Learning (ML)", "Deep Learning (TensorFlow, PyTorch)", "Big Data Tools (Spark, Hadoop)", "Statistics & Probability", "APIs for data access"]
+  },
+  "Mobile App Development": {
+    main: ["Java / Kotlin (Android)", "Swift / Objective-C (iOS)", "Flutter / Dart", "React Native"],
+    additional: ["Android Studio / Xcode", "Firebase", "RESTful APIs", "UI/UX for mobile", "Testing (Appium, Espresso)"]
+  },
+  "Cybersecurity": {
+    main: ["Network Security", "Ethical Hacking", "Penetration Testing", "Firewalls & IDS/IPS", "Security Tools (Wireshark, Metasploit)"],
+    additional: ["Cryptography", "Security+ / CEH / CISSP", "Vulnerability Assessment", "Malware Analysis", "Linux / Windows Security", "SIEM Tools (Splunk, QRadar)"]
+  },
+  "Cloud Computing": {
+    main: ["AWS / Azure / GCP", "Docker & Kubernetes", "Load Balancing & Auto Scaling", "VMs / Virtual Networks"],
+    additional: ["Cloud Security", "DevOps Tools", "Terraform / Pulumi", "S3, EC2, Lambda (AWS)", "APIs & Serverless Computing"]
+  },
+  "AI / Machine Learning": {
+    main: ["Python", "Scikit-learn", "TensorFlow / PyTorch", "Data Preprocessing", "Linear Algebra, Probability, Stats"],
+    additional: ["NLP (spaCy, NLTK)", "Computer Vision (OpenCV)", "Model Deployment (Flask, FastAPI)", "GPU Computing", "MLOps tools (MLflow, DVC)"]
+  },
+  "Database Administration": {
+    main: ["SQL (MySQL, PostgreSQL, Oracle)", "Database Design", "Backup & Recovery", "Performance Tuning"],
+    additional: ["NoSQL (MongoDB, Cassandra)", "Data Warehousing", "ETL tools", "Shell Scripting", "DB Monitoring Tools"]
+  },
+  "UI/UX Design": {
+    main: ["Figma / Adobe XD / Sketch", "User Research", "Wireframing & Prototyping", "Interaction Design"],
+    additional: ["HTML/CSS (for handoff)", "Accessibility (WCAG)", "UX Writing", "Design Thinking", "A/B Testing"]
+  },
+  "Software Testing / QA": {
+    main: ["Manual Testing", "Automation Testing (Selenium, TestNG)", "Test Case Design", "Bug Tracking (JIRA)"],
+    additional: ["API Testing (Postman, REST Assured)", "Performance Testing (JMeter)", "Mobile App Testing", "Unit Testing Frameworks", "CI Integration"]
+  },
+  "System Admin / IT Support": {
+    main: ["Windows / Linux Administration", "Troubleshooting", "Networking Basics", "Command Line / Shell"],
+    additional: ["Active Directory", "Scripting (Bash, PowerShell)", "Ticketing Systems", "Virtualization (VMware)", "Backup and Recovery"]
+  },
+  "Blockchain Development": {
+    main: ["Solidity / Ethereum", "Smart Contracts", "Web3.js / Ethers.js", "Blockchain Basics"],
+    additional: ["NFTs", "dApp Development", "Truffle / Hardhat", "IPFS", "Crypto Wallet Integration"]
+  },
+  "Game Development": {
+    main: ["Unity / Unreal Engine", "C# / C++", "Game Physics", "Game Design"],
+    additional: ["3D Modeling (Blender, Maya)", "Animation", "Multiplayer Architecture", "VR/AR Development", "Asset Optimization"]
+  },
+  "BI / Data Analytics": {
+    main: ["SQL", "Power BI / Tableau", "Excel (Advanced)", "Data Modeling"],
+    additional: ["Python/R for Data Analysis", "ETL Tools", "KPIs and Dashboards", "Data Cleaning", "Business Acumen"]
+  },
+  "Robotics / Embedded Systems": {
+    main: ["C / C++ / Embedded C", "Microcontrollers (Arduino, STM32)", "Sensors & Actuators", "Real-Time Operating Systems (RTOS)"],
+    additional: ["PCB Design", "IoT Protocols (MQTT, CoAP)", "Raspberry Pi", "Robotics Simulation (ROS, Gazebo)"]
+  },
+  "Product / Project Management": {
+    main: ["Agile / Scrum / Kanban", "Project Planning Tools (JIRA, Trello)", "Risk Management", "Roadmapping"],
+    additional: ["Gantt Charts", "Communication Skills", "Technical Documentation", "Stakeholder Management", "Budgeting"]
+  }
+};
 
 const JobDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -48,6 +116,9 @@ const JobDetailPage = () => {
   
   // Check if user already has a goal for this job
   const existingGoal = goals.find(g => g.jobId === job.id);
+  
+  // Get detailed skills for this job category
+  const detailedSkills = jobSkillsMap[job.category] || { main: [], additional: [] };
   
   const handleCreateGoal = () => {
     setIsCreatingGoal(true);
@@ -147,6 +218,57 @@ const JobDetailPage = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Detailed Skills Section */}
+          {(detailedSkills.main.length > 0 || detailedSkills.additional.length > 0) && (
+            <Card className="overflow-hidden">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Star className="h-5 w-5 text-primary" />
+                  Skills Required for {job.category}
+                </CardTitle>
+                <CardDescription>
+                  Essential and additional skills you'll need for success in this field
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {detailedSkills.main.length > 0 && (
+                  <div>
+                    <h4 className="font-semibold mb-3 text-primary">Main Skills</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {detailedSkills.main.map((skill, index) => (
+                        <Badge 
+                          key={index}
+                          className="bg-primary/10 text-primary border-primary/20 px-3 py-1.5"
+                        >
+                          <Star className="h-3 w-3 mr-1" />
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {detailedSkills.additional.length > 0 && (
+                  <div>
+                    <h4 className="font-semibold mb-3 text-muted-foreground">Additional Skills</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {detailedSkills.additional.map((skill, index) => (
+                        <Badge 
+                          key={index}
+                          variant="outline"
+                          className="bg-muted/30 px-3 py-1.5"
+                        >
+                          <Plus className="h-3 w-3 mr-1" />
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
           
           {missingSkills.length > 0 && (
             <Card className="overflow-hidden">
