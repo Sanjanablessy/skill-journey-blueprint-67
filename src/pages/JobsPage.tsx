@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, Search } from "lucide-react";
+import { Briefcase, Search, Building, Clock } from "lucide-react";
 import { useAppContext } from "@/context/AppContext";
 import { cn } from "@/lib/utils";
 
@@ -23,8 +23,8 @@ const JobsPage = () => {
   const [filteredJobs, setFilteredJobs] = useState<typeof jobs>([]);
   const [visibleJobsCount, setVisibleJobsCount] = useState(12);
 
-  // Get unique job categories
-  const categories = Array.from(new Set(jobs.map((job) => job.category)));
+  // Get unique job categories and sort them alphabetically
+  const categories = Array.from(new Set(jobs.map((job) => job.category))).sort();
 
   useEffect(() => {
     const filtered = jobs.filter((job) => {
@@ -129,7 +129,12 @@ const JobsPage = () => {
               <CardHeader className="pb-3">
                 <CardTitle className="text-xl">{job.title}</CardTitle>
                 <CardDescription className="flex items-center gap-2">
-                  {job.company && <span>{job.company}</span>}
+                  {job.company && (
+                    <div className="flex items-center gap-1">
+                      <Building className="h-3.5 w-3.5" />
+                      <span>{job.company}</span>
+                    </div>
+                  )}
                 </CardDescription>
               </CardHeader>
               <CardContent className="pb-4">
@@ -139,7 +144,15 @@ const JobsPage = () => {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-1 mb-3">
-                  <Badge variant="outline" className="bg-primary/5">{job.category}</Badge>
+                  <Badge variant="outline" className="bg-primary/5 flex items-center gap-1">
+                    {job.category}
+                  </Badge>
+                  {job.experience && (
+                    <Badge variant="outline" className="bg-secondary/5 flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {job.experience}
+                    </Badge>
+                  )}
                 </div>
                 <div className="flex flex-wrap gap-1">
                   {job.requiredSkills.slice(0, 3).map((skill) => (
