@@ -531,39 +531,14 @@ export const mockSkills: Skill[] = [
     level: 'beginner',
     description: 'Raspberry Pi is a series of small single-board computers.',
     resources: []
-  },
-
-  // Project Management Skills
-  {
-    id: 'agile',
-    name: 'Agile',
-    category: 'Project Management',
-    level: 'intermediate',
-    description: 'Agile is a project management methodology that emphasizes iterative development.',
-    resources: []
-  },
-  {
-    id: 'scrum',
-    name: 'Scrum',
-    category: 'Project Management',
-    level: 'intermediate',
-    description: 'Scrum is an agile framework for managing product development.',
-    resources: []
-  },
-  {
-    id: 'jira',
-    name: 'JIRA',
-    category: 'Project Management',
-    level: 'beginner',
-    description: 'JIRA is a tool for bug tracking, issue tracking, and project management.',
-    resources: []
   }
 ];
 
-// Mock Jobs - Complete list with all requested job titles
+// Mock Jobs - Complete list with all 112 requested job titles
 export const mockJobs: Job[] = [
+  // Web Development (9 jobs)
   {
-    id: 'frontend-dev',
+    id: 'frontend-developer',
     title: 'Frontend Developer',
     company: 'TechCorp',
     description: 'Develop and maintain user interfaces for web applications using modern JavaScript frameworks.',
@@ -575,32 +550,10 @@ export const mockJobs: Job[] = [
     salaryRange: '$70,000 - $100,000',
     experience: '2-4 years',
     category: 'Web Development',
-    roadmap: [
-      {
-        id: 'frontend-1',
-        title: 'Learn HTML & CSS Fundamentals',
-        description: 'Master the basics of HTML5 and CSS3 including semantic markup and responsive design.',
-        completed: false,
-        resources: ['html-css-resource-1']
-      },
-      {
-        id: 'frontend-2',
-        title: 'JavaScript Essentials',
-        description: 'Learn core JavaScript concepts including ES6+ features, DOM manipulation, and asynchronous programming.',
-        completed: false,
-        resources: ['js-resource-1', 'js-resource-2']
-      },
-      {
-        id: 'frontend-3',
-        title: 'React Framework',
-        description: 'Build applications with React, understanding components, state management, and hooks.',
-        completed: false,
-        resources: ['react-resource-1']
-      }
-    ]
+    roadmap: []
   },
   {
-    id: 'backend-dev',
+    id: 'backend-developer',
     title: 'Backend Developer',
     company: 'DataSystems Inc.',
     description: 'Design and implement server-side logic, databases, and APIs for web applications.',
@@ -611,67 +564,115 @@ export const mockJobs: Job[] = [
     salaryRange: '$80,000 - $120,000',
     experience: '3-5 years',
     category: 'Web Development',
-    roadmap: [
-      {
-        id: 'backend-1',
-        title: 'Server-side Programming',
-        description: 'Learn Node.js and Express for building server applications.',
-        completed: false,
-        resources: ['node-resource-1']
-      },
-      {
-        id: 'backend-2',
-        title: 'Database Design',
-        description: 'Master SQL and database design principles for efficient data storage and retrieval.',
-        completed: false,
-        resources: ['sql-resource-1']
-      },
-      {
-        id: 'backend-3',
-        title: 'API Development',
-        description: 'Create RESTful and GraphQL APIs for client-server communication.',
-        completed: false
-      }
-    ]
+    roadmap: []
   },
   {
-    id: 'fullstack-dev',
+    id: 'full-stack-developer',
     title: 'Full Stack Developer',
     company: 'WebSolutions',
-    description: 'Develop both client and server sides of web applications, working with various technologies across the stack.',
+    description: 'Develop both client and server sides of web applications, working with various technologies.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'js')!,
       mockSkills.find(skill => skill.id === 'react')!,
-      mockSkills.find(skill => skill.id === 'node')!,
-      mockSkills.find(skill => skill.id === 'sql')!
+      mockSkills.find(skill => skill.id === 'node')!
     ],
     salaryRange: '$90,000 - $130,000',
     experience: '4-6 years',
     category: 'Web Development',
-    roadmap: [
-      {
-        id: 'fullstack-1',
-        title: 'Frontend Development',
-        description: 'Master HTML, CSS, JavaScript, and React for building user interfaces.',
-        completed: false,
-        resources: ['html-css-resource-1', 'js-resource-2', 'react-resource-1']
-      },
-      {
-        id: 'fullstack-2',
-        title: 'Backend Development',
-        description: 'Learn server-side programming with Node.js and database management.',
-        completed: false,
-        resources: ['node-resource-1', 'sql-resource-1']
-      },
-      {
-        id: 'fullstack-3',
-        title: 'DevOps Basics',
-        description: 'Understand deployment, CI/CD, and containerization with Docker.',
-        completed: false,
-        resources: ['docker-resource-1']
-      }
-    ]
+    roadmap: []
   },
+  {
+    id: 'web-designer',
+    title: 'Web Designer',
+    company: 'Creative Web Studio',
+    description: 'Design visually appealing and user-friendly websites and web applications.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'figma')!,
+      mockSkills.find(skill => skill.id === 'html-css')!,
+      mockSkills.find(skill => skill.id === 'adobe-xd')!
+    ],
+    salaryRange: '$55,000 - $85,000',
+    experience: '2-4 years',
+    category: 'Web Development',
+    roadmap: []
+  },
+  {
+    id: 'wordpress-developer',
+    title: 'WordPress Developer',
+    company: 'CMS Solutions',
+    description: 'Develop and customize WordPress websites and themes for various clients.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'html-css')!,
+      mockSkills.find(skill => skill.id === 'js')!,
+      mockSkills.find(skill => skill.id === 'sql')!
+    ],
+    salaryRange: '$50,000 - $80,000',
+    experience: '2-4 years',
+    category: 'Web Development',
+    roadmap: []
+  },
+  {
+    id: 'ui-developer',
+    title: 'UI Developer',
+    company: 'Interface Innovations',
+    description: 'Create interactive user interfaces and implement frontend designs.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'js')!,
+      mockSkills.find(skill => skill.id === 'html-css')!,
+      mockSkills.find(skill => skill.id === 'react')!
+    ],
+    salaryRange: '$65,000 - $95,000',
+    experience: '2-4 years',
+    category: 'Web Development',
+    roadmap: []
+  },
+  {
+    id: 'angular-developer',
+    title: 'Angular Developer',
+    company: 'Angular Solutions',
+    description: 'Build dynamic web applications using Angular framework and TypeScript.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'typescript')!,
+      mockSkills.find(skill => skill.id === 'js')!,
+      mockSkills.find(skill => skill.id === 'html-css')!
+    ],
+    salaryRange: '$75,000 - $110,000',
+    experience: '3-5 years',
+    category: 'Web Development',
+    roadmap: []
+  },
+  {
+    id: 'react-developer',
+    title: 'React Developer',
+    company: 'React Technologies',
+    description: 'Develop modern web applications using React library and ecosystem.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'react')!,
+      mockSkills.find(skill => skill.id === 'js')!,
+      mockSkills.find(skill => skill.id === 'typescript')!
+    ],
+    salaryRange: '$70,000 - $105,000',
+    experience: '2-5 years',
+    category: 'Web Development',
+    roadmap: []
+  },
+  {
+    id: 'vuejs-developer',
+    title: 'Vue.js Developer',
+    company: 'Vue Technologies',
+    description: 'Create interactive web applications using Vue.js framework.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'js')!,
+      mockSkills.find(skill => skill.id === 'html-css')!,
+      mockSkills.find(skill => skill.id === 'typescript')!
+    ],
+    salaryRange: '$68,000 - $100,000',
+    experience: '2-4 years',
+    category: 'Web Development',
+    roadmap: []
+  },
+
+  // DevOps (7 jobs)
   {
     id: 'devops-engineer',
     title: 'DevOps Engineer',
@@ -685,29 +686,100 @@ export const mockJobs: Job[] = [
     salaryRange: '$100,000 - $140,000',
     experience: '3-5 years',
     category: 'DevOps',
-    roadmap: [
-      {
-        id: 'devops-1',
-        title: 'Cloud Services',
-        description: 'Learn AWS core services and architecture patterns.',
-        completed: false,
-        resources: ['aws-resource-1']
-      },
-      {
-        id: 'devops-2',
-        title: 'Containerization',
-        description: 'Master Docker and container orchestration with Kubernetes.',
-        completed: false,
-        resources: ['docker-resource-1']
-      },
-      {
-        id: 'devops-3',
-        title: 'CI/CD Pipelines',
-        description: 'Implement continuous integration and deployment pipelines.',
-        completed: false
-      }
-    ]
+    roadmap: []
   },
+  {
+    id: 'sre-engineer',
+    title: 'Site Reliability Engineer (SRE)',
+    company: 'Reliability Systems',
+    description: 'Ensure system reliability, performance, and scalability of production systems.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'linux-admin')!,
+      mockSkills.find(skill => skill.id === 'kubernetes')!,
+      mockSkills.find(skill => skill.id === 'aws')!
+    ],
+    salaryRange: '$110,000 - $150,000',
+    experience: '4-7 years',
+    category: 'DevOps',
+    roadmap: []
+  },
+  {
+    id: 'cicd-engineer',
+    title: 'CI/CD Engineer',
+    company: 'Automation Pro',
+    description: 'Design and implement continuous integration and deployment pipelines.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'git')!,
+      mockSkills.find(skill => skill.id === 'docker')!,
+      mockSkills.find(skill => skill.id === 'aws')!
+    ],
+    salaryRange: '$95,000 - $130,000',
+    experience: '3-5 years',
+    category: 'DevOps',
+    roadmap: []
+  },
+  {
+    id: 'infrastructure-engineer',
+    title: 'Infrastructure Engineer',
+    company: 'InfraTech Solutions',
+    description: 'Design and manage cloud infrastructure and server environments.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'aws')!,
+      mockSkills.find(skill => skill.id === 'linux-admin')!,
+      mockSkills.find(skill => skill.id === 'kubernetes')!
+    ],
+    salaryRange: '$105,000 - $145,000',
+    experience: '4-6 years',
+    category: 'DevOps',
+    roadmap: []
+  },
+  {
+    id: 'platform-engineer',
+    title: 'Platform Engineer',
+    company: 'Platform Solutions',
+    description: 'Build and maintain development platforms and infrastructure tools.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'kubernetes')!,
+      mockSkills.find(skill => skill.id === 'docker')!,
+      mockSkills.find(skill => skill.id === 'python')!
+    ],
+    salaryRange: '$110,000 - $155,000',
+    experience: '4-7 years',
+    category: 'DevOps',
+    roadmap: []
+  },
+  {
+    id: 'build-release-engineer',
+    title: 'Build and Release Engineer',
+    company: 'Release Automation',
+    description: 'Manage build systems and release processes for software delivery.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'git')!,
+      mockSkills.find(skill => skill.id === 'docker')!,
+      mockSkills.find(skill => skill.id === 'linux-admin')!
+    ],
+    salaryRange: '$90,000 - $125,000',
+    experience: '3-5 years',
+    category: 'DevOps',
+    roadmap: []
+  },
+  {
+    id: 'cloud-devops-engineer',
+    title: 'Cloud DevOps Engineer',
+    company: 'CloudOps Solutions',
+    description: 'Implement DevOps practices specifically for cloud environments.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'aws')!,
+      mockSkills.find(skill => skill.id === 'azure')!,
+      mockSkills.find(skill => skill.id === 'docker')!
+    ],
+    salaryRange: '$100,000 - $140,000',
+    experience: '3-6 years',
+    category: 'DevOps',
+    roadmap: []
+  },
+
+  // Data Science (7 jobs)
   {
     id: 'data-scientist',
     title: 'Data Scientist',
@@ -715,41 +787,111 @@ export const mockJobs: Job[] = [
     description: 'Analyze and interpret complex data to help organizations make better decisions.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'python')!,
-      mockSkills.find(skill => skill.id === 'sql')!
+      mockSkills.find(skill => skill.id === 'sql')!,
+      mockSkills.find(skill => skill.id === 'scikit-learn')!
     ],
     salaryRange: '$90,000 - $140,000',
     experience: '3-6 years',
     category: 'Data Science',
-    roadmap: [
-      {
-        id: 'data-1',
-        title: 'Python for Data Science',
-        description: 'Learn Python libraries for data analysis: NumPy, Pandas, and Matplotlib.',
-        completed: false,
-        resources: ['python-resource-1']
-      },
-      {
-        id: 'data-2',
-        title: 'SQL for Data Analysis',
-        description: 'Master SQL queries for extracting and analyzing data from databases.',
-        completed: false,
-        resources: ['sql-resource-1']
-      },
-      {
-        id: 'data-3',
-        title: 'Machine Learning Fundamentals',
-        description: 'Understand core machine learning algorithms and their applications.',
-        completed: false
-      }
-    ]
+    roadmap: []
+  },
+  {
+    id: 'data-analyst',
+    title: 'Data Analyst',
+    company: 'Data Insights Corp',
+    description: 'Collect, process, and analyze data to provide business insights.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'sql')!,
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'excel')!
+    ],
+    salaryRange: '$65,000 - $95,000',
+    experience: '2-4 years',
+    category: 'Data Science',
+    roadmap: []
+  },
+  {
+    id: 'machine-learning-engineer',
+    title: 'Machine Learning Engineer',
+    company: 'ML Solutions',
+    description: 'Design and implement machine learning models for production systems.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'tensorflow')!,
+      mockSkills.find(skill => skill.id === 'pytorch')!
+    ],
+    salaryRange: '$110,000 - $160,000',
+    experience: '3-6 years',
+    category: 'Data Science',
+    roadmap: []
+  },
+  {
+    id: 'statistician',
+    title: 'Statistician',
+    company: 'Statistical Analytics',
+    description: 'Apply statistical methods to analyze data and solve business problems.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'sql')!,
+      mockSkills.find(skill => skill.id === 'excel')!
+    ],
+    salaryRange: '$75,000 - $110,000',
+    experience: '3-5 years',
+    category: 'Data Science',
+    roadmap: []
+  },
+  {
+    id: 'data-engineer',
+    title: 'Data Engineer',
+    company: 'Big Data Solutions',
+    description: 'Build and maintain data pipelines and infrastructure for analytics.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'sql')!,
+      mockSkills.find(skill => skill.id === 'aws')!
+    ],
+    salaryRange: '$95,000 - $135,000',
+    experience: '3-6 years',
+    category: 'Data Science',
+    roadmap: []
+  },
+  {
+    id: 'ai-research-scientist',
+    title: 'AI Research Scientist',
+    company: 'AI Research Labs',
+    description: 'Conduct research in artificial intelligence and develop new AI algorithms.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'tensorflow')!,
+      mockSkills.find(skill => skill.id === 'pytorch')!
+    ],
+    salaryRange: '$130,000 - $200,000',
+    experience: '5-10 years',
+    category: 'Data Science',
+    roadmap: []
+  },
+  {
+    id: 'nlp-engineer',
+    title: 'NLP Engineer',
+    company: 'Language Technologies',
+    description: 'Develop natural language processing systems and applications.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'tensorflow')!,
+      mockSkills.find(skill => skill.id === 'pytorch')!
+    ],
+    salaryRange: '$105,000 - $155,000',
+    experience: '3-6 years',
+    category: 'Data Science',
+    roadmap: []
   },
 
-  // Mobile App Development Jobs
+  // Mobile App Development (7 jobs)
   {
     id: 'android-developer',
     title: 'Android Developer',
     company: 'MobileTech Solutions',
-    description: 'Develop native Android applications using Kotlin and Java. Work with Android SDK and modern development practices.',
+    description: 'Develop native Android applications using Kotlin and Java.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'android')!,
       mockSkills.find(skill => skill.id === 'kotlin')!,
@@ -764,7 +906,7 @@ export const mockJobs: Job[] = [
     id: 'ios-developer',
     title: 'iOS Developer',
     company: 'AppVenture Inc.',
-    description: 'Build and maintain iOS applications using Swift. Experience with Xcode and Apple development ecosystem required.',
+    description: 'Build and maintain iOS applications using Swift and Xcode.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'ios')!,
       mockSkills.find(skill => skill.id === 'swift')!,
@@ -779,7 +921,7 @@ export const mockJobs: Job[] = [
     id: 'flutter-developer',
     title: 'Flutter Developer',
     company: 'CrossPlatform Studios',
-    description: 'Develop cross-platform mobile applications using Flutter framework. Create beautiful, natively compiled applications.',
+    description: 'Develop cross-platform mobile applications using Flutter framework.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'flutter')!,
       mockSkills.find(skill => skill.id === 'git')!
@@ -793,7 +935,7 @@ export const mockJobs: Job[] = [
     id: 'react-native-developer',
     title: 'React Native Developer',
     company: 'Mobile Innovations',
-    description: 'Build mobile applications using React Native. Leverage JavaScript and React knowledge for mobile development.',
+    description: 'Build mobile applications using React Native framework.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'react-native')!,
       mockSkills.find(skill => skill.id === 'js')!,
@@ -804,13 +946,58 @@ export const mockJobs: Job[] = [
     category: 'Mobile Development',
     roadmap: []
   },
+  {
+    id: 'mobile-app-tester',
+    title: 'Mobile App Tester',
+    company: 'Mobile QA Solutions',
+    description: 'Test mobile applications across different devices and platforms.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'manual-testing')!,
+      mockSkills.find(skill => skill.id === 'android')!,
+      mockSkills.find(skill => skill.id === 'ios')!
+    ],
+    salaryRange: '$50,000 - $75,000',
+    experience: '1-3 years',
+    category: 'Mobile Development',
+    roadmap: []
+  },
+  {
+    id: 'xamarin-developer',
+    title: 'Xamarin Developer',
+    company: 'Xamarin Solutions',
+    description: 'Develop cross-platform mobile apps using Microsoft Xamarin framework.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'csharp')!,
+      mockSkills.find(skill => skill.id === 'android')!,
+      mockSkills.find(skill => skill.id === 'ios')!
+    ],
+    salaryRange: '$70,000 - $105,000',
+    experience: '2-4 years',
+    category: 'Mobile Development',
+    roadmap: []
+  },
+  {
+    id: 'mobile-ui-ux-designer',
+    title: 'Mobile UI/UX Designer',
+    company: 'Mobile Design Studio',
+    description: 'Design user interfaces and experiences specifically for mobile applications.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'figma')!,
+      mockSkills.find(skill => skill.id === 'design-thinking')!,
+      mockSkills.find(skill => skill.id === 'adobe-xd')!
+    ],
+    salaryRange: '$60,000 - $95,000',
+    experience: '2-5 years',
+    category: 'Mobile Development',
+    roadmap: []
+  },
 
-  // Cybersecurity Jobs
+  // Cybersecurity (7 jobs)
   {
     id: 'cybersecurity-analyst',
     title: 'Cybersecurity Analyst',
     company: 'SecureNet Corp',
-    description: 'Monitor and analyze security threats, implement security measures, and respond to incidents.',
+    description: 'Monitor and analyze security threats, implement security measures.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'network-security')!,
       mockSkills.find(skill => skill.id === 'ethical-hacking')!
@@ -821,10 +1008,10 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
   {
-    id: 'penetration-tester',
-    title: 'Penetration Tester',
+    id: 'ethical-hacker',
+    title: 'Ethical Hacker / Penetration Tester',
     company: 'CyberDefense Solutions',
-    description: 'Conduct authorized security testing to identify vulnerabilities in systems and applications.',
+    description: 'Conduct authorized security testing to identify vulnerabilities.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'penetration-testing')!,
       mockSkills.find(skill => skill.id === 'ethical-hacking')!,
@@ -836,10 +1023,24 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
   {
-    id: 'security-engineer',
-    title: 'Security Engineer',
-    company: 'InfoSec Technologies',
-    description: 'Design and implement security architecture for enterprise systems and applications.',
+    id: 'information-security-analyst',
+    title: 'Information Security Analyst',
+    company: 'InfoSec Pro',
+    description: 'Analyze and protect organizational information systems and data.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'network-security')!,
+      mockSkills.find(skill => skill.id === 'ethical-hacking')!
+    ],
+    salaryRange: '$80,000 - $120,000',
+    experience: '3-5 years',
+    category: 'Cybersecurity',
+    roadmap: []
+  },
+  {
+    id: 'network-security-engineer',
+    title: 'Network Security Engineer',
+    company: 'Network Security Corp',
+    description: 'Design and implement network security solutions and protocols.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'network-security')!,
       mockSkills.find(skill => skill.id === 'linux-admin')!
@@ -849,13 +1050,72 @@ export const mockJobs: Job[] = [
     category: 'Cybersecurity',
     roadmap: []
   },
+  {
+    id: 'soc-analyst',
+    title: 'Security Operations Center (SOC) Analyst',
+    company: 'SOC Security',
+    description: 'Monitor security events and respond to cybersecurity incidents.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'network-security')!,
+      mockSkills.find(skill => skill.id === 'troubleshooting')!
+    ],
+    salaryRange: '$65,000 - $95,000',
+    experience: '2-4 years',
+    category: 'Cybersecurity',
+    roadmap: []
+  },
+  {
+    id: 'application-security-engineer',
+    title: 'Application Security Engineer',
+    company: 'AppSec Solutions',
+    description: 'Secure applications and conduct security code reviews.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'ethical-hacking')!,
+      mockSkills.find(skill => skill.id === 'network-security')!,
+      mockSkills.find(skill => skill.id === 'python')!
+    ],
+    salaryRange: '$90,000 - $130,000',
+    experience: '3-6 years',
+    category: 'Cybersecurity',
+    roadmap: []
+  },
+  {
+    id: 'security-consultant',
+    title: 'Security Consultant',
+    company: 'Security Consulting Group',
+    description: 'Provide cybersecurity consulting and advisory services to clients.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'network-security')!,
+      mockSkills.find(skill => skill.id === 'ethical-hacking')!,
+      mockSkills.find(skill => skill.id === 'penetration-testing')!
+    ],
+    salaryRange: '$100,000 - $150,000',
+    experience: '5-8 years',
+    category: 'Cybersecurity',
+    roadmap: []
+  },
 
-  // Cloud Computing Jobs
+  // Cloud Computing (8 jobs)
+  {
+    id: 'cloud-engineer',
+    title: 'Cloud Engineer',
+    company: 'CloudTech Solutions',
+    description: 'Design and implement cloud infrastructure and services.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'aws')!,
+      mockSkills.find(skill => skill.id === 'azure')!,
+      mockSkills.find(skill => skill.id === 'docker')!
+    ],
+    salaryRange: '$90,000 - $130,000',
+    experience: '3-5 years',
+    category: 'Cloud Computing',
+    roadmap: []
+  },
   {
     id: 'cloud-architect',
-    title: 'Cloud Solutions Architect',
+    title: 'Cloud Architect',
     company: 'CloudFirst Systems',
-    description: 'Design and implement cloud architecture solutions using AWS, Azure, and GCP platforms.',
+    description: 'Design enterprise cloud architecture solutions.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'aws')!,
       mockSkills.find(skill => skill.id === 'azure')!,
@@ -867,10 +1127,85 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
   {
-    id: 'kubernetes-engineer',
-    title: 'Kubernetes Engineer',
+    id: 'cloud-developer',
+    title: 'Cloud Developer',
+    company: 'Cloud Development Co',
+    description: 'Develop cloud-native applications and microservices.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'aws')!,
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'docker')!
+    ],
+    salaryRange: '$85,000 - $125,000',
+    experience: '3-5 years',
+    category: 'Cloud Computing',
+    roadmap: []
+  },
+  {
+    id: 'aws-solutions-architect',
+    title: 'AWS Solutions Architect',
+    company: 'AWS Consulting',
+    description: 'Design and implement AWS cloud solutions for enterprise clients.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'aws')!,
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'linux-admin')!
+    ],
+    salaryRange: '$115,000 - $165,000',
+    experience: '4-7 years',
+    category: 'Cloud Computing',
+    roadmap: []
+  },
+  {
+    id: 'azure-cloud-engineer',
+    title: 'Azure Cloud Engineer',
+    company: 'Azure Solutions',
+    description: 'Implement and manage Microsoft Azure cloud infrastructure.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'azure')!,
+      mockSkills.find(skill => skill.id === 'docker')!,
+      mockSkills.find(skill => skill.id === 'kubernetes')!
+    ],
+    salaryRange: '$95,000 - $140,000',
+    experience: '3-6 years',
+    category: 'Cloud Computing',
+    roadmap: []
+  },
+  {
+    id: 'gcp-cloud-engineer',
+    title: 'GCP Cloud Engineer',
+    company: 'Google Cloud Partners',
+    description: 'Design and deploy solutions on Google Cloud Platform.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'gcp')!,
+      mockSkills.find(skill => skill.id === 'kubernetes')!,
+      mockSkills.find(skill => skill.id === 'python')!
+    ],
+    salaryRange: '$100,000 - $145,000',
+    experience: '3-6 years',
+    category: 'Cloud Computing',
+    roadmap: []
+  },
+  {
+    id: 'cloud-security-engineer',
+    title: 'Cloud Security Engineer',
+    company: 'SecureCloud Solutions',
+    description: 'Implement security measures and compliance in cloud environments.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'aws')!,
+      mockSkills.find(skill => skill.id === 'network-security')!,
+      mockSkills.find(skill => skill.id === 'azure')!
+    ],
+    salaryRange: '$105,000 - $150,000',
+    experience: '4-7 years',
+    category: 'Cloud Computing',
+    roadmap: []
+  },
+  {
+    id: 'kubernetes-administrator',
+    title: 'Kubernetes Administrator',
     company: 'Container Solutions',
-    description: 'Manage and optimize Kubernetes clusters, implement container orchestration strategies.',
+    description: 'Manage and optimize Kubernetes clusters and container orchestration.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'kubernetes')!,
       mockSkills.find(skill => skill.id === 'docker')!,
@@ -881,28 +1216,13 @@ export const mockJobs: Job[] = [
     category: 'Cloud Computing',
     roadmap: []
   },
-  {
-    id: 'cloud-devops',
-    title: 'Cloud DevOps Engineer',
-    company: 'ScaleUp Cloud',
-    description: 'Implement CI/CD pipelines and infrastructure automation in cloud environments.',
-    requiredSkills: [
-      mockSkills.find(skill => skill.id === 'aws')!,
-      mockSkills.find(skill => skill.id === 'docker')!,
-      mockSkills.find(skill => skill.id === 'git')!
-    ],
-    salaryRange: '$100,000 - $145,000',
-    experience: '3-6 years',
-    category: 'Cloud Computing',
-    roadmap: []
-  },
 
-  // Artificial Intelligence / Machine Learning Jobs
+  // Artificial Intelligence / Machine Learning (7 jobs)
   {
     id: 'ai-engineer',
     title: 'AI Engineer',
     company: 'AI Innovations',
-    description: 'Design and implement artificial intelligence solutions for various business applications.',
+    description: 'Design and implement artificial intelligence solutions.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'python')!,
       mockSkills.find(skill => skill.id === 'tensorflow')!,
@@ -914,10 +1234,25 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
   {
+    id: 'ml-engineer',
+    title: 'Machine Learning Engineer',
+    company: 'ML Technologies',
+    description: 'Build and deploy machine learning models in production.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'scikit-learn')!,
+      mockSkills.find(skill => skill.id === 'tensorflow')!
+    ],
+    salaryRange: '$105,000 - $155,000',
+    experience: '3-6 years',
+    category: 'Artificial Intelligence',
+    roadmap: []
+  },
+  {
     id: 'deep-learning-specialist',
     title: 'Deep Learning Specialist',
     company: 'DeepMind Technologies',
-    description: 'Develop deep learning models and neural networks for complex AI applications.',
+    description: 'Develop deep learning models and neural networks.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'tensorflow')!,
       mockSkills.find(skill => skill.id === 'pytorch')!,
@@ -929,17 +1264,47 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
   {
-    id: 'computer-vision-engineer',
-    title: 'Computer Vision Engineer',
-    company: 'Vision AI',
-    description: 'Develop computer vision systems for image and video analysis applications.',
+    id: 'ai-nlp-engineer',
+    title: 'NLP Engineer',
+    company: 'Natural Language AI',
+    description: 'Develop natural language processing and understanding systems.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'python')!,
       mockSkills.find(skill => skill.id === 'tensorflow')!,
-      mockSkills.find(skill => skill.id === 'opencv')! || mockSkills.find(skill => skill.id === 'pytorch')!
-    ].filter(Boolean),
+      mockSkills.find(skill => skill.id === 'pytorch')!
+    ],
+    salaryRange: '$105,000 - $155,000',
+    experience: '3-6 years',
+    category: 'Artificial Intelligence',
+    roadmap: []
+  },
+  {
+    id: 'computer-vision-engineer',
+    title: 'Computer Vision Engineer',
+    company: 'Vision AI',
+    description: 'Develop computer vision systems for image and video analysis.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'tensorflow')!,
+      mockSkills.find(skill => skill.id === 'pytorch')!
+    ],
     salaryRange: '$115,000 - $165,000',
     experience: '3-6 years',
+    category: 'Artificial Intelligence',
+    roadmap: []
+  },
+  {
+    id: 'ai-researcher',
+    title: 'AI Researcher',
+    company: 'AI Research Institute',
+    description: 'Conduct advanced research in artificial intelligence and machine learning.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'python')!,
+      mockSkills.find(skill => skill.id === 'tensorflow')!,
+      mockSkills.find(skill => skill.id === 'pytorch')!
+    ],
+    salaryRange: '$130,000 - $200,000',
+    experience: '5-10 years',
     category: 'Artificial Intelligence',
     roadmap: []
   },
@@ -947,7 +1312,7 @@ export const mockJobs: Job[] = [
     id: 'data-annotation-specialist',
     title: 'Data Annotation Specialist',
     company: 'ML Data Services',
-    description: 'Prepare and annotate data for machine learning model training and validation.',
+    description: 'Prepare and annotate data for machine learning model training.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'python')!,
       mockSkills.find(skill => skill.id === 'excel')!
@@ -958,12 +1323,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // Database Administration Jobs
+  // Database Administration (6 jobs)
   {
     id: 'database-administrator',
     title: 'Database Administrator (DBA)',
     company: 'DataManagement Solutions',
-    description: 'Manage and maintain database systems, ensure data integrity and performance optimization.',
+    description: 'Manage and maintain database systems, ensure data integrity.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'oracle')!,
       mockSkills.find(skill => skill.id === 'mysql')!,
@@ -1008,7 +1373,7 @@ export const mockJobs: Job[] = [
     id: 'nosql-developer',
     title: 'NoSQL Developer (MongoDB, Cassandra)',
     company: 'ModernDB Systems',
-    description: 'Design and implement NoSQL database solutions using MongoDB and other document databases.',
+    description: 'Design and implement NoSQL database solutions.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'mongodb')!,
       mockSkills.find(skill => skill.id === 'node')!,
@@ -1038,7 +1403,7 @@ export const mockJobs: Job[] = [
     id: 'big-data-engineer',
     title: 'Big Data Engineer',
     company: 'BigData Analytics',
-    description: 'Design and implement big data processing systems and analytics platforms.',
+    description: 'Design and implement big data processing systems.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'python')!,
       mockSkills.find(skill => skill.id === 'sql')!,
@@ -1050,12 +1415,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // UI/UX Design Jobs
+  // UI/UX Design (7 jobs)
   {
     id: 'ui-designer',
     title: 'UI Designer',
     company: 'Visual Creatives',
-    description: 'Design beautiful and intuitive user interfaces for web and mobile applications.',
+    description: 'Design beautiful and intuitive user interfaces for web and mobile.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'figma')!,
       mockSkills.find(skill => skill.id === 'adobe-xd')!,
@@ -1070,7 +1435,7 @@ export const mockJobs: Job[] = [
     id: 'ux-designer',
     title: 'UX Designer',
     company: 'DesignStudio Pro',
-    description: 'Create user-centered designs and conduct user research to improve product usability.',
+    description: 'Create user-centered designs and conduct user research.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'figma')!,
       mockSkills.find(skill => skill.id === 'design-thinking')!,
@@ -1085,7 +1450,7 @@ export const mockJobs: Job[] = [
     id: 'product-designer',
     title: 'Product Designer',
     company: 'InnovateTech',
-    description: 'Lead product design from concept to implementation, combining UX research with visual design.',
+    description: 'Lead product design from concept to implementation.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'figma')!,
       mockSkills.find(skill => skill.id === 'design-thinking')!
@@ -1153,12 +1518,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // Software Testing / QA Jobs
+  // Software Testing / QA (7 jobs)
   {
     id: 'qa-engineer',
     title: 'QA Engineer',
     company: 'QualityFirst Software',
-    description: 'Perform manual and automated testing to ensure software quality and reliability.',
+    description: 'Perform manual and automated testing to ensure software quality.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'manual-testing')!,
       mockSkills.find(skill => skill.id === 'selenium')!,
@@ -1173,7 +1538,7 @@ export const mockJobs: Job[] = [
     id: 'automation-test-engineer',
     title: 'Automation Test Engineer',
     company: 'TestAutomation Labs',
-    description: 'Develop and maintain automated test suites using Selenium and other testing frameworks.',
+    description: 'Develop and maintain automated test suites using testing frameworks.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'selenium')!,
       mockSkills.find(skill => skill.id === 'junit')!,
@@ -1217,7 +1582,7 @@ export const mockJobs: Job[] = [
     id: 'performance-tester',
     title: 'Performance Tester',
     company: 'LoadTest Solutions',
-    description: 'Conduct performance testing to ensure applications can handle expected user loads.',
+    description: 'Conduct performance testing to ensure applications handle expected loads.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'manual-testing')!,
       mockSkills.find(skill => skill.id === 'troubleshooting')!
@@ -1234,20 +1599,35 @@ export const mockJobs: Job[] = [
     description: 'Specialize in Selenium automation for web application testing.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'selenium')!,
-      mockSkills.find(skill => skill.id === 'java')! || mockSkills.find(skill => skill.id === 'python')!
-    ].filter(Boolean),
+      mockSkills.find(skill => skill.id === 'python')!
+    ],
     salaryRange: '$65,000 - $95,000',
     experience: '2-4 years',
     category: 'Software Testing',
     roadmap: []
   },
+  {
+    id: 'mobile-qa-tester',
+    title: 'Mobile QA Tester',
+    company: 'Mobile Testing Solutions',
+    description: 'Test mobile applications across different devices and platforms.',
+    requiredSkills: [
+      mockSkills.find(skill => skill.id === 'manual-testing')!,
+      mockSkills.find(skill => skill.id === 'android')!,
+      mockSkills.find(skill => skill.id === 'ios')!
+    ],
+    salaryRange: '$55,000 - $80,000',
+    experience: '2-4 years',
+    category: 'Software Testing',
+    roadmap: []
+  },
 
-  // System Administration / IT Support Jobs
+  // System Administration / IT Support (7 jobs)
   {
     id: 'system-administrator',
     title: 'System Administrator',
     company: 'Enterprise IT Services',
-    description: 'Manage and maintain server infrastructure, ensure system security and performance.',
+    description: 'Manage and maintain server infrastructure and system security.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'linux-admin')!,
       mockSkills.find(skill => skill.id === 'troubleshooting')!,
@@ -1276,7 +1656,7 @@ export const mockJobs: Job[] = [
     id: 'windows-administrator',
     title: 'Windows Administrator',
     company: 'Windows Systems Corp',
-    description: 'Manage Windows-based server infrastructure and Active Directory services.',
+    description: 'Manage Windows-based server infrastructure and Active Directory.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'troubleshooting')!,
       mockSkills.find(skill => skill.id === 'network-security')!
@@ -1290,7 +1670,7 @@ export const mockJobs: Job[] = [
     id: 'it-support-specialist',
     title: 'IT Support Specialist',
     company: 'TechSupport Plus',
-    description: 'Provide technical support to users, troubleshoot hardware and software issues.',
+    description: 'Provide technical support and troubleshoot hardware/software issues.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'help-desk')!,
       mockSkills.find(skill => skill.id === 'troubleshooting')!
@@ -1304,7 +1684,7 @@ export const mockJobs: Job[] = [
     id: 'help-desk-technician',
     title: 'Help Desk Technician',
     company: 'IT Help Solutions',
-    description: 'Provide first-level technical support and troubleshooting for end users.',
+    description: 'Provide first-level technical support and troubleshooting for users.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'help-desk')!,
       mockSkills.find(skill => skill.id === 'troubleshooting')!
@@ -1318,7 +1698,7 @@ export const mockJobs: Job[] = [
     id: 'network-administrator',
     title: 'Network Administrator',
     company: 'NetworkPro Solutions',
-    description: 'Configure and maintain network infrastructure, monitor network performance and security.',
+    description: 'Configure and maintain network infrastructure and monitor performance.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'network-security')!,
       mockSkills.find(skill => skill.id === 'linux-admin')!,
@@ -1333,7 +1713,7 @@ export const mockJobs: Job[] = [
     id: 'technical-support-engineer',
     title: 'Technical Support Engineer',
     company: 'Enterprise Support',
-    description: 'Provide advanced technical support and problem resolution for complex systems.',
+    description: 'Provide advanced technical support for complex systems.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'troubleshooting')!,
       mockSkills.find(skill => skill.id === 'linux-admin')!
@@ -1344,12 +1724,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // Blockchain Development Jobs
+  // Blockchain Development (7 jobs)
   {
     id: 'blockchain-developer',
     title: 'Blockchain Developer',
     company: 'CryptoTech Solutions',
-    description: 'Develop decentralized applications and smart contracts on blockchain platforms.',
+    description: 'Develop decentralized applications and smart contracts.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'solidity')!,
       mockSkills.find(skill => skill.id === 'ethereum')!,
@@ -1364,7 +1744,7 @@ export const mockJobs: Job[] = [
     id: 'smart-contract-developer',
     title: 'Smart Contract Developer',
     company: 'DeFi Innovations',
-    description: 'Design and implement smart contracts for DeFi protocols and blockchain applications.',
+    description: 'Design and implement smart contracts for DeFi protocols.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'solidity')!,
       mockSkills.find(skill => skill.id === 'smart-contracts')!,
@@ -1394,7 +1774,7 @@ export const mockJobs: Job[] = [
     id: 'blockchain-architect',
     title: 'Blockchain Architect',
     company: 'Blockchain Architecture',
-    description: 'Design blockchain architecture and distributed systems for enterprise applications.',
+    description: 'Design blockchain architecture and distributed systems.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'ethereum')!,
       mockSkills.find(skill => skill.id === 'smart-contracts')!,
@@ -1409,7 +1789,7 @@ export const mockJobs: Job[] = [
     id: 'crypto-wallet-developer',
     title: 'Crypto Wallet Developer',
     company: 'CryptoWallet Inc',
-    description: 'Develop secure cryptocurrency wallet applications and services.',
+    description: 'Develop secure cryptocurrency wallet applications.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'js')!,
       mockSkills.find(skill => skill.id === 'ethereum')!,
@@ -1424,7 +1804,7 @@ export const mockJobs: Job[] = [
     id: 'web3-developer',
     title: 'Web3 Developer',
     company: 'Web3 Technologies',
-    description: 'Build decentralized web applications using Web3 technologies and protocols.',
+    description: 'Build decentralized web applications using Web3 technologies.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'js')!,
       mockSkills.find(skill => skill.id === 'react')!,
@@ -1451,12 +1831,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // Game Development Jobs
+  // Game Development (7 jobs)
   {
     id: 'game-developer',
     title: 'Game Developer',
     company: 'GameStudio Pro',
-    description: 'Develop video games using Unity and C#, create engaging gameplay experiences.',
+    description: 'Develop video games using Unity and C#.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'unity')!,
       mockSkills.find(skill => skill.id === 'csharp')!
@@ -1470,7 +1850,7 @@ export const mockJobs: Job[] = [
     id: 'unity-developer',
     title: 'Unity Developer',
     company: 'Unity Games Studio',
-    description: 'Create games and interactive applications using Unity game engine.',
+    description: 'Create games and interactive applications using Unity engine.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'unity')!,
       mockSkills.find(skill => skill.id === 'csharp')!
@@ -1484,7 +1864,7 @@ export const mockJobs: Job[] = [
     id: 'unreal-developer',
     title: 'Unreal Engine Developer',
     company: 'Epic Games Studios',
-    description: 'Create high-quality games using Unreal Engine, work on AAA game titles.',
+    description: 'Create high-quality games using Unreal Engine.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'unreal-engine')!,
       mockSkills.find(skill => skill.id === 'csharp')!
@@ -1498,7 +1878,7 @@ export const mockJobs: Job[] = [
     id: 'game-designer',
     title: 'Game Designer',
     company: 'Creative Game Design',
-    description: 'Design game mechanics, levels, and player experiences for video games.',
+    description: 'Design game mechanics, levels, and player experiences.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'unity')!,
       mockSkills.find(skill => skill.id === 'design-thinking')!
@@ -1512,7 +1892,7 @@ export const mockJobs: Job[] = [
     id: 'game-artist',
     title: 'Game Artist',
     company: 'Game Art Studios',
-    description: 'Create visual assets and artwork for video games and interactive media.',
+    description: 'Create visual assets and artwork for video games.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'adobe-xd')!,
       mockSkills.find(skill => skill.id === 'figma')!
@@ -1526,7 +1906,7 @@ export const mockJobs: Job[] = [
     id: 'gameplay-programmer',
     title: 'Gameplay Programmer',
     company: 'Interactive Gaming',
-    description: 'Program game mechanics and player interactions using game engines.',
+    description: 'Program game mechanics and player interactions.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'csharp')!,
       mockSkills.find(skill => skill.id === 'unity')!
@@ -1540,7 +1920,7 @@ export const mockJobs: Job[] = [
     id: 'level-designer',
     title: 'Level Designer',
     company: 'Level Design Pro',
-    description: 'Design and create game levels, environments, and player progression systems.',
+    description: 'Design and create game levels and environments.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'unity')!,
       mockSkills.find(skill => skill.id === 'design-thinking')!
@@ -1551,12 +1931,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // Business Intelligence / Data Analytics Jobs
+  // Business Intelligence / Data Analytics (7 jobs)
   {
     id: 'bi-developer',
     title: 'BI Developer',
     company: 'DataInsights Corp',
-    description: 'Develop business intelligence solutions and data warehouses for enterprise reporting.',
+    description: 'Develop business intelligence solutions and data warehouses.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'power-bi')!,
       mockSkills.find(skill => skill.id === 'sql')!,
@@ -1571,7 +1951,7 @@ export const mockJobs: Job[] = [
     id: 'bi-analyst',
     title: 'BI Analyst',
     company: 'Business Analytics',
-    description: 'Create reports and dashboards using Power BI and Tableau to support business decisions.',
+    description: 'Create reports and dashboards using BI tools.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'power-bi')!,
       mockSkills.find(skill => skill.id === 'sql')!,
@@ -1601,7 +1981,7 @@ export const mockJobs: Job[] = [
     id: 'tableau-developer',
     title: 'Tableau Developer',
     company: 'Analytics Solutions',
-    description: 'Develop interactive data visualizations and dashboards using Tableau.',
+    description: 'Develop interactive data visualizations using Tableau.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'tableau')!,
       mockSkills.find(skill => skill.id === 'sql')!,
@@ -1616,7 +1996,7 @@ export const mockJobs: Job[] = [
     id: 'power-bi-developer',
     title: 'Power BI Developer',
     company: 'Microsoft BI Solutions',
-    description: 'Create business intelligence solutions using Microsoft Power BI platform.',
+    description: 'Create business intelligence solutions using Power BI.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'power-bi')!,
       mockSkills.find(skill => skill.id === 'sql')!,
@@ -1631,7 +2011,7 @@ export const mockJobs: Job[] = [
     id: 'business-analyst',
     title: 'Business Analyst',
     company: 'Business Solutions Inc',
-    description: 'Analyze business processes and requirements to improve organizational efficiency.',
+    description: 'Analyze business processes and requirements.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'excel')!,
       mockSkills.find(skill => skill.id === 'sql')!,
@@ -1658,12 +2038,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // Robotics / Embedded Systems Jobs
+  // Robotics / Embedded Systems (7 jobs)
   {
     id: 'embedded-systems-engineer',
     title: 'Embedded Systems Engineer',
     company: 'Hardware Solutions',
-    description: 'Design and develop embedded systems for various hardware applications.',
+    description: 'Design and develop embedded systems for hardware applications.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'arduino')!,
       mockSkills.find(skill => skill.id === 'raspberry-pi')!,
@@ -1693,7 +2073,7 @@ export const mockJobs: Job[] = [
     id: 'iot-developer',
     title: 'IoT Developer',
     company: 'ConnectedDevices Inc',
-    description: 'Develop Internet of Things applications and embedded systems using Arduino and Raspberry Pi.',
+    description: 'Develop Internet of Things applications and embedded systems.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'iot')!,
       mockSkills.find(skill => skill.id === 'arduino')!,
@@ -1722,7 +2102,7 @@ export const mockJobs: Job[] = [
     id: 'automation-engineer',
     title: 'Automation Engineer',
     company: 'Industrial Automation',
-    description: 'Design and implement automation systems for manufacturing and industrial processes.',
+    description: 'Design automation systems for manufacturing and industrial processes.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'python')!,
       mockSkills.find(skill => skill.id === 'arduino')!,
@@ -1751,7 +2131,7 @@ export const mockJobs: Job[] = [
     id: 'control-systems-engineer',
     title: 'Control Systems Engineer',
     company: 'Control Engineering',
-    description: 'Design and implement control systems for industrial and automation applications.',
+    description: 'Design control systems for industrial and automation applications.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'python')!,
       mockSkills.find(skill => skill.id === 'arduino')!,
@@ -1763,12 +2143,12 @@ export const mockJobs: Job[] = [
     roadmap: []
   },
 
-  // Product / Project Management Jobs
+  // Product / Project Management (7 jobs)
   {
     id: 'product-manager',
     title: 'Product Manager',
     company: 'InnovateTech Products',
-    description: 'Define product strategy and roadmap, work with cross-functional teams to deliver products.',
+    description: 'Define product strategy and work with cross-functional teams.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'agile')!,
       mockSkills.find(skill => skill.id === 'jira')!
@@ -1782,7 +2162,7 @@ export const mockJobs: Job[] = [
     id: 'project-manager',
     title: 'Project Manager',
     company: 'ProjectSuccess Ltd',
-    description: 'Lead software development projects using Agile and Scrum methodologies.',
+    description: 'Lead software development projects using Agile methodologies.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'agile')!,
       mockSkills.find(skill => skill.id === 'scrum')!,
@@ -1797,7 +2177,7 @@ export const mockJobs: Job[] = [
     id: 'scrum-master',
     title: 'Scrum Master',
     company: 'AgileTeams Corp',
-    description: 'Facilitate Scrum processes and help teams deliver high-quality software products.',
+    description: 'Facilitate Scrum processes and help teams deliver products.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'scrum')!,
       mockSkills.find(skill => skill.id === 'agile')!,
@@ -1812,7 +2192,7 @@ export const mockJobs: Job[] = [
     id: 'agile-coach',
     title: 'Agile Coach',
     company: 'Agile Transformation',
-    description: 'Guide organizations in adopting Agile methodologies and practices.',
+    description: 'Guide organizations in adopting Agile methodologies.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'agile')!,
       mockSkills.find(skill => skill.id === 'scrum')!
@@ -1826,7 +2206,7 @@ export const mockJobs: Job[] = [
     id: 'technical-program-manager',
     title: 'Technical Program Manager',
     company: 'Tech Program Management',
-    description: 'Manage complex technical programs and coordinate cross-functional engineering teams.',
+    description: 'Manage complex technical programs and coordinate teams.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'agile')!,
       mockSkills.find(skill => skill.id === 'jira')!,
@@ -1841,7 +2221,7 @@ export const mockJobs: Job[] = [
     id: 'release-manager',
     title: 'Release Manager',
     company: 'Release Coordination',
-    description: 'Coordinate software releases and manage deployment processes across teams.',
+    description: 'Coordinate software releases and manage deployment processes.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'git')!,
       mockSkills.find(skill => skill.id === 'agile')!,
@@ -1856,7 +2236,7 @@ export const mockJobs: Job[] = [
     id: 'product-owner',
     title: 'Product Owner',
     company: 'Product Development Co',
-    description: 'Define product requirements and priorities, work closely with development teams.',
+    description: 'Define product requirements and work with development teams.',
     requiredSkills: [
       mockSkills.find(skill => skill.id === 'agile')!,
       mockSkills.find(skill => skill.id === 'scrum')!,
