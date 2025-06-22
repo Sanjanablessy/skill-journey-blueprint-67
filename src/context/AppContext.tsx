@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useContext, ReactNode } from "react";
 import { mockSkills, mockJobs, allQuizzes, mockGoals } from "@/data/mockData";
 import { Skill, Job, Quiz, Goal, UserSkill, RoadmapStep } from "@/types";
@@ -28,7 +29,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [userSkills, setUserSkills] = useState<UserSkill[]>([]);
 
   const addUserSkill = (skill: Skill, proficiency: number) => {
+    console.log("Adding skill:", skill, "Current userSkills:", userSkills);
+    
     if (!skill || !skill.id) {
+      console.error("Invalid skill data:", skill);
       toast.error("Invalid skill data.");
       return;
     }
@@ -38,12 +42,19 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
     
-    setUserSkills([...userSkills, { ...skill, proficiency }]);
+    const newUserSkill = { ...skill, proficiency };
+    const updatedUserSkills = [...userSkills, newUserSkill];
+    console.log("Updated userSkills:", updatedUserSkills);
+    
+    setUserSkills(updatedUserSkills);
     toast.success(`${skill.name} added to your skills.`);
   };
 
   const removeUserSkill = (skillId: string) => {
-    setUserSkills(userSkills.filter((skill) => skill && skill.id !== skillId));
+    console.log("Removing skill:", skillId, "Current userSkills:", userSkills);
+    const filteredSkills = userSkills.filter((skill) => skill && skill.id !== skillId);
+    console.log("After removal:", filteredSkills);
+    setUserSkills(filteredSkills);
     toast.info("Skill removed from your profile.");
   };
 

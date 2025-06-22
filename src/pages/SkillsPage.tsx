@@ -22,6 +22,8 @@ const SkillsPage = () => {
   const [showUserSkills, setShowUserSkills] = useState(false);
   const [visibleSkillsCount, setVisibleSkillsCount] = useState(24);
   
+  console.log("SkillsPage render - userSkills:", userSkills);
+  
   // Get unique skill categories
   const categories = Array.from(new Set(skills.map((skill) => skill.category))).sort();
   
@@ -46,6 +48,7 @@ const SkillsPage = () => {
   const matchingJobs = getMatchingJobs();
   
   const handleAddSkill = (skill: Skill) => {
+    console.log("handleAddSkill called with:", skill);
     addUserSkill(skill, 3); // Default proficiency level
   };
 
@@ -78,7 +81,7 @@ const SkillsPage = () => {
             variant={showUserSkills ? "default" : "outline"}
             onClick={() => setShowUserSkills(!showUserSkills)}
           >
-            My Skills
+            My Skills ({userSkills?.length || 0})
           </Button>
         </div>
       </div>
@@ -87,12 +90,12 @@ const SkillsPage = () => {
       {showUserSkills && (
         <Card className="mb-8">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-xl">My Skills</CardTitle>
+            <CardTitle className="text-xl">My Skills ({userSkills?.length || 0})</CardTitle>
             <Button 
               variant="ghost" 
               size="sm"
               onClick={clearUserSkills}
-              disabled={userSkills.length === 0}
+              disabled={!userSkills || userSkills.length === 0}
             >
               Clear All
             </Button>
