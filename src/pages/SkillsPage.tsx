@@ -98,21 +98,23 @@ const SkillsPage = () => {
             </Button>
           </CardHeader>
           <CardContent>
-            {userSkills.length > 0 ? (
+            {userSkills && userSkills.length > 0 ? (
               <div className="flex flex-wrap gap-2">
                 {userSkills.map((skill) => (
-                  <Badge 
-                    key={skill.id} 
-                    className="px-3 py-1.5 flex items-center gap-1"
-                  >
-                    {skill.name}
-                    <button 
-                      className="ml-1 hover:bg-primary-foreground rounded-full"
-                      onClick={() => removeUserSkill(skill.id)}
+                  skill && skill.id ? (
+                    <Badge 
+                      key={skill.id} 
+                      className="px-3 py-1.5 flex items-center gap-1"
                     >
-                      <X className="h-3 w-3" />
-                    </button>
-                  </Badge>
+                      {skill.name}
+                      <button 
+                        className="ml-1 hover:bg-primary-foreground rounded-full"
+                        onClick={() => removeUserSkill(skill.id)}
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </Badge>
+                  ) : null
                 ))}
               </div>
             ) : (
@@ -121,36 +123,38 @@ const SkillsPage = () => {
               </p>
             )}
           </CardContent>
-          {userSkills.length > 0 && matchingJobs.length > 0 && (
+          {userSkills && userSkills.length > 0 && matchingJobs && matchingJobs.length > 0 && (
             <CardFooter className="flex-col items-start">
               <h3 className="font-medium mb-2">Matching Jobs</h3>
               <div className="space-y-2 w-full">
                 {matchingJobs.slice(0, 3).map((job) => (
-                  <div 
-                    key={job.id}
-                    className="flex justify-between items-center border-b pb-2"
-                  >
-                    <div>
-                      <p className="font-medium">{job.title}</p>
-                      <div className="flex items-center gap-1">
-                        <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-primary" 
-                            style={{ width: `${job.matchPercentage}%` }}
-                          ></div>
-                        </div>
-                        <span className="text-xs text-muted-foreground">{job.matchPercentage}% match</span>
-                      </div>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      asChild
-                      className="whitespace-nowrap"
+                  job && job.id ? (
+                    <div 
+                      key={job.id}
+                      className="flex justify-between items-center border-b pb-2"
                     >
-                      <a href={`/jobs/${job.id}`}>View Job</a>
-                    </Button>
-                  </div>
+                      <div>
+                        <p className="font-medium">{job.title || 'Untitled Job'}</p>
+                        <div className="flex items-center gap-1">
+                          <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-primary" 
+                              style={{ width: `${job.matchPercentage || 0}%` }}
+                            ></div>
+                          </div>
+                          <span className="text-xs text-muted-foreground">{job.matchPercentage || 0}% match</span>
+                        </div>
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        asChild
+                        className="whitespace-nowrap"
+                      >
+                        <a href={`/jobs/${job.id}`}>View Job</a>
+                      </Button>
+                    </div>
+                  ) : null
                 ))}
                 {matchingJobs.length > 3 && (
                   <Button variant="ghost" className="w-full" asChild>
@@ -197,7 +201,9 @@ const SkillsPage = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {visibleSkills.length > 0 ? (
           visibleSkills.map((skill) => {
-            const isAdded = userSkills.some((s) => s.id === skill.id);
+            if (!skill || !skill.id) return null;
+            
+            const isAdded = userSkills && userSkills.some((s) => s && s.id === skill.id);
             
             return (
               <Card key={skill.id} className="overflow-hidden transition-all hover:shadow-md">
