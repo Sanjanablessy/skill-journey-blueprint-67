@@ -28,7 +28,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [userSkills, setUserSkills] = useState<UserSkill[]>([]);
 
   const addUserSkill = (skill: Skill, proficiency: number) => {
-    if (userSkills.find((s) => s.id === skill.id)) {
+    if (!skill || !skill.id) {
+      toast.error("Invalid skill data.");
+      return;
+    }
+    
+    if (userSkills.find((s) => s && s.id === skill.id)) {
       toast.error("You already have this skill in your profile.");
       return;
     }
@@ -38,14 +43,14 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeUserSkill = (skillId: string) => {
-    setUserSkills(userSkills.filter((skill) => skill.id !== skillId));
+    setUserSkills(userSkills.filter((skill) => skill && skill.id !== skillId));
     toast.info("Skill removed from your profile.");
   };
 
   const updateUserSkill = (skillId: string, proficiency: number) => {
     setUserSkills(
       userSkills.map((skill) =>
-        skill.id === skillId ? { ...skill, proficiency } : skill
+        skill && skill.id === skillId ? { ...skill, proficiency } : skill
       )
     );
   };
@@ -62,7 +67,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const steps: RoadmapStep[] = [];
     
     // Get user skill IDs to filter out skills they already have
-    const userSkillIds = userSkills.map(s => s.id);
+    const userSkillIds = userSkills.filter(skill => skill && skill.id).map((skill) => skill.id);
     
     // Add learning steps only for skills the user doesn't have
     const skillsToLearn = job.requiredSkills.filter(skill => !userSkillIds.includes(skill.id));
@@ -211,13 +216,19 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getMatchingJobs = (): Job[] => {
-    if (userSkills.length === 0) return [];
+    if (!userSkills || userSkills.length === 0) return [];
     
-    const userSkillIds = userSkills.map((skill) => skill.id);
+    const userSkillIds = userSkills.filter(skill => skill && skill.id).map((skill) => skill.id);
     
     return mockJobs
+      .filter(job => job && job.id && job.requiredSkills && Array.isArray(job.requiredSkills))
       .map((job) => {
-        const requiredSkillIds = job.requiredSkills.map((skill) => skill.id);
+        const requiredSkillIds = job.requiredSkills
+          .filter(skill => skill && skill.id)
+          .map((skill) => skill.id);
+        
+        if (requiredSkillIds.length === 0) return { ...job, matchPercentage: 0 };
+        
         const matchedSkills = requiredSkillIds.filter((id) => userSkillIds.includes(id));
         
         // Calculate match percentage
@@ -231,12 +242,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const getRecommendedSkills = (jobId: string): Skill[] => {
     const job = mockJobs.find((j) => j.id === jobId);
-    if (!job) return [];
+    if (!job || !job.requiredSkills) return [];
     
-    const userSkillIds = userSkills.map((skill) => skill.id);
+    const userSkillIds = userSkills.filter(skill => skill && skill.id).map((skill) => skill.id);
     
     // Return skills required for the job that the user doesn't have yet
-    return job.requiredSkills.filter((skill) => !userSkillIds.includes(skill.id));
+    return job.requiredSkills.filter((skill) => skill && skill.id && !userSkillIds.includes(skill.id));
   };
 
   return (
