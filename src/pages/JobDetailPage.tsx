@@ -114,6 +114,10 @@ const JobDetailPage = () => {
   const userSkillIds = userSkills.map(s => s.id);
   const missingSkills = getRecommendedSkills(job.id);
   
+  // Separate skills into user has vs needs to learn
+  const userHasSkills = job.requiredSkills.filter(skill => userSkillIds.includes(skill.id));
+  const skillsToLearn = job.requiredSkills.filter(skill => !userSkillIds.includes(skill.id));
+  
   // Check if user already has a goal for this job
   const existingGoal = goals.find(g => g.jobId === job.id);
   
@@ -186,35 +190,47 @@ const JobDetailPage = () => {
                   <p className="text-muted-foreground">{job.description}</p>
                 </div>
                 
-                <div className="bg-brand-50 p-4 rounded-md border border-brand-200">
-                  <h3 className="text-lg font-medium mb-3 flex items-center gap-2 text-brand-800">
-                    <Eye className="h-5 w-5 text-brand-600" />
-                    Required Skills
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {job.requiredSkills.map((skill) => (
-                      <Badge 
-                        key={skill.id} 
-                        variant={userSkillIds.includes(skill.id) ? "default" : "secondary"}
-                        className={cn(
-                          userSkillIds.includes(skill.id) 
-                            ? "bg-brand-600 hover:bg-brand-700" 
-                            : "bg-white border-brand-300 text-brand-800",
-                          "px-3 py-1.5 text-sm shadow-sm"
-                        )}
-                      >
-                        {userSkillIds.includes(skill.id) ? (
-                          <span className="flex items-center gap-1.5">
-                            <Check className="h-3.5 w-3.5" />
-                            {skill.name}
-                          </span>
-                        ) : (
-                          skill.name
-                        )}
-                      </Badge>
-                    ))}
+                {/* Skills You Have */}
+                {userHasSkills.length > 0 && (
+                  <div className="bg-green-50 p-4 rounded-md border border-green-200">
+                    <h3 className="text-lg font-medium mb-3 flex items-center gap-2 text-green-800">
+                      <Check className="h-5 w-5 text-green-600" />
+                      Skills You Already Have
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {userHasSkills.map((skill) => (
+                        <Badge 
+                          key={skill.id} 
+                          className="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 text-sm shadow-sm"
+                        >
+                          <Check className="h-3.5 w-3.5 mr-1.5" />
+                          {skill.name}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Skills You Need to Learn */}
+                {skillsToLearn.length > 0 && (
+                  <div className="bg-brand-50 p-4 rounded-md border border-brand-200">
+                    <h3 className="text-lg font-medium mb-3 flex items-center gap-2 text-brand-800">
+                      <Eye className="h-5 w-5 text-brand-600" />
+                      Skills You Need to Learn
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {skillsToLearn.map((skill) => (
+                        <Badge 
+                          key={skill.id} 
+                          variant="secondary"
+                          className="bg-white border-brand-300 text-brand-800 px-3 py-1.5 text-sm shadow-sm"
+                        >
+                          {skill.name}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -329,7 +345,7 @@ const JobDetailPage = () => {
               <div className="space-y-2">
                 <h4 className="font-medium">What you'll learn</h4>
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  {job.requiredSkills.map((skill) => (
+                  {skillsToLearn.map((skill) => (
                     <li key={skill.id}>{skill.name} fundamentals</li>
                   ))}
                   <li>Project portfolio development</li>
@@ -340,7 +356,7 @@ const JobDetailPage = () => {
               <div className="space-y-2">
                 <h4 className="font-medium">Estimated time</h4>
                 <p className="text-sm text-muted-foreground">
-                  {job.requiredSkills.length * 2}-{job.requiredSkills.length * 4} months
+                  {skillsToLearn.length * 2}-{skillsToLearn.length * 4} months
                 </p>
               </div>
 

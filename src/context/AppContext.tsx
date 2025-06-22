@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, ReactNode } from "react";
 import { mockSkills, mockJobs, allQuizzes, mockGoals } from "@/data/mockData";
 import { Skill, Job, Quiz, Goal, UserSkill, RoadmapStep } from "@/types";
@@ -62,13 +61,18 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
     const steps: RoadmapStep[] = [];
     
-    // Add learning steps for each required skill
-    job.requiredSkills.forEach((skill) => {
+    // Get user skill IDs to filter out skills they already have
+    const userSkillIds = userSkills.map(s => s.id);
+    
+    // Add learning steps only for skills the user doesn't have
+    const skillsToLearn = job.requiredSkills.filter(skill => !userSkillIds.includes(skill.id));
+    
+    skillsToLearn.forEach((skill) => {
       steps.push({
         id: uuidv4(),
         title: `Learn ${skill.name}`,
         description: `Master the basics of ${skill.name} for ${job.title} role.`,
-        completed: userSkills.some((s) => s.id === skill.id),
+        completed: false, // User doesn't have this skill, so it's not completed
         resources: [
           `${skill.name} documentation`,
           `${skill.name} beginner course`,
@@ -76,15 +80,21 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       });
     });
 
-    // Add portfolio and project steps
+    // Add portfolio and project steps only if there are skills to learn
+    if (skillsToLearn.length > 0) {
+      steps.push(
+        {
+          id: uuidv4(),
+          title: "Build Portfolio Project",
+          description: `Create a project that demonstrates your ${skillsToLearn.map(s => s.name).join(", ")} skills.`,
+          completed: false,
+          resources: ["Project ideas", "Github repository templates"],
+        }
+      );
+    }
+
+    // Always add these steps regardless of skills
     steps.push(
-      {
-        id: uuidv4(),
-        title: "Build Portfolio Project",
-        description: `Create a project that demonstrates your ${job.requiredSkills.map(s => s.name).join(", ")} skills.`,
-        completed: false,
-        resources: ["Project ideas", "Github repository templates"],
-      },
       {
         id: uuidv4(),
         title: "Prepare Resume",
