@@ -1,5 +1,4 @@
-
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import { mockSkills, mockJobs, allQuizzes, mockGoals } from "@/data/mockData";
 import { Skill, Job, Quiz, Goal, UserSkill, RoadmapStep } from "@/types";
 import { toast } from "sonner";
@@ -24,9 +23,57 @@ interface AppContextProps {
 
 export const AppContext = createContext<AppContextProps | undefined>(undefined);
 
+const STORAGE_KEYS = {
+  USER_SKILLS: 'userSkills',
+  GOALS: 'goals'
+};
+
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [goals, setGoals] = useState<Goal[]>(mockGoals);
+  const [goals, setGoals] = useState<Goal[]>([]);
   const [userSkills, setUserSkills] = useState<UserSkill[]>([]);
+
+  // Load data from localStorage on component mount
+  useEffect(() => {
+    try {
+      const savedUserSkills = localStorage.getItem(STORAGE_KEYS.USER_SKILLS);
+      const savedGoals = localStorage.getItem(STORAGE_KEYS.GOALS);
+      
+      if (savedUserSkills) {
+        const parsedSkills = JSON.parse(savedUserSkills);
+        console.log("Loaded user skills from localStorage:", parsedSkills);
+        setUserSkills(parsedSkills);
+      }
+      
+      if (savedGoals) {
+        const parsedGoals = JSON.parse(savedGoals);
+        setGoals(parsedGoals);
+      } else {
+        setGoals(mockGoals);
+      }
+    } catch (error) {
+      console.error("Error loading data from localStorage:", error);
+      setGoals(mockGoals);
+    }
+  }, []);
+
+  // Save userSkills to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      console.log("Saving user skills to localStorage:", userSkills);
+      localStorage.setItem(STORAGE_KEYS.USER_SKILLS, JSON.stringify(userSkills));
+    } catch (error) {
+      console.error("Error saving user skills to localStorage:", error);
+    }
+  }, [userSkills]);
+
+  // Save goals to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.GOALS, JSON.stringify(goals));
+    } catch (error) {
+      console.error("Error saving goals to localStorage:", error);
+    }
+  }, [goals]);
 
   const addUserSkill = (skill: Skill, proficiency: number) => {
     console.log("Adding skill:", skill, "Current userSkills:", userSkills);
@@ -68,6 +115,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const clearUserSkills = () => {
     setUserSkills([]);
+    localStorage.removeItem(STORAGE_KEYS.USER_SKILLS);
     toast.info("All skills cleared from your profile.");
   };
 

@@ -5,7 +5,7 @@ export const useEmailValidation = () => {
   const [emailErrors, setEmailErrors] = useState({ login: '', signup: '' });
 
   const validateEmail = (email: string): boolean => {
-    // More comprehensive email validation
+    // More comprehensive email validation with Google domain check
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     
     // Check if email is not empty and matches the regex
@@ -34,6 +34,13 @@ export const useEmailValidation = () => {
     if (domain.startsWith('.') || domain.endsWith('.')) return false;
     if (domain.includes('..')) return false;
     
+    // Google email domain validation
+    const googleDomains = ['gmail.com', 'googlemail.com'];
+    const domainLower = domain.toLowerCase();
+    if (!googleDomains.includes(domainLower)) {
+      return false;
+    }
+    
     return true;
   };
 
@@ -43,7 +50,18 @@ export const useEmailValidation = () => {
     if (!trimmedEmail) {
       setEmailErrors(prev => ({ ...prev, [type]: 'Email is required' }));
     } else if (!validateEmail(trimmedEmail)) {
-      setEmailErrors(prev => ({ ...prev, [type]: 'Please enter a valid email address' }));
+      const parts = trimmedEmail.split('@');
+      if (parts.length === 2) {
+        const domain = parts[1].toLowerCase();
+        const googleDomains = ['gmail.com', 'googlemail.com'];
+        if (!googleDomains.includes(domain)) {
+          setEmailErrors(prev => ({ ...prev, [type]: 'Please use a valid Google email address (Gmail)' }));
+        } else {
+          setEmailErrors(prev => ({ ...prev, [type]: 'Please enter a valid Google email address' }));
+        }
+      } else {
+        setEmailErrors(prev => ({ ...prev, [type]: 'Please enter a valid Google email address' }));
+      }
     } else {
       setEmailErrors(prev => ({ ...prev, [type]: '' }));
     }
