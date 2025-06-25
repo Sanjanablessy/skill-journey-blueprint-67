@@ -15,22 +15,38 @@ interface SignUpFormProps {
 const SignUpForm = ({ onSubmit, isLoading }: SignUpFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [signupData, setSignupData] = useState({ email: '', password: '', fullName: '' });
-  const { emailErrors, validateEmail, handleEmailChange, setEmailErrors } = useEmailValidation();
+  const { emailErrors, validateEmail, handleEmailChange } = useEmailValidation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateEmail(signupData.email)) {
-      setEmailErrors(prev => ({ ...prev, signup: 'Please enter a valid email address' }));
+    const trimmedEmail = signupData.email.trim();
+    
+    // Validate email before submission
+    if (!trimmedEmail) {
+      handleEmailChange('', 'signup');
+      return;
+    }
+    
+    if (!validateEmail(trimmedEmail)) {
+      handleEmailChange(trimmedEmail, 'signup');
       return;
     }
 
-    await onSubmit(signupData.email, signupData.password, signupData.fullName);
+    // Only proceed if email is valid
+    await onSubmit(trimmedEmail, signupData.password, signupData.fullName);
   };
 
   const handleEmailInputChange = (email: string) => {
     setSignupData(prev => ({ ...prev, email }));
     handleEmailChange(email, 'signup');
+  };
+
+  const isFormValid = () => {
+    const trimmedEmail = signupData.email.trim();
+    return validateEmail(trimmedEmail) && 
+           signupData.password.length > 0 && 
+           !emailErrors.signup;
   };
 
   return (
@@ -94,7 +110,7 @@ const SignUpForm = ({ onSubmit, isLoading }: SignUpFormProps) => {
         <Button 
           type="submit" 
           className="w-full" 
-          disabled={isLoading || !!emailErrors.signup}
+          disabled={isLoading || !isFormValid()}
         >
           {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Create Account
